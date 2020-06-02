@@ -349,7 +349,7 @@ def bgcolor_tag(ptp_inst, ptp_state):
 	
 	return html_tag
 
-def to_table(port_configs_map):
+def to_table(port_configs_map, wrs_name):
 
 	# Return HTML table
 
@@ -362,7 +362,7 @@ def to_table(port_configs_map):
 	line += "\n"
 	line += "  <table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
 	line += "    <tr>\n"
-	line += "      <td port='eth0'>" + " wrs_name<br/>(eth0)" + "</td>\n"
+	line += "      <td port='eth0'> " + wrs_name + "<br/>(eth0)" + "</td>\n"
 	line += "      <td>\n"
 
 	line += "        <table color='orange' cellspacing='0'>\n"
@@ -432,6 +432,7 @@ def main(argv):
 	parser = argparse.ArgumentParser(prog=argv[0],
 		description='Get VLAN settings and save them in JSON')
 	parser.add_argument('file', help='path to ' + config_file)
+	parser.add_argument('name', help='WRS name')
 
 	# command options
 	opts = parser.parse_args(argv[1:])
@@ -467,6 +468,9 @@ def main(argv):
 				# insert VLAN config
 				insert_vlan_config(opt, vlan_configs)
 
+	#print port_configs
+	#print vlan_configs
+
 	# build {port:configs} map
 	port_configs_map = build_port_configs_map(port_configs, vlan_configs)
 
@@ -474,8 +478,9 @@ def main(argv):
 	json_obj = json.dumps(port_configs_map, indent = 2, sort_keys=True)
 	#print json_obj
 
-	table = to_table(port_configs_map)
+	table = to_table(port_configs_map, opts.name)
 
+	wrs_model_file = opts.name + ".txt"
 	with open(wrs_model_file, 'w') as f: 
 		f.write(table)
 

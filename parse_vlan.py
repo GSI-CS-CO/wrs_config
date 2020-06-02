@@ -116,13 +116,13 @@ def insert_port_config(Option, port_configs):
 	port_idx = get_port_idx(Option.key)
 
 	if port_idx is not None:
-		port_option = {}
-		port_option[Option.key] = Option.value
 
-		if port_idx in port_configs:
-			port_configs[port_idx].update(port_option)
+		port = int(port_idx)
+
+		if port in port_configs.keys():
+			port_configs[port][Option.key] = Option.value
 		else:
-			port_configs[port_idx] = port_option
+			port_configs[port] = {Option.key:Option.value}
 
 def insert_vlan_config(Option, vlan_configs):
 
@@ -179,23 +179,24 @@ def get_port_configs(port, port_configs):
 							'vlan_mode':'_MODE', 'vlan_vid':'_VID',
 							'vlan_ptp_vid':'_PTP_VID'}
 	configs = {'name':'wri', 'ptp_inst':'0',
-							'ptp_state':'UNKN', 'vlan_mode':'UNQ',
+							'ptp_state':'UNKN', 'vlan_mode':'UNQL',
 							'vlan_vid':'-',	'vlan_ptp_vid':'-', 'vlans':'-'}
 
 	# update default port settings according to the given configuration
 	for entry in port_configs[port].keys():				
 		if port_configs[port][entry]:
-			if (port + cfg_port_entries['name']) in entry:
+			port_idx = str(port)
+			if (port_idx + cfg_port_entries['name']) in entry:
 				configs['name'] = port_configs[port][entry]
-			elif (port + cfg_port_entries['ptp_inst']) in entry:
+			elif (port_idx + cfg_port_entries['ptp_inst']) in entry:
 				configs['ptp_inst'] = entry.split('_')[-1]
-			elif (port + cfg_port_entries['ptp_state']) in entry:
+			elif (port_idx + cfg_port_entries['ptp_state']) in entry:
 				configs['ptp_state'] = entry.split('_')[-1]
-			elif (port + cfg_port_entries['vlan_mode']) in entry:
+			elif (port_idx + cfg_port_entries['vlan_mode']) in entry:
 				configs['vlan_mode'] = entry.split('_')[-1][:2]
-			elif (port + cfg_port_entries['vlan_ptp_vid']) in entry:
+			elif (port_idx + cfg_port_entries['vlan_ptp_vid']) in entry:
 				configs['vlan_ptp_vid'] = port_configs[port][entry]
-			elif (port + cfg_port_entries['vlan_vid']) in entry:
+			elif (port_idx + cfg_port_entries['vlan_vid']) in entry:
 				configs['vlan_vid'] = port_configs[port][entry]
 
 	#print configs['name'], configs['ptp_inst'], configs['ptp_state'], configs['vlan_ptp_vid'], configs['vlan_vid']
@@ -260,8 +261,8 @@ def build_port_configs_map(port_configs, vlan_configs):
 	# extend port configurations with vlans
 	for port in vlans_map.keys():	
 		vlans_map[port] = list(to_ranges(vlans_map[port])) # translate ports to a range for better readibility
-		port_str = str(port)  # number to string conversion
-		configs_map[port_str]['vlans'] = str(vlans_map[port])
+		#port_str = str(port)  # number to string conversion
+		configs_map[int(port)]['vlans'] = str(vlans_map[port])
 
 	return configs_map
 
@@ -296,36 +297,38 @@ def to_config_groups(port_configs_map):
 	#print r_name, r_ptp_inst, r_ptp_state, r_vlan_mode, \
 		r_vlan_vid, r_vlan_ptp_vid, r_vlans
 
-	rs_name = []
-	rs_ptp_inst = []
-	rs_ptp_state = []
-	rs_vlan_mode = []
-	rs_vlan_vid = []
-	rs_vlan_ptp_vid = []
-	rs_vlans = []
+	rs_name = {}
+	rs_ptp_inst = {}
+	rs_ptp_state = {}
+	rs_vlan_mode = {}
+	rs_vlan_vid = {}
+	rs_vlan_ptp_vid = {}
+	rs_vlans = {}
 
-	for port in range(1,19):
-		rs_name.append(r_name[str(port)])
-		rs_ptp_inst.append(r_ptp_inst[str(port)])
-		rs_ptp_state.append(r_ptp_state[str(port)])
-		rs_vlan_mode.append(r_vlan_mode[str(port)])
-		rs_vlan_vid.append(r_vlan_vid[str(port)])
-		rs_vlan_ptp_vid.append(r_vlan_ptp_vid[str(port)])
-		rs_vlans.append(r_vlans[str(port)])
+	for port in port_configs_map.keys():
+		rs_name[port] = r_name[port]
+		rs_ptp_inst[port] = r_ptp_inst[port]
+		rs_ptp_state[port] = r_ptp_state[port]
+		rs_vlan_mode[port] = r_vlan_mode[port]
+		rs_vlan_vid[port] = r_vlan_vid[port]
+		rs_vlan_ptp_vid[port] = r_vlan_ptp_vid[port]
+		rs_vlans[port] = r_vlans[port]
 
 	#print rs_name, rs_ptp_inst, rs_ptp_state, rs_vlan_mode, \
 		rs_vlan_vid, rs_vlan_ptp_vid, rs_vlans
 
-	rows = {}
-	rows['name'] = rs_name
-	rows['ptp_inst'] = rs_ptp_inst
-	rows['ptp_state'] = rs_ptp_state
-	rows['vlan_mode'] = rs_vlan_mode
-	rows['vlan_ptp_vid'] = rs_vlan_ptp_vid
-	rows['vlan_vid'] = rs_vlan_vid
-	rows['vlans'] = rs_vlans
+	config_groups = {}
+	config_groups['name'] = rs_name
+	config_groups['ptp_inst'] = rs_ptp_inst
+	config_groups['ptp_state'] = rs_ptp_state
+	config_groups['vlan_mode'] = rs_vlan_mode
+	config_groups['vlan_ptp_vid'] = rs_vlan_ptp_vid
+	config_groups['vlan_vid'] = rs_vlan_vid
+	config_groups['vlans'] = rs_vlans
 
-	return rows
+	#print config_groups
+
+	return config_groups
 
 def bgcolor_tag(ptp_inst, ptp_state):
 
@@ -354,7 +357,6 @@ def to_table(port_configs_map, wrs_name):
 	# Return HTML table
 
 	rows = to_config_groups(port_configs_map)
-	print rows
 
 	line = "[\n"
 	line += "  shape=plaintext\n"
@@ -380,43 +382,42 @@ def to_table(port_configs_map, wrs_name):
 	line += "            "
 
 	values = rows['name']
-	for v in values:
-		bgcolor = bgcolor_tag(rows['ptp_inst'][values.index(v)], rows['ptp_state'][values.index(v)]) 
-		line += "<td port='" + v +"t'" + bgcolor + ">" + v + "</td>"
+	for k in sorted(values.keys()):
+		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+		line += "<td port='" + values[k] +"t'" + bgcolor + ">" + values[k] + "</td>"
 	line += "</tr>\n"
 
 	line += "          <tr>\n"
 	line += "            "
 	values = rows['vlan_mode']
-	for v in values.items():
-		print v, values.index(v), rows['ptp_inst'][values.index(v)]
-		bgcolor = bgcolor_tag(rows['ptp_inst'][values.index(v)], rows['ptp_state'][values.index(v)]) 
-		line += "<td" + bgcolor + ">" + v + "</td>"
+	for k in sorted(values.keys()):
+		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+		line += "<td" + bgcolor + ">" + values[k] + "</td>"
 	line += "</tr>\n"
 
 	line += "          <tr>\n"
 	line += "            "
 	values = rows['vlan_ptp_vid']
-	for v in values:
-		bgcolor = bgcolor_tag(rows['ptp_inst'][values.index(v)], rows['ptp_state'][values.index(v)]) 
-		line += "<td" + bgcolor + ">" + v + "</td>"
+	for k in sorted(values.keys()):
+		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+		line += "<td" + bgcolor + ">" + values[k] + "</td>"
 	line += "</tr>\n"
 
 	line += "          <tr>\n"
 	line += "            "
 	values = rows['vlan_vid']
-	for v in values:
-		bgcolor = bgcolor_tag(rows['ptp_inst'][values.index(v)], rows['ptp_state'][values.index(v)]) 
-		line += "<td" + bgcolor + ">" + v + "</td>"
+	for k in sorted(values.keys()):
+		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+		line += "<td" + bgcolor + ">" + values[k] + "</td>"
 	line += "</tr>\n"
 
 	line += "          <tr>\n"
 	line += "            "
 	values = rows['vlans']
-	for v in values:
-		port = rows['name'][values.index(v)]
-		bgcolor = bgcolor_tag(rows['ptp_inst'][values.index(v)], rows['ptp_state'][values.index(v)]) 
-		line += "<td port='" + port + "b'" + bgcolor + ">" + v + "</td>"
+	for k in sorted(values.keys()):
+		name = rows['name'][k]
+		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+		line += "<td port='" + name + "b'" + bgcolor + ">" + values[k] + "</td>"
 	line += "</tr>\n"
 
 	line += "        </table>\n"

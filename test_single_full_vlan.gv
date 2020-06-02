@@ -1,0 +1,358 @@
+/* Compiliation: dot -Tsvg test_single_full_vlan.gv -o test_single_full_vlan.svg */
+
+graph ttn {
+
+  rankdir=TB;
+
+  GM [
+
+    shape=plaintext
+    label=<
+
+      <table border='0' cellborder='1' color='blue' cellspacing='0'>
+        <tr>
+            <td port='eth0'> Grand<br/>Master<br/>(eth0) </td>
+            <td>
+              <table color='orange' cellspacing='0'>
+                <tr><td>port   </td></tr>
+                <tr><td>mode   </td></tr>
+                <tr><td>PTP_VID</td></tr>
+                <tr><td>pVID   </td></tr>
+                <tr><td>rVID   </td></tr>
+              </table>
+            </td>
+            <td>
+              <table color='blue' bgcolor='yellow' cellspacing='0'>
+                <tr><td port='wri1t'>wri1 </td><td>wri2 </td><td>wri3 </td><td>wri4 </td><td>wri5 </td><td>wri6 </td>
+                    <td>wri7 </td><td>wri8 </td><td>wri9 </td><td>wri10</td><td>wri11</td><td>wri12</td>
+                    <td>wri13</td><td>wri14</td><td>wri15</td><td>wri16</td><td>wri17</td><td>wri18</td></tr>
+                <tr><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td>
+                    <td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td>
+                    <td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td></tr>
+                <tr><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td>
+                    <td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td></tr>
+                <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td port='wri1b'>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+              </table>
+            </td>
+        </tr>
+      </table>
+
+  >];
+
+  Sv [
+
+    shape=plaintext
+    label=<
+
+      <table border='0' cellborder='1' color='blue' cellspacing='0'>
+        <tr>
+            <td port='eth0'> Service<br/>(eth0) </td>
+            <td>
+              <table color='orange' cellspacing='0'>
+                <tr><td>port   </td></tr>
+                <tr><td>mode   </td></tr>
+                <tr><td>PTP_VID</td></tr>
+                <tr><td>pVID   </td></tr>
+                <tr><td>rVID   </td></tr>
+              </table>
+            </td>
+            <td>
+              <table color='blue'  bgcolor='orange' cellspacing='0'>
+                <tr><td port='wri1t'>wri1 </td><td>wri2 </td><td>wri3 </td><td>wri4 </td><td>wri5 </td><td>wri6 </td>
+                    <td>wri7 </td><td>wri8 </td><td>wri9 </td><td>wri10</td><td>wri11</td><td>wri12</td>
+                    <td bgcolor='yellow'>wri13</td><td bgcolor='yellow'>wri14</td><td bgcolor='yellow'>wri15</td>
+                    <td bgcolor='yellow'>wri16</td><td bgcolor='yellow'>wri17</td><td>wri18</td></tr>
+                <tr><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td>
+                    <td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td>
+                    <td bgcolor='yellow'>access</td><td bgcolor='yellow'>access</td><td bgcolor='yellow'>access</td>
+                    <td bgcolor='yellow'>access</td><td bgcolor='yellow'>access</td><td>trunk</td></tr>
+                <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td>
+                    <td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td>-</td></tr>
+                <tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td bgcolor='yellow'>30</td><td bgcolor='yellow'>30</td><td bgcolor='yellow'>30</td>
+                    <td bgcolor='yellow'>30</td><td bgcolor='yellow'>30</td><td>-</td></tr>
+                <tr><td port='wri1b'>30</td><td>30</td><td>30</td><td>30</td><td>30</td><td>30</td>
+                    <td>30</td><td>30</td><td>30</td><td>30</td><td>30</td><td>30</td>
+                    <td bgcolor='yellow'>31,10x</td><td bgcolor='yellow'>31,10x</td><td bgcolor='yellow'>31,10x</td>
+                    <td bgcolor='yellow'>31,10x</td><td bgcolor='yellow'>31,10x</td><td>30,31,10x</td></tr>
+              </table>
+            </td>
+        </tr>
+      </table>
+
+  >];
+
+  LM [
+
+    shape=plaintext
+    label=<
+
+      <table border='0' cellborder='1' color='blue' cellspacing='0'>
+        <tr>
+            <td port='eth0'> Local<br/>Master<br/>(eth0) </td>
+            <td>
+              <table color='orange' cellspacing='0'>
+                <tr><td>port   </td></tr>
+                <tr><td>mode   </td></tr>
+                <tr><td>PTP_VID</td></tr>
+                <tr><td>pVID   </td></tr>
+                <tr><td>rVID   </td></tr>
+              </table>
+            </td>
+            <td>
+              <table color='blue' bgcolor='yellow' cellspacing='0'>
+                <tr><td port='wri1t' bgcolor='green'>wri1 </td><td>wri2 </td><td>wri3 </td>
+                    <td>wri4 </td><td port='wri5t'>wri5 </td><td port='wri6t'>wri6 </td>
+                    <td  port='wri7t' bgcolor='orange'>wri7 </td><td>wri8 </td><td>wri9 </td><td>wri10</td><td>wri11</td><td>wri12</td>
+                    <td>wri13</td><td>wri14</td><td>wri15</td>
+                    <td>wri16</td><td>wri17</td><td bgcolor='orange'>wri18</td></tr>
+                <tr><td bgcolor='green'>trunk</td><td>trunk</td><td>-</td><td>-</td><td>access</td><td>access</td>
+                    <td bgcolor='orange'>trunk</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td bgcolor='orange'>trunk</td></tr>
+                <tr><td bgcolor='green'>31</td><td>31</td><td>-</td><td>-</td><td>31</td><td>31</td>
+                    <td bgcolor='orange'>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td bgcolor='orange'>-</td></tr>
+                <tr><td bgcolor='green'>-</td><td>-</td><td>-</td><td>-</td><td>100</td><td>100</td>
+                    <td bgcolor='orange'>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td bgcolor='orange'>-</td></tr>
+                <tr><td bgcolor='green'>-</td><td port='wri2b'>30,100</td><td>-</td><td>-</td><td>30,100</td><td>30,100</td>
+                    <td bgcolor='orange'>31,100</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td bgcolor='orange'>30,31,10x</td></tr>
+              </table>
+            </td>
+        </tr>
+      </table>
+
+  >];
+
+  Di [
+
+    shape=plaintext
+    label=<
+
+      <table border='0' cellborder='1' color='blue' cellspacing='0'>
+        <tr>
+            <td port='eth0'> Distri<br/>bution<br/>(eth0) </td>
+            <td>
+              <table color='orange' cellspacing='0'>
+                <tr><td>port   </td></tr>
+                <tr><td>mode   </td></tr>
+                <tr><td>PTP_VID</td></tr>
+                <tr><td>pVID   </td></tr>
+                <tr><td>rVID   </td></tr>
+              </table>
+            </td>
+            <td>
+              <table color='blue' bgcolor='yellow' cellspacing='0'>
+                <tr><td port='wri1t' bgcolor='green'>wri1 </td><td>wri2 </td><td>wri3 </td><td>wri4 </td><td>wri5 </td><td>wri6 </td>
+                    <td>wri7 </td><td>wri8 </td><td>wri9 </td><td>wri10</td><td>wri11</td><td>wri12</td>
+                    <td>wri13</td><td>wri14</td><td>wri15</td><td>wri16</td><td>wri17</td><td>wri18</td></tr>
+                <tr><td bgcolor='green'>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td>
+                    <td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td>
+                    <td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td><td>trunk</td></tr>
+                <tr><td bgcolor='green'>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td>
+                    <td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td><td>31</td></tr>
+                <tr><td bgcolor='green'>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>
+                    <td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td bgcolor='green'>31,100</td><td port='wri2b'>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td>
+                    <td>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td>
+                    <td>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td><td>30,100</td></tr>
+              </table>
+            </td>
+        </tr>
+      </table>
+
+  >];
+
+  Ac [
+  shape=plaintext
+  label=<
+
+  <table border='0' cellborder='1' color='blue' cellspacing='0'>
+    <tr>
+      <td port='eth0'> AC_T3<br/>(eth0)</td>
+      <td>
+        <table color='orange' cellspacing='0'>
+          <tr><td>port   </td></tr>
+          <tr><td>mode   </td></tr>
+          <tr><td>PTP_VID</td></tr>
+          <tr><td>pVID   </td></tr>
+          <tr><td>rVID   </td></tr>
+        </table>
+      </td>
+      <td>
+        <table color='blue' bgcolor='yellow' cellspacing='0'>
+          <tr>
+            <td port='wri1t' bgcolor='green'>wri1</td><td port='wri2t' bgcolor='yellow'>wri2</td><td port='wri3t' bgcolor='yellow'>wri3</td><td port='wri4t' bgcolor='yellow'>wri4</td><td port='wri5t' bgcolor='yellow'>wri5</td><td port='wri6t' bgcolor='yellow'>wri6</td><td port='wri7t' bgcolor='yellow'>wri7</td><td port='wri8t' bgcolor='yellow'>wri8</td><td port='wri9t' bgcolor='yellow'>wri9</td><td port='wri10t' bgcolor='yellow'>wri10</td><td port='wri11t' bgcolor='yellow'>wri11</td><td port='wri12t' bgcolor='yellow'>wri12</td><td port='wri13t' bgcolor='yellow'>wri13</td><td port='wri14t' bgcolor='yellow'>wri14</td><td port='wri15t' bgcolor='yellow'>wri15</td><td port='wri16t' bgcolor='yellow'>wri16</td><td port='wri17t' bgcolor='yellow'>wri17</td><td port='wri18t' bgcolor='yellow'>wri18</td></tr>
+          <tr>
+            <td bgcolor='green'>TR</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td><td bgcolor='yellow'>AC</td></tr>
+          <tr>
+            <td bgcolor='green'>31</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td><td bgcolor='yellow'>-</td></tr>
+          <tr>
+            <td bgcolor='green'>-</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>100</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>31</td><td bgcolor='yellow'>30</td></tr>
+          <tr>
+            <td port='wri1b' bgcolor='green'>[31, 100]</td><td port='wri2b' bgcolor='yellow'>[30, 100]</td><td port='wri3b' bgcolor='yellow'>[30, 100]</td><td port='wri4b' bgcolor='yellow'>[30, 100]</td><td port='wri5b' bgcolor='yellow'>[30, 100]</td><td port='wri6b' bgcolor='yellow'>[30, 100]</td><td port='wri7b' bgcolor='yellow'>[30, 100]</td><td port='wri8b' bgcolor='yellow'>[30, 100]</td><td port='wri9b' bgcolor='yellow'>[30, 100]</td><td port='wri10b' bgcolor='yellow'>[30, 100]</td><td port='wri11b' bgcolor='yellow'>[30, 100]</td><td port='wri12b' bgcolor='yellow'>[30, 100]</td><td port='wri13b' bgcolor='yellow'>[30, 100]</td><td port='wri14b' bgcolor='yellow'>[30, 100]</td><td port='wri15b' bgcolor='yellow'>[30, 100]</td><td port='wri16b' bgcolor='yellow'>[30, 100]</td><td port='wri17b' bgcolor='yellow'>[30, 100]</td><td port='wri18b' bgcolor='yellow'>[(30, 31), (100, 109)]</td></tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  >];
+
+  node [shape=Mrecord, height=.1]; /* switch shape */
+  grand_master_wrs [style=filled, fillcolor=green, label="<p0> grand\nmaster\neth0 |
+                  {
+                  { <ptp_state> PTP\nstate|<p1t> 1 (M) | <p2t> 2 (M) | | | | |
+                  | | | | | |
+                  | | | | | <p18t> 18 (M) } |
+                  { <pmodes> port\n(pmode)| 1(TR) | 2(TR) | | | | |
+                  | | | | | |
+                  | | | | | 18(AC) } |
+                  { <pvids> port\n(pvid)| | | | | | |
+                  | | | | | |
+                  | | | | |18\n(0) } |
+                  { <ptp_vids> port\n(ptp vid) | 1\n31 | 2\n31 | | | | |
+                  | | | | | |
+                  | | | | 17\n31 | } |
+                  { <rvids> port\n(rvid) |<p1b> |<p2b> |<p3b> | | | |
+                  | | | | | |
+                  | | | | |<p18b> 18\n30,31,10x }
+                  }"];
+  management_wrs [style=filled, fillcolor=green, label="<p0> management\nservice\neth0 |
+                  {
+                  { <ptp_state> PTP\nstate| 1 (S) | 2 (S) | 3 (S)| | | |
+                  | | | | | |
+                  <p13t> 13 (M)|<p14t> 14 (M) |<p15t> 15 (M) |<p16t> 16 (M) | <p17t> 17 (M) | <p18t> 18 (M) } |
+                  { <pmodes> port\n(pmode)| 1(TR) | 2(TR) | 3(TR) | | | |
+                  | | | | | |
+                  13(AC) | 14(AC) | 15(AC)| 16(AC) | 17(AC) | 18(AC) } |
+                  { <pvids> port\n(pvid)| | | | | | |
+                  | | | | | |
+                  13\n30| 14\n30 | 15\n30 | 16\n30 | 17\n30 | 18\n30 (0) } |
+                  { <ptp_vids> port\n(ptp vid) | 1\n31 | 2\n31 | | | | |
+                  | | | | | 12\n31 |
+                  | | | | | } |
+                  { <rvids> port\n(rvid) |<p1b> 1\n30 |<p2b> 2\n30 |<p3b> 3\n30 | | | |
+                  | | | | | |
+                  <p13b> 13\n31,10x|<p14b> 14\n31,10x |<p15b> 15\n31,10x|<p16b> 16\n31,10x|<p17b> 17\n31,10x|<p18b> 18\n30,31,10x }
+                  }"];
+  local_master_wrs[style=filled, fillcolor=green, label = "<p0> local\nmaster\neth0 |
+                  {
+                  { <ptp_state> PTP\nstate|<p1t> 1 (S) |<p2t> 2 (M) | | |<p5t> 5 (M) | <p6t> 6 (M)|
+                  <p7t> 7 (M)| | | | | |
+                  | | | | |<p18t> 18 (M) } |
+                  { <pvids> port\n(pmode) | 1 (TR) | 2 (TR) | | | 5 (AC) | |
+                  7 (TR)| | | | | |
+                  | | | | |18 (AC) } |
+                  { <pvids> port\n(pvid) | | | | | 5\n100 | 6\n100 |
+                  | | | | | |
+                  | | | | | 18\n30 (0) } |
+                  { <ptp_vids> port\n(ptp vid) | 1\n31 | 2\n31 | | |  | |
+                  7\n31 | | | | | |
+                  | | | | | } |
+                  { <rvids> port\n(rvid) | |<p2b> 2\n30,100 | | | 5\n30,100 | 6\n30,100 |
+                  <p7b> 7\n31,100| | | | | |
+                  | | | | | 18\n30,31,10x }
+                  }"];
+  distribution_wrs[style=filled, fillcolor=green, label = "<p0> distri\nbution\neth0 |
+                  {
+                  { <ptp_state> PTP\nstate|<p1t> 1 (S) |<p2t> 2 (M) |<p3t> 3 (M) | | | |
+                  | | | | | |
+                  | | | | |<p18t> 18 (M) } |
+                  { <pvids> port\n(pmode) | 1 (TR) | 2 (TR) | 3 (TR) | | | |
+                  | | | | | |
+                  | | | | |18 (TR) } |
+                  { <pvids> port\n(pvid) | | | | | | |
+                  | | | | | |
+                  | | | | | } |
+                  { <ptp_vids> port\n(ptp vid) | 1\n31 | 2\n31 | 3\n31 | |  | |
+                  | | | | | |
+                  | | | | | } |
+                  { <rvids> port\n(rvid) |<p1b> 1\n31,100 |<p2b> 2\n30,100 |<p3b> 3\n30,100 | | | |
+                  | | | | | |
+                  | | | | | <p18b> 18\n30,100 }
+                  }"];
+  access_wrs[style=filled, fillcolor=green, label = "<p0> access\neth0 |
+                  {
+                  { <ptp_state> PTP\nstate|<p1t> 1 (S) |<p2t> 2 (M) |<p3t> 3 (M) | | |<p6t> 6 (M) |
+                  | | | | |<p12t> 12 (M) |
+                  | | | | |<p18t> 18 (M) } |
+                  { <pvids> port\n(pmode) | 1(TR) | 2(AC) | 3(AC) | | | 6(AC) |
+                  | | | | | 12(AC) |
+                  | | | | | 18(AC) } |
+                  { <pvids> port\n(pvid) | | 2\n31 | 3\n31 | | | 6\n31 |
+                  | | | | | 12\n100 |
+                  | | | | | 18\n30 (0) } |
+                  { <ptp_vids> port\n(ptp vid) | 1\n31 | | | | | |
+                  | | | | | |
+                  | | | | | } |
+                  { <rvids> port\n(rvid) | 1\n31,100 | 2\n30,100 | 3\n30,100| | | 6\n30,100 |
+                  | | | | | 12\n30,100|
+                  | | | | | 18\n30,31,10x }
+                  }"];
+
+  /* nodes */
+  subgraph {
+
+    rank=min;
+
+    node [shape=box, style=filled, fillcolor=gray];   /* service nodes */
+    Service;                                          /* other service node */
+    Reset;                                            /* for SCU Reset */
+    DHCP2; DHCP;                                      /* DHCP servers */
+
+  }
+
+  /* node connections */
+  Service -- management_wrs:p14t [label="tag 30\n untag all"]; /* other service node to management:port14 */
+  Reset -- management_wrs:p15t;                                /* SCU resetter to management:port15 */
+  DHCP2 -- management_wrs:p16t;                                /* DHCP2 server to management:port16 */
+  DHCP -- management_wrs:p17t;                                 /* DHCP server to management:port17 */
+
+  node [shape=oval, style=filled, fillcolor=yellow];  /* WR nodes */
+  DM; DM2;       /* WR nodes: data masters */
+
+  DM -- local_master_wrs:p5t [label="tag 100\n untag all"]; /* DM to local_master:port5 */
+  DM2 -- local_master_wrs:p6t;                              /* DM2 to local_master:port6 */
+  "gateway\n(fake)" -- access_wrs:p12t [label="tag 100\n untag all"];  /* gateway to access:port12 */
+
+  node [shape=oval, style=filled, fillcolor=lightblue];      /* WR nodes */
+  TR -- access_wrs:p6t [label="tag 31\n untag all"];         /* TR node to access:port6 */
+
+  node [shape=box, style=filled, fillcolor=gray];   /* service nodes */
+  tap  -- management_wrs:p18t [label=""];       /* tap to management:port18 */
+  tap1 -- local_master_wrs:p18t [label=""];     /* tap to local_master:port18 */
+  tap2 -- access_wrs:p18t [label=""];           /* tap to access:port18 */
+
+  /* switch connections */
+  grand_master_wrs:p1b -- local_master_wrs:p1t [label="31"];  /* grand_master:port1 to local_master:p1 */
+  management_wrs:p1b   -- local_master_wrs:p7t [label="30,31,100"];   /* management:port1 to local_master:p2 */
+  local_master_wrs:p2b -- distribution_wrs:p1t [label="30,31,100"];   /* local_master:port3 to distribution:p1 */
+  distribution_wrs:p2b -- access_wrs:p1t [label="30,31,100"];   /* distribution:p2 to access_wrs:p1*/
+  
+  grand_master_wrs:p0 -- wrs_mngmt  [label=""];   /* WRS management node to grand_master:port0 */
+  management_wrs:p0 -- wrs_mngmt [label=""];     /* WRS management node to management:port0 */
+  local_master_wrs:p0 -- wrs_mngmt [label=""];   /* WRS management node to local_master:port0 */
+  distribution_wrs:p0 -- wrs_mngmt [label=""];   /* WRS management node to distribution:port0 */
+  access_wrs:p0 -- wrs_mngmt [label=""];         /* WRS management node to access:port0 */
+
+  /* legend */
+  subgraph cluster_0 {
+    label = "Legend";
+    wrs [shape=Mrecord, style=filled, fillcolor=green, label="WR switch"];
+    "WR node" [shape=oval, style=filled, fillcolor="yellow:lightblue"];
+    "service node" [shape=box, style=filled, fillcolor=gray];
+  }
+}

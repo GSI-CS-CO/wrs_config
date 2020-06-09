@@ -3,7 +3,7 @@
 '''
 Get VLAN settings from WRS configuration file and save them in JSON.
 '''
-import argparse, os, re, sys, json, bisect, itertools
+import argparse, os, re, sys, json, bisect, itertools, pydot
 
 config_file = 'dot-config'
 wrs_model_file = 'wrs.txt'
@@ -358,10 +358,7 @@ def to_table(port_configs_map, wrs_name):
 
 	rows = to_config_groups(port_configs_map)
 
-	line = "[\n"
-	line += "  shape=plaintext\n"
-	line += "  label=<\n"
-	line += "\n"
+	line =  "<\n"
 	line += "  <table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
 	line += "    <tr>\n"
 	line += "      <td port='eth0'> " + wrs_name + "<br/>(eth0)" + "</td>\n"
@@ -425,7 +422,7 @@ def to_table(port_configs_map, wrs_name):
 
 	line += "    </tr>\n"
 	line += "  </table>\n"
-	line += ">];"
+	line += ">"
 
 	return line
 
@@ -481,9 +478,13 @@ def main(argv):
 
 	table = to_table(port_configs_map, opts.name)
 
-	wrs_model_file = opts.name + ".txt"
-	with open(wrs_model_file, 'w') as f: 
-		f.write(table)
+        # create an DOT graph and export to SVG format
+        graph = pydot.Dot(graph_type='graph', rankdir='TB')
+        wrs_model = pydot.Node(name=opts.name, shape='plaintext', label=table)
+        graph.add_node(wrs_model)
+
+        graph.write(opts.name + '.dot')
+        graph.write_svg(opts.name + '.svg')
 
 if __name__ == '__main__':
 	sys.exit(main(sys.argv))

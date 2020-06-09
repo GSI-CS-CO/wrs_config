@@ -1,12 +1,9 @@
-#!/usr/bin/env python
-
 '''
-Get VLAN settings from WRS configuration file and save them in JSON.
+Make WRS port-model from WRS configuration
 '''
-import argparse, os, re, sys, json, bisect, itertools, pydot
+import json, re, bisect, itertools, pydot
 
 config_file = 'dot-config'
-wrs_model_file = 'wrs.txt'
 line_regex = None
 port_regex = None
 vlan_regex = None
@@ -108,9 +105,9 @@ def get_port_idx(line):
 
 	return None
 
-def insert_port_config(Option, port_configs):
+def extract_port_config(Option, port_config):
 
-	# Insert given option to port configurations
+	# Insert given option to port configuration
 
 	# Get port index from the given option
 	port_idx = get_port_idx(Option.key)
@@ -119,12 +116,12 @@ def insert_port_config(Option, port_configs):
 
 		port = int(port_idx)
 
-		if port in port_configs.keys():
-			port_configs[port][Option.key] = Option.value
+		if port in port_config.keys():
+			port_config[port][Option.key] = Option.value
 		else:
-			port_configs[port] = {Option.key:Option.value}
+			port_config[port] = {Option.key:Option.value}
 
-def insert_vlan_config(Option, vlan_configs):
+def extract_vlans_config(Option, vlans_config):
 
 	# This regex is constructed on demand
 	global vlan_regex
@@ -134,10 +131,10 @@ def insert_vlan_config(Option, vlan_configs):
 	match = vlan_regex.match(Option.key)
 	
 	if match is not None:
-		vlan_configs[match.group('vid').lstrip('0')] = Option.value
+		vlans_config[match.group('vid').lstrip('0')] = Option.value
 
-def to_ranges(iterable):
-	# Return a value or range between 2 valuse
+def make_ranges(iterable):
+	# Make iterable to range
 	# iterable: sorted list (or tuple, dictionary)
 
 	key_func = lambda pair: pair[1] - pair[0]
@@ -149,126 +146,125 @@ def to_ranges(iterable):
 		else:
 			yield group[0][1]
 
-def parse_port_setting(raw_setting):
+def get_port_indices(raw_setting):
 
 	# Return a list with port indices
 	# raw_settings: a string with ports separated with ';'
 
-	idxs = []      # indices
-	ranges = []    # ranges (indices separated with '-')
+	ids = []      # indices
+	ranges = []   # ranges (indices separated with '-')
 
 	for v in raw_setting.split(';'): # sort into indices and ranges
 		if '-' in v:
 			ranges.append(v)
 		else:
-			idxs.append(v)
+			ids.append(v)
 
 	# extract indices from ranges and insert them into indices list
 	for r in ranges:
 		lb, ub = r.split('-')
 		for i in range(int(lb), int(ub) + 1):
-			idxs.append(str(i))
+			ids.append(str(i))
 
-	return idxs
+	return ids
 
-def get_port_configs(port, port_configs):
+def get_port_config(port, port_config):
 
-	# Return per-port timing and VLAN-relevant configurations
+	# Return port configuration relevant to timing and VLAN
 	cfg_port_entries = {'name':'_IFACE', 'ptp_inst':'_INSTANCE_COUNT',
 							'ptp_state':'_INST01_DESIRADE_STATE',
 							'vlan_mode':'_MODE', 'vlan_vid':'_VID',
 							'vlan_ptp_vid':'_PTP_VID'}
-	configs = {'name':'wri', 'ptp_inst':'0',
+	def_port_config = {'name':'wri', 'ptp_inst':'0',
 							'ptp_state':'UNKN', 'vlan_mode':'UNQL',
 							'vlan_vid':'-',	'vlan_ptp_vid':'-', 'vlans':'-'}
 
 	# update default port settings according to the given configuration
-	for entry in port_configs[port].keys():				
-		if port_configs[port][entry]:
+	for entry in port_config[port].keys():
+		if port_config[port][entry]:
 			port_idx = str(port)
 			if (port_idx + cfg_port_entries['name']) in entry:
-				configs['name'] = port_configs[port][entry]
+				def_port_config['name'] = port_config[port][entry]
 			elif (port_idx + cfg_port_entries['ptp_inst']) in entry:
-				configs['ptp_inst'] = entry.split('_')[-1]
+				def_port_config['ptp_inst'] = entry.split('_')[-1]
 			elif (port_idx + cfg_port_entries['ptp_state']) in entry:
-				configs['ptp_state'] = entry.split('_')[-1]
+				def_port_config['ptp_state'] = entry.split('_')[-1]
 			elif (port_idx + cfg_port_entries['vlan_mode']) in entry:
-				configs['vlan_mode'] = entry.split('_')[-1][:2]
+				def_port_config['vlan_mode'] = entry.split('_')[-1][:2]
 			elif (port_idx + cfg_port_entries['vlan_ptp_vid']) in entry:
-				configs['vlan_ptp_vid'] = port_configs[port][entry]
+				def_port_config['vlan_ptp_vid'] = port_config[port][entry]
 			elif (port_idx + cfg_port_entries['vlan_vid']) in entry:
-				configs['vlan_vid'] = port_configs[port][entry]
+				def_port_config['vlan_vid'] = port_config[port][entry]
 
-	#print configs['name'], configs['ptp_inst'], configs['ptp_state'], configs['vlan_ptp_vid'], configs['vlan_vid']
+	#print def_port_config['name'], def_port_config['ptp_inst'], def_port_config['ptp_state'], def_port_config['vlan_ptp_vid'], def_port_config['vlan_vid']
 
-	return configs
+	return def_port_config
 
-def map_vlan_to_port(vlan, ports, vlans_map):
+def map_vlan_to_port(vlan, ports, port_vlans):
 
-	# Update vlans_map by assigning vlan to each port in ports
+	# Update 'port_vlans' by assigning vlan to each port
 
 	vlan = int(vlan)
 
 	for port in ports:
-		if port in vlans_map.keys():
+		if port in port_vlans.keys():
 			# if a chosen port already exists then update its vlan list 
-			vlans = vlans_map[port]
+			vlans = port_vlans[port]
 			bisect.insort(vlans, vlan) # add an element into sorted list
-			vlans_map[port] = vlans
+			port_vlans[port] = vlans
 		else:
 			# if a chosen port is new, create a new list with the given vlan
-			vlans_map[port] = [vlan]
+			port_vlans[port] = [vlan]
 
-def get_vlans_port_list(vlan, vlan_configs):
+def get_vlans_port_list(vlan, vlans_config):
 
-	# Return ports list of the given vlan
+	# Return ports list assigned to the given VLAN from the provided VLANs configuration
 
 	port_list = []
 
-	# get the 'ports' field of each vlan configuration: ports=1;3;5-6
-	ports_field = [s for s in vlan_configs[vlan].split(',') if 'ports=' in s] 
+	# get the 'ports' field of each VLAN configuration: ports=1;3;5-6
+	ports_field = [s for s in vlans_config[vlan].split(',') if 'ports=' in s]
 	if len(ports_field):
 		# get a value of the 'ports=' field
 		s = ports_field[0].split('=')[-1]
 
-		# parse the value of 'ports=' field into a list of ports
-		port_list = parse_port_setting(s)
+		# get the port indices from the 'ports=' field
+		port_list = get_port_indices(s)
 
 	return port_list
 
-def build_port_configs_map(port_configs, vlan_configs):
+def build_port_config_obj(port_config, vlans_config):
 
 	# Return VLAN-relevant configurations of all ports
-  # in the {port:configs} format.
+	# in the {port:config} format.
 
-	vlans_map = {}   # port:vlans map
-	configs_map = {} # port:configs map
+	port_vlans = {}      # port:vlans map
+	port_config_obj = {} # port:config map
 
 	# get timing and VLAN-relevant configurations of all ports
-	for port in port_configs.keys():			
-		configs_map[port] = get_port_configs(port, port_configs)
+	for port in port_config.keys():
+		port_config_obj[port] = get_port_config(port, port_config)
 
-	#print configs_map
+	#print port_config_obj
 	
-	# get vlans configurations
-	for vlan in vlan_configs.keys():
-		port_list = get_vlans_port_list(vlan, vlan_configs)
-		
+	# get vlans configuration
+	for vlan in vlans_config.keys():
+		port_list = get_vlans_port_list(vlan, vlans_config)
+
 		# update port:[vlans] map
-		if port_list is not None:
-			map_vlan_to_port(vlan, port_list, vlans_map)
+		if len(port_list) != 0:
+			map_vlan_to_port(vlan, port_list, port_vlans)
 
-	# extend port configurations with vlans
-	for port in vlans_map.keys():	
-		vlans_map[port] = list(to_ranges(vlans_map[port])) # translate ports to a range for better readibility
-		#port_str = str(port)  # number to string conversion
-		configs_map[int(port)]['vlans'] = str(vlans_map[port])
+	# extend port configuration with vlans
+	for port in port_vlans.keys():
+		port_vlans[port] = list(make_ranges(port_vlans[port])) # translate ports to a range for better readibility
+		port_config_obj[int(port)]['vlans'] = str(port_vlans[port])
 
-	return configs_map
+	return port_config_obj
 
-def to_config_groups(port_configs_map):
+def get_config_groups(port_config_obj):
 
-	# Convert {port:configs} map into configuration groups
+	# Get the configuration groups from 'port_config_obj'
 	r_name = {}
 	r_ptp_inst = {}
 	r_ptp_state = {}
@@ -276,23 +272,23 @@ def to_config_groups(port_configs_map):
 	r_vlan_vid = {}
 	r_vlan_ptp_vid = {}
 	r_vlans = {}
-	for port, configs in port_configs_map.items():
-		#print('{} {}'.format(port, configs))
-		for k in configs.keys():
+	for port, config in port_config_obj.items():
+		#print('{} {}'.format(port, config))
+		for k in config.keys():
 			if k in 'name':
-				r_name[port] = configs[k]
+				r_name[port] = config[k]
 			elif k in 'ptp_inst':
-				r_ptp_inst[port] = configs[k]
+				r_ptp_inst[port] = config[k]
 			elif k in 'ptp_state':
-				r_ptp_state[port] = configs[k]
+				r_ptp_state[port] = config[k]
 			elif k in 'vlan_mode':
-				r_vlan_mode[port] = configs[k]
+				r_vlan_mode[port] = config[k]
 			elif k in 'vlan_ptp_vid':
-				r_vlan_ptp_vid[port] = configs[k]
+				r_vlan_ptp_vid[port] = config[k]
 			elif k in 'vlan_vid':
-				r_vlan_vid[port] = configs[k]
+				r_vlan_vid[port] = config[k]
 			elif k in 'vlans':
-				r_vlans[port] = configs[k]
+				r_vlans[port] = config[k]
 
 	#print r_name, r_ptp_inst, r_ptp_state, r_vlan_mode, \
 		r_vlan_vid, r_vlan_ptp_vid, r_vlans
@@ -305,7 +301,7 @@ def to_config_groups(port_configs_map):
 	rs_vlan_ptp_vid = {}
 	rs_vlans = {}
 
-	for port in port_configs_map.keys():
+	for port in port_config_obj.keys():
 		rs_name[port] = r_name[port]
 		rs_ptp_inst[port] = r_ptp_inst[port]
 		rs_ptp_state[port] = r_ptp_state[port]
@@ -330,7 +326,7 @@ def to_config_groups(port_configs_map):
 
 	return config_groups
 
-def bgcolor_tag(ptp_inst, ptp_state):
+def get_bgcolor_tag(ptp_inst, ptp_state):
 
 	# Return a HTML tag used to indicate the PTP state
 
@@ -352,11 +348,11 @@ def bgcolor_tag(ptp_inst, ptp_state):
 	
 	return html_tag
 
-def to_table(port_configs_map, wrs_name):
+def build_html_table(port_config_obj, wrs_name):
 
 	# Return HTML table
 
-	rows = to_config_groups(port_configs_map)
+	rows = get_config_groups(port_config_obj)
 
 	line =  "<\n"
 	line += "  <table border='0' cellborder='1' color='blue' cellspacing='0'>\n"
@@ -375,46 +371,34 @@ def to_table(port_configs_map, wrs_name):
 
 	line += "      <td>\n"
 	line += "        <table color='blue' bgcolor='yellow' cellspacing='0'>\n"
+
+	# top row with port reference
 	line += "          <tr>\n"
 	line += "            "
-
 	values = rows['name']
 	for k in sorted(values.keys()):
-		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+		bgcolor = get_bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
 		line += "<td port='" + values[k] +"t'" + bgcolor + ">" + values[k] + "</td>"
 	line += "</tr>\n"
 
-	line += "          <tr>\n"
-	line += "            "
-	values = rows['vlan_mode']
-	for k in sorted(values.keys()):
-		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
-		line += "<td" + bgcolor + ">" + values[k] + "</td>"
-	line += "</tr>\n"
+	# middle rows
+	middle_row_labels = ['vlan_mode', 'vlan_ptp_vid', 'vlan_vid']
+	for label in middle_row_labels:
+		line += "          <tr>\n"
+		line += "            "
+		values = rows[label]
+		for k in sorted(values.keys()):
+			bgcolor = get_bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+			line += "<td" + bgcolor + ">" + values[k] + "</td>"
+		line += "</tr>\n"
 
-	line += "          <tr>\n"
-	line += "            "
-	values = rows['vlan_ptp_vid']
-	for k in sorted(values.keys()):
-		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
-		line += "<td" + bgcolor + ">" + values[k] + "</td>"
-	line += "</tr>\n"
-
-	line += "          <tr>\n"
-	line += "            "
-	values = rows['vlan_vid']
-	for k in sorted(values.keys()):
-		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
-		line += "<td" + bgcolor + ">" + values[k] + "</td>"
-	line += "</tr>\n"
-
+	# bottom row with port reference
 	line += "          <tr>\n"
 	line += "            "
 	values = rows['vlans']
 	for k in sorted(values.keys()):
-		name = rows['name'][k]
-		bgcolor = bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
-		line += "<td port='" + name + "b'" + bgcolor + ">" + values[k] + "</td>"
+		bgcolor = get_bgcolor_tag(rows['ptp_inst'][k], rows['ptp_state'][k])
+		line += "<td port='" + values[k] + "b'" + bgcolor + ">" + values[k] + "</td>"
 	line += "</tr>\n"
 
 	line += "        </table>\n"
@@ -426,65 +410,62 @@ def to_table(port_configs_map, wrs_name):
 
 	return line
 
-def main(argv):
-	parser = argparse.ArgumentParser(prog=argv[0],
+def make(config_filepath):
+
+	lines = []
+	with open(config_filepath, 'r') as f:
+		lines = f.readlines()
+
+	# port and vlan configurations
+	port_config = {}
+	vlans_config = {}
+
+	# {port:config} object
+	port_config_obj = {}
+
+	for line in lines:
+		opt = parse_line(line[:-1]) # strip trailing new line
+
+		if isinstance(opt, Option):
+			# extract port config from option and insert it to given map
+			extract_port_config(opt, port_config)
+
+			# extract VLANs config from option and insert it to given map
+			extract_vlans_config(opt, vlans_config)
+
+	#print (json.dumps(port_config, indent=4))
+	#print (json.dumps(vlans_config, indent=4))
+
+	# build {port:config} object
+	port_config_obj = build_port_config_obj(port_config, vlans_config)
+
+	# convert to JSON
+	json_obj = json.dumps(port_config_obj, indent = 2, sort_keys=True)
+	#print json_obj
+
+	wrs_name = config_filepath.partition(config_file + '_')[2]
+	table = build_html_table(port_config_obj, wrs_name)
+
+	# create an DOT graph and export to SVG format
+	graph = pydot.Dot(graph_type='graph', rankdir='TB')
+	wrs_model = pydot.Node(name=wrs_name, shape='plaintext', label=table)
+	graph.add_node(wrs_model)
+
+	graph.write(config_filepath + '.dot')
+	return graph.write_svg(config_filepath + '.svg')
+
+if __name__ == '__main__':
+
+	import argparse, os, re, sys
+
+	parser = argparse.ArgumentParser(prog=sys.argv[0],
 		description='Get VLAN settings and save them in JSON')
 	parser.add_argument('file', help='path to ' + config_file)
-	parser.add_argument('name', help='WRS name')
 
 	# command options
-	opts = parser.parse_args(argv[1:])
+	opts = parser.parse_args(sys.argv[1:])
 
 	# path to the configuration file
 	path = os.path.abspath(opts.file)
 
-	# all options
-	options = {}
-
-	# port and vlan configurations
-	port_configs = {}
-	vlan_configs = {}
-
-	# {port:configs} mapping
-	port_configs_map = {}
-
-	# read and parse the configuration file
-	lines = []
-
-	with open(path, 'r') as f:
-		for line in f:
-			line = line[:-1] # strip trailing new line
-			opt = parse_line(line)
-			lines.append(opt)
-
-			if isinstance(opt, Option):
-				options[opt.key] = opt
-
-				# insert port config
-				insert_port_config(opt, port_configs)
-
-				# insert VLAN config
-				insert_vlan_config(opt, vlan_configs)
-
-	#print port_configs
-	#print vlan_configs
-
-	# build {port:configs} map
-	port_configs_map = build_port_configs_map(port_configs, vlan_configs)
-
-	# convert to JSON
-	json_obj = json.dumps(port_configs_map, indent = 2, sort_keys=True)
-	#print json_obj
-
-	table = to_table(port_configs_map, opts.name)
-
-        # create an DOT graph and export to SVG format
-        graph = pydot.Dot(graph_type='graph', rankdir='TB')
-        wrs_model = pydot.Node(name=opts.name, shape='plaintext', label=table)
-        graph.add_node(wrs_model)
-
-        graph.write(opts.name + '.dot')
-        graph.write_svg(opts.name + '.svg')
-
-if __name__ == '__main__':
-	sys.exit(main(sys.argv))
+	sys.exit(make(path))

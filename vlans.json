@@ -1,0 +1,22 @@
+{
+  "descritption" : "valid VLANs, editable by WRS experts",
+  "version" : "0.1",
+  "ptp_gm" : {
+    "vid" : "1", "fid" : "1", "comment" : "Grandmaster WR timing"},
+  "ptp" : {
+    "vid" : "31", "fid" : "31", "comment" : "WR timing"},
+  "service_ul" : {
+    "vid" : "31", "fid" : "31", "comment" : "service up-stream"},
+  "service_dl" : {
+    "vid" : "30", "fid" : "31", "comment" : "service down-stream"},
+  "prod" : {
+    "vid" : "100", "fid" : "100", "comment" : "Production WR group"},
+  "user" : {
+    "vid" : "101", "fid" : "101", "comment" : "User WR group"},
+  "timing" : {
+    "vid" : "102", "fid" : "102", "comment" : "Timing WR group"},
+  "int" : {
+    "vid" : "103", "fid" : "103", "comment" : "Integration WR group"},
+  "unilac" : {
+    "vid" : "104", "fid" : "104", "comment" : "UNILAC WR group"}
+}

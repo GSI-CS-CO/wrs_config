@@ -1,0 +1,26 @@
+{
+  "descritption" : "WRS configurations, editable by all TOS staffs",
+  "refs" : "vlans",
+  "devices" : [
+  {
+    "name" : "grand_master",
+    "layer" : "grand_master",
+    "vlan" : {"ref":"vlans", "name":"ptp_gm"}
+  }, {
+    "name" : "service",
+    "layer" : "service",
+    "vlan" : {"ref":"vlans", "name":"service_dl"}
+  }, {
+    "name" : "prod_local_master",
+    "layer" : "local_master",
+    "vlan" : {"ref":"vlans", "name":"prod"}
+  }, {
+    "name" : "prod_distribution",
+    "layer" : "distribution",
+    "vlan" : {"ref":"vlans", "name":"prod"}
+  }, {
+    "name" : "prod_access",
+    "layer" : "access",
+    "vlan" : {"ref":"vlans", "name":"prod"}
+  } ]
+}

@@ -1,0 +1,120 @@
+{
+  "descritption" : "VLAN-relevant WRS port profiles, editable by WRS experts",
+  "version" : "0.1",
+  "refs" : "vlans",
+
+  "ptp_grand_master" : {
+    "ptp_mode" : "master",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp_gm"},
+    "rvid" : null,
+    "comment" : "Grandmaster WRS - PTP down-link" },
+
+  "ptp_grand_slave" : {
+    "ptp_mode" : "slave",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp_gm"},
+    "rvid" : null,
+    "comment" : "Local Master WRS - PTP up-link" },
+
+  "service_trunk_dl" : {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : "",
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"}],
+    "comment" : "Service WRS - down-link" },
+
+  "service_access" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref" : "vlans", "name" : "service_dl"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "prod"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "timing"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "unilac"} ],
+    "comment" : "service/diagnostic device" },
+
+  "tap" : {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "service_ul"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "prod"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "timing"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "unilac"} ],
+    "comment" : "tap" },
+
+  "service_trunk_ul": {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref":"#extern"} ],
+    "comment" : "Local Master WRS - service up-link" },
+
+  "802.1x" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : null,
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "#extern"} ],
+    "comment" : "node" },
+
+  "ctrl" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref":"#extern"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "#extern"} ],
+    "comment" : "Data Master" },
+
+  "node" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref" : "vlans", "name" : "service_ul"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "#extern"} ],
+    "comment" : "WR node" },
+
+  "trunk_master" : {
+    "ptp_mode" : "master",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "#extern"} ],
+    "comment" : "PTP master, down-link for trunk" },
+
+  "trunk_slave" : {
+    "ptp_mode" : "slave",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "#extern"} ],
+    "comment" : "PTP slave, up-link for trunk" }
+}

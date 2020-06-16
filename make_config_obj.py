@@ -39,7 +39,7 @@ def get_items(json_files):
 
   return items
 
-def evaluate_rvid(items, extern_vid, vlans):
+def evaluate_rvid(items, vlans, extern_vid):
 
   # Return a list of VIDs for routing (RVIDs).
   rvids = []
@@ -59,19 +59,25 @@ def evaluate_rvid(items, extern_vid, vlans):
 
   return rvids
 
-def evaluate_vid(items, vlan):
+def evaluate_vid(items, vlan, extern_vid):
 
   # Return VLAN ID (VID) if 'vlan' has valid value, otherwise None.
+  if vlan is None:
+    return vlan
 
+  vid = None
   if isinstance(vlan, dict):
-    if 'ref' in vlan and vlan['ref'] in items:
-      ref = vlan['ref']
-      name = vlan['name']
-      return items[ref][name]['vid']
+    if 'ref' in vlan:
+      if vlan['ref'] in items:
+        ref = vlan['ref']
+        name = vlan['name']
+        vid = items[ref][name]['vid']
+      elif '#extern' in vlan['ref']:
+        vid = extern_vid
   else:
-      return vlan
+    vid = vlan
 
-  return None
+  return vid
 
 def configure_ports(items, vlan, wrs_port_model):
 
@@ -79,7 +85,11 @@ def configure_ports(items, vlan, wrs_port_model):
   # the pre-defined WRS layer (in 'items') and 'vlan'
 
   # get VLAN ID (VID) to which the given switch belongs
-  vid = evaluate_vid(items, vlan)
+  vid = evaluate_vid(items, vlan, None)
+
+  if vid is None:
+    print ('Error: Null VID')
+    return
 
   ports = wrs_port_model['ports']
   for idx in ports.keys():
@@ -90,9 +100,9 @@ def configure_ports(items, vlan, wrs_port_model):
         name = ports[idx]['role']['name']
         role = copy.deepcopy(items[ref][name])
 
-        role['pvid'] = evaluate_vid(items, role['pvid'])
-        role['ptp_vid'] = evaluate_vid(items, role['ptp_vid'])
-        role['rvid'] = evaluate_rvid(items, vid, role['rvid'])
+        role['pvid'] = evaluate_vid(items, role['pvid'], vid)
+        role['ptp_vid'] = evaluate_vid(items, role['ptp_vid'], vid)
+        role['rvid'] = evaluate_rvid(items, role['rvid'], vid)
 
         wrs_port_model['ports'][idx]['role'] = role
         ##print (idx, name, port[idx]['role'])

@@ -133,7 +133,7 @@
     "itemConfig" : "CONFIG_NTP_SERVER"
   }, {
     "itemName" : "Syslog server",
-    "itemValue" : "",
+    "itemValue" : "192.168.16.10",
     "itemConfig" : "CONFIG_REMOTE_SYSLOG_SERVER"
   }, {
     "itemName" : "Try DHCP, otherwise use static IP",
@@ -145,19 +145,19 @@
     "itemConfig" : "CONFIG_REMOTE_SYSLOG_UDP"
   }, {
     "itemName" : "Logging for HAL",
-    "itemValue" : "daemon.info",
+    "itemValue" : "/var/log/hal.info",
     "itemConfig" : "CONFIG_WRS_LOG_HAL"
   }, {
     "itemName" : "Logging for RTU",
-    "itemValue" : "daemon.info",
+    "itemValue" : "/var/log/rtu.info",
     "itemConfig" : "CONFIG_WRS_LOG_RTU"
   }, {
     "itemName" : "Logging for PTP",
-    "itemValue" : "daemon.info",
+    "itemValue" : "/var/log/ptp.info",
     "itemConfig" : "CONFIG_WRS_LOG_PTP"
   }, {
     "itemName" : "Logging for SNMP",
-    "itemValue" : "Swd",
+    "itemValue" : "sd",
     "itemConfig" : "CONFIG_WRS_LOG_SNMPD"
   }, {
     "itemName" : "Logging for Monit",
@@ -492,6 +492,22 @@
     "drx" : "0",
     "wavelength" : "1310+1490",
     "partNumber" : "SFP-BX-D",
+    "vendorSerial" : null
+  }, {
+    "sfpId" : "8",
+    "vendorName" : "OEM",
+    "dtx" : "0",
+    "drx" : "0",
+    "wavelength" : "0",
+    "partNumber" : "SFP-T",
+    "vendorSerial" : null
+  }, {
+    "sfpId" : "9",
+    "vendorName" : "OEM",
+    "dtx" : "0",
+    "drx" : "0",
+    "wavelength" : "1310+1490",
+    "partNumber" : "BO15C4931620",
     "vendorSerial" : null
   } ],
   "configVlanPorts" : [ {

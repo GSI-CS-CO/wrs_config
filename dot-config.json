@@ -257,19 +257,19 @@
     "itemConfig" : "CONFIG_WRS_LOG_OTHER"
   }, {
     "itemName" : "Log Level for HAL",
-    "itemValue" : "6",
+    "itemValue" : "4",
     "itemConfig" : "CONFIG_WRS_LOG_LEVEL_HAL"
   }, {
     "itemName" : "Log Level for RTU",
-    "itemValue" : "6",
+    "itemValue" : "4",
     "itemConfig" : "CONFIG_WRS_LOG_LEVEL_RTU"
   }, {
     "itemName" : "Log Level for PTP",
-    "itemValue" : "",
+    "itemValue" : "4",
     "itemConfig" : "CONFIG_WRS_LOG_LEVEL_PTP"
   }, {
     "itemName" : "Log Level for other applications",
-    "itemValue" : "6",
+    "itemValue" : "4",
     "itemConfig" : "CONFIG_WRS_LOG_LEVEL_OTHER"
   }, {
     "itemName" : "Enable",

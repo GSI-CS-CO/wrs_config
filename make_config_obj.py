@@ -1,6 +1,7 @@
 import copy, json, os
 from getpass import getuser as gp_getuser
 from socket import gethostname as sk_gethostname
+import subprocess
 
 # VLAN definitions, WRS port roles, WRS layers
 vlans_file = 'vlans.json'
@@ -226,6 +227,41 @@ def build_config_obj(items, wrs_port_model, rtu_config):
 
   return config_obj
 
+def update_optional(items, wrs_config_obj, optionals):
+  # Update non-VLAN, non-port specific options of configuration object
+
+  for key in optionals:
+    # look for WRS root password and its encryption
+    if 'cipher' in key and optionals[key] == 'enabled':
+      # get corresponding itemConfig
+      for ci in wrs_config_obj['configurationItems']: # assume wrs_config_obj['configurationItems'] is avaialable
+        # set cipher and enable configuration
+        if 'CONFIG_ROOT_PWD_IS_ENCRYPTED' in ci['itemConfig']:
+          ci['itemValue'] = "true"
+        if 'CONFIG_ROOT_PWD_CYPHER' in ci['itemConfig']:
+          ci['itemValue'] = items['cipher']
+
+def generate_root_passwd_cipher():
+  # Generate MD5 cipher for WRS root password input by user
+
+  cipher = None
+
+  # prompt user to input root password
+  plain_password = raw_input('### Enter WRS root password ###: ')
+
+  # crypt has no attribute METHOD_MD5 in Python 2.7
+  #cipher = crypt.crypt(plain, crypt.METHOD_MD5)
+
+  args = 'mkpasswd -5 ' + plain_password
+  try:
+    cipher = subprocess.check_output(args, shell=True)
+    cipher = cipher.strip('\n')
+  except subprocess.CalledProcessError as e:
+    print ('Error: Failed to create WRS root password cipher!')
+    print (e)
+
+  return cipher
+
 def make(switches, out_dir):
 
   # Build WRS configuration object (JSON) for a given switch instance in 'switches'
@@ -239,6 +275,24 @@ def make(switches, out_dir):
   if len(items) != len(item_files):
     print ('failure in required files!')
     return -1
+
+  # look for optional configuration options (eg, encrypted WRS root password)
+  for switch in switches['devices']:
+    if 'optional' in switch and switch['optional'] is not None:
+      optionals = switch['optional']
+
+      # generate WRS root password cipher if it's enabled
+      for key in optionals:
+        if 'cipher' in key and optionals[key] == 'enabled':
+          cipher = generate_root_passwd_cipher()
+          if cipher is not None:
+            items['cipher'] = cipher
+            print items['cipher']
+            break
+
+      # break if cipher is set
+      if 'cipher' in items and items['cipher'] is not None:
+        break
 
   # build configuration objects for given switches
   for switch in switches['devices']:
@@ -254,6 +308,10 @@ def make(switches, out_dir):
     # build WRS config object from WRS port-model (with VLANs configuration) and
     # RTU configuration
     wrs_config_obj = build_config_obj(items, wrs_port_model, rtu_config)
+
+    # update optional configuration (non-VLAN, non-port specific)
+    if 'optional' in switch and switch['optional'] is not None:
+      update_optional(items, wrs_config_obj, switch['optional'])
 
     # write WRS configuration object to file
     file_name = output_file + switch['name'] + '.json'

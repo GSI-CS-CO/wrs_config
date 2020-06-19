@@ -52,6 +52,7 @@ git clone https://github.com/GSI-CS-CO/wrs_config
 ```
 cd wrs_config
 git clone <URL_of_CERN_tool>
+patch project --> completed soon
 ```
 
 ## Usage

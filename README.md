@@ -47,14 +47,6 @@ A host with Python (2.7) and pydot package is required!
 git clone https://github.com/GSI-CS-CO/wrs_config
 ```
 
-2. Download the CERN tool
-
-```
-cd wrs_config
-git clone <URL_of_CERN_tool>
-patch project --> completed soon
-```
-
 ## Usage
 
 Define your desired switches in 'switches.json' and invoke:

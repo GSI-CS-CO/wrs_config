@@ -16,7 +16,7 @@ The tool consists of a set of items (VLAN definition, WRS layers, port roles and
 
 The tool directory contents are:
 - items: vlans.json, switch_layers.json, port_roles.json, dot-config.json
-- configuration object generator: make_config_obj.py 
+- configuration object generator: make_config_obj.py
 - WRS port-model generator: make_port_model.py
 - desired switch roles: switches.json
 - generated configurations and objects: dot-config_* in 'output' sub-directory
@@ -64,3 +64,17 @@ python do_generate_config.py switches.json
 ```
 
 It will produce WRS configurations in 'output/config' sub-directory.
+
+## Which Packages are Required?
+
+### System
+
+```
+(sudo) apt install whois
+```
+
+### Python
+
+```
+(sudo) pip install pydot
+```

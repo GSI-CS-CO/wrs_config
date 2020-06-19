@@ -5,26 +5,44 @@
   {
     "name" : "grand_master",
     "layer" : "grand_master",
-    "vlan" : {"ref":"vlans", "name":"ptp_gm"}
+    "vlan" : {"ref":"vlans", "name":"ptp_gm"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "clock_master",
     "layer" : "clock_master",
-    "vlan" : {"ref":"vlans", "name":"ptp_gm"}
+    "vlan" : {"ref":"vlans", "name":"ptp_gm"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "service",
     "layer" : "service",
-    "vlan" : {"ref":"vlans", "name":"service_dl"}
+    "vlan" : {"ref":"vlans", "name":"service_dl"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "prod_local_master",
     "layer" : "local_master",
-    "vlan" : {"ref":"vlans", "name":"prod"}
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "prod_distribution",
     "layer" : "distribution",
-    "vlan" : {"ref":"vlans", "name":"prod"}
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "prod_access",
     "layer" : "access",
-    "vlan" : {"ref":"vlans", "name":"prod"}
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   } ]
 }

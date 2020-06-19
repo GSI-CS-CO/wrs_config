@@ -44,5 +44,62 @@
     "optional" : {
       "cipher" : "enabled"
      }
+  }, {
+    "name" : "unilac_local_master",
+    "layer" : "local_master",
+    "vlan" : {"ref":"vlans", "name":"unilac"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
+    "name" : "unilac_distribution",
+    "layer" : "distribution",
+    "vlan" : {"ref":"vlans", "name":"unilac"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
+    "name" : "unilac_access",
+    "layer" : "access",
+    "vlan" : {"ref":"vlans", "name":"unilac"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
+    "name" : "user_local_master",
+    "layer" : "local_master",
+    "vlan" : {"ref":"vlans", "name":"user"}
+  }, {
+    "name" : "user_distribution",
+    "layer" : "distribution",
+    "vlan" : {"ref":"vlans", "name":"user"}
+  }, {
+    "name" : "user_access",
+    "layer" : "access",
+    "vlan" : {"ref":"vlans", "name":"user"}
+  }, {
+    "name" : "timing_local_master",
+    "layer" : "local_master",
+    "vlan" : {"ref":"vlans", "name":"timing"}
+  }, {
+    "name" : "timing_distribution",
+    "layer" : "distribution",
+    "vlan" : {"ref":"vlans", "name":"timing"}
+  }, {
+    "name" : "timing_access",
+    "layer" : "access",
+    "vlan" : {"ref":"vlans", "name":"timing"}
+  }, {
+    "name" : "int_local_master",
+    "layer" : "local_master",
+    "vlan" : {"ref":"vlans", "name":"int"}
+  }, {
+    "name" : "int_distribution",
+    "layer" : "distribution",
+    "vlan" : {"ref":"vlans", "name":"int"}
+  }, {
+    "name" : "int_access",
+    "layer" : "access",
+    "vlan" : {"ref":"vlans", "name":"int"}
   } ]
 }

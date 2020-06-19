@@ -1,0 +1,3 @@
+[submodule "wrs-config-generator"]
+	path = wrs-config-generator
+	url = https://gitlab.cern.ch/white-rabbit/wrs-config-generator

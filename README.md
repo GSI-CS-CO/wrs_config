@@ -52,7 +52,7 @@ git clone https://github.com/GSI-CS-CO/wrs_config
 Define your desired switches in 'switches.json' and invoke:
 
 ```
-python do_generate_config.py switches.json
+./do_generate_config.py switches.json
 ```
 
 It will produce WRS configurations in 'output/config' sub-directory.

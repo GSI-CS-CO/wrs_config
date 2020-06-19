@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import copy, json, os
 from getpass import getuser as gp_getuser
 from socket import gethostname as sk_gethostname

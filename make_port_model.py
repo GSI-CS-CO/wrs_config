@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 '''
 Make WRS port-model from WRS configuration
 '''

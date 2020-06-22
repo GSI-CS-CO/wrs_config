@@ -1,0 +1,17 @@
+os: linux
+dist: xenial
+sudo: required
+language: cpp
+python: "2.7"
+
+git:
+  submodules: true
+
+install:
+  - sudo apt-get install whois graphviz -y
+  - sudo pip install pydot
+  - sudo pip install graphviz
+  - sudo pip install pydot-ng
+
+script:
+  - yes "password" | python do_generate_config.py switches.json

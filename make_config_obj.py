@@ -153,15 +153,16 @@ def build_rtu_config(items, wrs_port_model):
   #print (json.dumps(rtu_config))
   return rtu_config
 
-def build_config_obj(items, wrs_port_model, rtu_config):
+def build_config_obj(items, wrs_port_model, rtu_config, switch):
 
   # Build WRS configuration object (in JSON) compatible with the CERN tool.
   # items: VLAN definitions, port roles, WRS layers, default config object
   # wrs_port_model: WRS port-model with VLANs configuration
   # rtu_config: per-VLAN RTU configuration
+  # switch: object with switch name and role
 
   config_obj = copy.deepcopy(items['dot-config']) # deep-copy of mutables
-  config_obj['requestedByUser'] = gp_getuser() + '@' + sk_gethostname()
+  config_obj['requestedByUser'] = gp_getuser() + '@' + sk_gethostname() + ';' + switch['name']
 
   # configurationItems
   # - WRS timing mode: Grand Master, Boundary Clock, Free-running Master
@@ -309,7 +310,7 @@ def make(switches, out_dir):
 
     # build WRS config object from WRS port-model (with VLANs configuration) and
     # RTU configuration
-    wrs_config_obj = build_config_obj(items, wrs_port_model, rtu_config)
+    wrs_config_obj = build_config_obj(items, wrs_port_model, rtu_config, switch)
 
     # update optional configuration (non-VLAN, non-port specific)
     if 'optional' in switch and switch['optional'] is not None:

@@ -66,8 +66,8 @@
         "10": {"role" : {"ref":"port_roles", "name":"service_trunk_dl"}},
         "11": {"role" : "default"},
         "12": {"role" : "default"},
-        "13": {"role" : {"ref":"port_roles", "name":"tap"}},
-        "14": {"role" : {"ref":"port_roles", "name":"tap"}},
+        "13": {"role" : {"ref":"port_roles", "name":"tap_trunk"}},
+        "14": {"role" : {"ref":"port_roles", "name":"tap_trunk"}},
         "15": {"role" : {"ref":"port_roles", "name":"service_access"}},
         "16": {"role" : {"ref":"port_roles", "name":"service_access"}},
         "17": {"role" : {"ref":"port_roles", "name":"service_access"}},
@@ -119,7 +119,7 @@
         "15": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
         "16": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
         "17": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
-        "18": {"role" : {"ref":"port_roles", "name":"service_access"}}
+        "18": {"role" : {"ref":"port_roles", "name":"tap_access"}}
     },
     "comment" : "Distribution WRS" },
 

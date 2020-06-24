@@ -43,7 +43,7 @@
       {"ref" : "vlans", "name" : "unilac"} ],
     "comment" : "service/diagnostic device" },
 
-  "tap" : {
+  "tap_trunk" : {
     "ptp_mode" : "none",
     "port_mode" : "trunk",
     "pvid" : null,
@@ -56,7 +56,22 @@
       {"ref" : "vlans", "name" : "timing"},
       {"ref" : "vlans", "name" : "int"},
       {"ref" : "vlans", "name" : "unilac"} ],
-    "comment" : "tap" },
+    "comment" : "tap trunk" },
+
+  "tap_access" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "service_ul"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "prod"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "timing"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "unilac"} ],
+    "comment" : "tap access" },
 
   "service_trunk_ul": {
     "ptp_mode" : "none",

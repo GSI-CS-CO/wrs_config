@@ -6,7 +6,7 @@
   "grand_master" : {
     "timing_mode" : "GM",
     "ports" : {
-	"1" : {"role" : {"ref":"port_roles", "name":"ptp_grand_master"}},
+        "1" : {"role" : {"ref":"port_roles", "name":"ptp_grand_master"}},
         "2" : {"role" : {"ref":"port_roles", "name":"ptp_grand_master"}},
         "3" : {"role" : {"ref":"port_roles", "name":"ptp_grand_master"}},
         "4" : {"role" : {"ref":"port_roles", "name":"ptp_grand_master"}},

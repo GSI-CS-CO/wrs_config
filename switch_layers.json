@@ -23,7 +23,7 @@
         "15": {"role" : "default"},
         "16": {"role" : "default"},
         "17": {"role" : "default"},
-        "18": {"role" : {"ref":"port_roles", "name":"tap"}}
+        "18": {"role" : {"ref":"port_roles", "name":"service_access"}}
     },
     "comment" : "Grandmaster WRS" },
 
@@ -47,7 +47,7 @@
         "15": {"role" : "default"},
         "16": {"role" : "default"},
         "17": {"role" : "default"},
-        "18": {"role" : {"ref":"port_roles", "name":"tap"}}
+        "18": {"role" : {"ref":"port_roles", "name":"service_access"}}
     },
     "comment" : "Clock Master WRS" },
 

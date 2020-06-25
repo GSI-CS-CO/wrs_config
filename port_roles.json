@@ -62,7 +62,7 @@
     "ptp_mode" : "master",
     "port_mode" : "access",
     "pvid" : null,
-    "ptp_vid" : {"ref" : "vlans", "name" : "service_ul"},
+    "ptp_vid" : null,
     "rvid" : [
       {"ref" : "vlans", "name" : "service_dl"},
       {"ref" : "vlans", "name" : "service_ul"},

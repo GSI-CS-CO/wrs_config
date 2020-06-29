@@ -1,3 +1,4 @@
 [submodule "wrs-config-generator"]
 	path = wrs-config-generator
-	url = https://gitlab.cern.ch/white-rabbit/wrs-config-generator
+	url = https://github.com/GSI-CS-CO-Forks/wrs-config-generator
+	branch = gsi

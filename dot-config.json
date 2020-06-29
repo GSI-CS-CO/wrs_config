@@ -509,6 +509,14 @@
     "wavelength" : "1490+1310",
     "partNumber" : "BO15C4931620",
     "vendorSerial" : null
+  }, {
+    "sfpId" : "10",
+    "vendorName" : "OEM",
+    "dtx" : "0",
+    "drx" : "0",
+    "wavelength" : "1310+1490",
+    "partNumber" : "BO15C3149620",
+    "vendorSerial" : null
   } ],
   "configVlanPorts" : [ {
     "portNumber" : "1",

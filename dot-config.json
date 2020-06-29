@@ -506,7 +506,7 @@
     "vendorName" : "OEM",
     "dtx" : "0",
     "drx" : "0",
-    "wavelength" : "1310+1490",
+    "wavelength" : "1490+1310",
     "partNumber" : "BO15C4931620",
     "vendorSerial" : null
   } ],

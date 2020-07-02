@@ -90,6 +90,10 @@
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {
+    "name" : "ttf_access_and_monitoring",
+    "layer" : "ttf_access_and_monitoring",
+    "vlan" : {"ref":"vlans", "name":"timing"}
+  }, {
     "name" : "int_local_master",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"int"}

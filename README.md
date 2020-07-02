@@ -52,6 +52,11 @@ git clone https://github.com/GSI-CS-CO/wrs_config
 Define your desired switches in 'switches.json' and invoke:
 
 ```
+make
+
+<<OR>>
+
+manage submodules
 ./do_generate_config.py switches.json
 ```
 

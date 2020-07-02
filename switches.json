@@ -90,7 +90,7 @@
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {
-    "name" : "ttf_access_and_monitoring",
+    "name" : "timing_access_and_monitoring",
     "layer" : "ttf_access_and_monitoring",
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {

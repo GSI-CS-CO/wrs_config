@@ -14,4 +14,4 @@ install:
   - sudo pip install pydot-ng
 
 script:
-  - yes "password" | python do_generate_config.py switches.json
+  - make test

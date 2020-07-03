@@ -1,6 +1,9 @@
 all:
 	python do_generate_config.py switches.json
 
+clean:
+	rm -rf output || true
+
 test:
 	yes "password" | python do_generate_config.py switches.json
 

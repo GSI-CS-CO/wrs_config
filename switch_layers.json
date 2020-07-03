@@ -167,7 +167,7 @@
           "15": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
           "16": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
           "17": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
-          "18": {"role" : {"ref":"port_roles", "name":"ctrl"}}
+          "18": {"role" : {"ref":"port_roles", "name":"ctrl_ping"}}
       },
       "comment" : "TTF Access and Monitoring WRS" }
 

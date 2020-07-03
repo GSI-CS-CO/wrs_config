@@ -103,6 +103,17 @@
       {"ref" : "#extern"} ],
     "comment" : "Data Master" },
 
+  "ctrl_ping" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref":"#extern"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "#extern"} ],
+    "comment" : "Ctrl and Ping" },
+
   "node" : {
     "ptp_mode" : "master",
     "port_mode" : "access",

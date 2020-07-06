@@ -73,5 +73,6 @@ It will produce WRS configurations in 'output/config' sub-directory.
 ### Python
 
 ```
+(sudo) pip install requests
 (sudo) pip install pydot
 ```

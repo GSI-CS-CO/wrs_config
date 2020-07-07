@@ -3,49 +3,49 @@
   "refs" : "vlans",
   "devices" : [
   {
-    "name" : "grand_master",
+    "name" : "production_grandmaster",
     "layer" : "grand_master",
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled"
      }
   }, {
-    "name" : "clock_master",
+    "name" : "production_clockmaster",
     "layer" : "clock_master",
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled"
      }
   }, {
-    "name" : "service",
+    "name" : "production_service",
     "layer" : "service",
     "vlan" : {"ref":"vlans", "name":"service_dl"},
     "optional" : {
       "cipher" : "enabled"
      }
   }, {
-    "name" : "prod_local_master",
+    "name" : "production_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
      }
   }, {
-    "name" : "prod_distribution",
+    "name" : "production_distribution",
     "layer" : "distribution",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
      }
   }, {
-    "name" : "prod_access",
+    "name" : "production_access",
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
      }
   }, {
-    "name" : "unilac_local_master",
+    "name" : "unilac_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"unilac"},
     "optional" : {
@@ -66,7 +66,7 @@
       "cipher" : "enabled"
      }
   }, {
-    "name" : "user_local_master",
+    "name" : "user_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"user"}
   }, {
@@ -78,7 +78,7 @@
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"user"}
   }, {
-    "name" : "timing_local_master",
+    "name" : "timing_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {
@@ -94,15 +94,15 @@
     "layer" : "ttf_access_and_monitoring",
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {
-    "name" : "int_local_master",
+    "name" : "integration_local_master",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"int"}
   }, {
-    "name" : "int_distribution",
+    "name" : "integration_distribution",
     "layer" : "distribution",
     "vlan" : {"ref":"vlans", "name":"int"}
   }, {
-    "name" : "int_access",
+    "name" : "integration_access",
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"int"}
   } ]

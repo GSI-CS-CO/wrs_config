@@ -89,7 +89,7 @@
     "itemConfig" : "CONFIG_VLAN_ENABLE"
   }, {
     "itemName" : "Use local",
-    "itemValue" : "false",
+    "itemValue" : "true",
     "itemConfig" : "CONFIG_DOTCONF_SOURCE_LOCAL"
   }, {
     "itemName" : "Use DHCP response",

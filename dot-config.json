@@ -157,7 +157,7 @@
     "itemConfig" : "CONFIG_WRS_LOG_PTP"
   }, {
     "itemName" : "Logging for SNMP",
-    "itemValue" : "sd",
+    "itemValue" : "Swd",
     "itemConfig" : "CONFIG_WRS_LOG_SNMPD"
   }, {
     "itemName" : "Logging for Monit",

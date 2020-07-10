@@ -94,7 +94,7 @@
     "layer" : "ttf_access_and_monitoring",
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {
-    "name" : "integration_local_master",
+    "name" : "integration_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"int"}
   }, {

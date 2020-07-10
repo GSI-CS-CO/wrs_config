@@ -16,6 +16,7 @@ import patch.patch_t24p as patch_t24p
 config_prefix = 'dot-config_'
 config_dir = 'output/config'
 object_dir = 'output/object'
+graph_dir = 'output/graph'
 config_generator_dir = 'wrs-config-generator'
 config_generator_url = 'https://gitlab.cern.ch/white-rabbit/wrs-config-generator'
 patch_t24p_path = 'patch/t24p.json'
@@ -34,14 +35,20 @@ def generate_config(switches, object_dir, config_dir):
     # generate configuration (shell command)
     os.system('python wrs-config-generator/generate_config.py --json=' + object_filepath + '.json --config=' + config_filepath)
 
-def generate_port_model(switches, config_dir):
+def generate_port_model(switches, config_dir, graph_dir=None):
 
   for switch in switches['devices']:
 
     # configuration file path
     config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
 
-    make_port_model.make(config_filepath)
+    # graph file path
+    if graph_dir == None:
+      graph_dir=config_dir
+
+    graph_filepath = os.path.join(graph_dir, config_prefix + switch['name'])
+
+    make_port_model.make(config_filepath, graph_filepath)
 
 def create_folder(directory):
   try:
@@ -92,6 +99,7 @@ if __name__ == '__main__':
   # create output folders if they don't exist
   create_folder(config_dir)
   create_folder(object_dir)
+  create_folder(graph_dir)
 
   # generate WRS configuration objects
   generate_config_object(switches, object_dir)
@@ -103,4 +111,4 @@ if __name__ == '__main__':
   apply_patch(switches, config_dir)
 
   # generate WRS port model
-  generate_port_model(switches, config_dir)
+  generate_port_model(switches, config_dir, graph_dir)

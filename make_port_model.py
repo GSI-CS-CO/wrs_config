@@ -412,7 +412,7 @@ def build_html_table(port_config_obj, wrs_name):
 
 	return line
 
-def make(config_filepath):
+def make(config_filepath, graph_filepath):
 
 	lines = []
 	with open(config_filepath, 'r') as f:
@@ -453,8 +453,8 @@ def make(config_filepath):
 	wrs_model = pydot.Node(name=wrs_name, shape='plaintext', label=table)
 	graph.add_node(wrs_model)
 
-	graph.write(config_filepath + '.dot')
-	return graph.write_svg(config_filepath + '.svg')
+	graph.write(graph_filepath + '.dot')
+	return graph.write_svg(graph_filepath + '.svg')
 
 if __name__ == '__main__':
 

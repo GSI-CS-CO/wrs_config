@@ -44,7 +44,7 @@ A host with Python (2.7) and pydot package is required!
 1. Download the repo.
 
 ```
-git clone https://github.com/GSI-CS-CO/wrs_config
+git clone https://github.com/GSI-CS-CO/wrs_config --recursive
 ```
 
 ## Usage

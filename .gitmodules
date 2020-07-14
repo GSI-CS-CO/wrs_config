@@ -2,3 +2,6 @@
 	path = wrs-config-generator
 	url = https://github.com/GSI-CS-CO-Forks/wrs-config-generator
 	branch = gsi
+[submodule "wrs_tn2_configuration"]
+	path = wrs_tn2_configuration
+	url = https://github.com/GSI-CS-CO/wrs_tn2_configuration

@@ -29,7 +29,7 @@
     "comment" : "Service WRS - down-link" },
 
   "service_access" : {
-    "ptp_mode" : "master",
+    "ptp_mode" : "non-wr",
     "port_mode" : "access",
     "pvid" : {"ref" : "vlans", "name" : "service_dl"},
     "ptp_vid" : null,
@@ -59,7 +59,7 @@
     "comment" : "tap trunk" },
 
   "tap_access" : {
-    "ptp_mode" : "master",
+    "ptp_mode" : "non-wr",
     "port_mode" : "access",
     "pvid" : null,
     "ptp_vid" : null,

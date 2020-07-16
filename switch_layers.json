@@ -52,7 +52,7 @@
     "comment" : "Clock Master WRS" },
 
   "service": {
-    "timing_mode" : "BC",
+    "timing_mode" : "FM",
     "ports" : {
         "1" : {"role" : {"ref":"port_roles", "name":"service_trunk_dl"}},
         "2" : {"role" : {"ref":"port_roles", "name":"service_trunk_dl"}},

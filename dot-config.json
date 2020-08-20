@@ -145,15 +145,15 @@
     "itemConfig" : "CONFIG_REMOTE_SYSLOG_UDP"
   }, {
     "itemName" : "Logging for HAL",
-    "itemValue" : "/var/log/hal.info",
+    "itemValue" : "default_syslog",
     "itemConfig" : "CONFIG_WRS_LOG_HAL"
   }, {
     "itemName" : "Logging for RTU",
-    "itemValue" : "/var/log/rtu.info",
+    "itemValue" : "default_syslog",
     "itemConfig" : "CONFIG_WRS_LOG_RTU"
   }, {
     "itemName" : "Logging for PTP",
-    "itemValue" : "/var/log/ptp.info",
+    "itemValue" : "default_syslog",
     "itemConfig" : "CONFIG_WRS_LOG_PTP"
   }, {
     "itemName" : "Logging for SNMP",
@@ -253,7 +253,7 @@
     "itemConfig" : "CONFIG_ROOT_PWD_CYPHER"
   }, {
     "itemName" : "Logging for other applications",
-    "itemValue" : "daemon.info",
+    "itemValue" : "default_syslog",
     "itemConfig" : "CONFIG_WRS_LOG_OTHER"
   }, {
     "itemName" : "Log Level for HAL",

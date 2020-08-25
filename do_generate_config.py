@@ -11,6 +11,7 @@ import argparse, sys, os, json
 import make_config_obj
 import make_port_model
 import patch.patch_t24p as patch_t24p
+import patch.patch_lldp as patch_lldp
 
 # output folder to store configuration files
 config_prefix = 'dot-config_'
@@ -20,6 +21,7 @@ graph_dir = 'output/graph'
 config_generator_dir = 'wrs-config-generator'
 config_generator_url = 'https://gitlab.cern.ch/white-rabbit/wrs-config-generator'
 patch_t24p_path = 'patch/t24p.json'
+vid_path = 'patch/vid.json'
 
 def generate_config_object(switches, object_dir):
   make_config_obj.make(switches, object_dir)
@@ -60,18 +62,24 @@ def create_folder(directory):
 
 def apply_patch(switches, config_dir):
 
-  # update file
+  # get lldp vid
+  lldp_vid = ''
+  with open(vid_path, 'r') as f:
+    lldp_vid = json.load(f)['lldp']
+
+  # get patch
   t24p_values = {}
   with open(patch_t24p_path, 'r') as f:
     t24p_values = json.load(f)
 
-  if t24p_values is not None:
+  # for each switch apply patches: LLDP, T24P
+  for switch in switches['devices']:
 
-    # for each switch apply T24P patch
-    for switch in switches['devices']:
+    config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
 
-      config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
+    patch_lldp.apply_inplace(config_filepath, lldp_vid)
 
+    if t24p_values is not None:
       patch_t24p.apply_inplace(config_filepath, t24p_values)
 
 if __name__ == '__main__':

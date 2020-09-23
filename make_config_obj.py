@@ -243,6 +243,12 @@ def update_optional(items, wrs_config_obj, optionals):
           ci['itemValue'] = "true"
         if 'CONFIG_ROOT_PWD_CYPHER' in ci['itemConfig']:
           ci['itemValue'] = items['cipher']
+    elif optionals[key] is not None:                  # general CONFIG_* option that has custom value (eg, CONFIG_NTP_SERVER)
+      # get corresponding itemConfig
+      for ci in wrs_config_obj['configurationItems']:
+        # set a custom value
+        if key in ci['itemConfig']:
+          ci['itemValue'] = optionals[key]
 
 def generate_root_passwd_cipher():
   # Generate MD5 cipher for WRS root password input by user

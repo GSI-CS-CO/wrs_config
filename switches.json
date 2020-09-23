@@ -47,6 +47,13 @@
       "cipher" : "enabled"
      }
   }, {
+    "name" : "production_access_unilac_gateway",
+    "layer" : "access_gateway_18",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
     "name" : "unilac_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"unilac"},

@@ -114,5 +114,9 @@
     "name" : "integration_access",
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"int"}
+  }, {
+    "name" : "timing_access_all",
+    "layer" : "access_all",
+    "vlan" : {"ref":"vlans", "name":"timing"}
   } ]
 }

@@ -3,16 +3,19 @@ New release of the WRS firmware is going to support the RADIUS authentication.
 This patch will apply new configuration options required for the radiusvlan tool.
 '''
 
-import re
+import re, os
 
 vlan_enable_regex = None
+rvlan_disabled_dot_configs = ['dot-config_production_service'] # configuration files in which radiusvlan is disabled by default
 
-config_options_rvlan=[
+config_options_rvlan_title=[
   '#',
   '# RADIUS VLAN options',
-  '#',
-  '',
-  'CONFIG_RVLAN_DAEMON=y',
+  '#']
+
+config_options_rvlan_enable = 'CONFIG_RVLAN_DAEMON='
+
+config_options_rvlan_body=[
   'CONFIG_RVLAN_PMASK="ffffffff"',
   'CONFIG_RVLAN_AUTH_VLAN=4093',
   'CONFIG_RVLAN_NOAUTH_VLAN=4094',
@@ -20,30 +23,20 @@ config_options_rvlan=[
   'CONFIG_RVLAN_RADIUS_SECRET="auhei8Ha"',
   'CONFIG_RVLAN_OBEY_DOTCONFIG=y']
 
-def apply(file_path):
-
-  global vlan_enable_regex
-
-  if vlan_enable_regex is None:
-    vlan_enable_regex = re.compile(r'(^CONFIG_VLANS_ENABLE=y)') # CONFIG_VLANS_ENABLE=y
-
-  with open(file_path, 'a+') as f:                              # open a file with read and append accesses
-    for line in f:
-      vlan_enable_match = vlan_enable_regex.match(line)
-      if vlan_enable_match is not None:                         # VLANs are enabled
-        for option in config_options_rvlan:                     # append all radius_vlan options
-          f.write("%s\n" % option)
-        break
-
 def apply_pretty(file_path):
 
   global vlan_enable_regex
 
   if vlan_enable_regex is None:
-    vlan_enable_regex = re.compile(r'(^CONFIG_VLANS_ENABLE=y)') # CONFIG_VLANS_ENABLE=y
+    vlan_enable_regex = re.compile(r'(^CONFIG_VLANS_ENABLE=(?P<value>.*$))') # CONFIG_VLANS_ENABLE=y
 
   lines = []
-  vlan_enable_match = None
+  vlan_enable_head = None
+  vlan_enable_value = 'n'
+  disable_rvlan = False
+
+  if os.path.basename(file_path) in rvlan_disabled_dot_configs:    # rvlan is disabled by default in some dot-configs (eg, production_service)
+    disable_rvlan = True
 
   with open(file_path, 'r') as f:
     lines = f.readlines()
@@ -52,12 +45,24 @@ def apply_pretty(file_path):
 
   for index in range(len(lines)):
 
-    if vlan_enable_regex.match(lines[index]) is not None:
-      vlan_enable_match = index                                     # VLANs are enabled (option head)
+    vlan_enable_match = vlan_enable_regex.match(lines[index])
+    if vlan_enable_match is not None:
+      vlan_enable_head = index                                     # VLANs are enabled (option head)
+      if not disable_rvlan:                                        # parse a value of 'VLAN enable' only if radiusvlan is allowed
+        vlan_enable_value = vlan_enable_match.group('value')
 
-    if vlan_enable_match is not None and lines[index] == new_line:  # VLANs are enabled (option tail)
+    if vlan_enable_head is not None and lines[index] == new_line:  # VLANs are enabled (option tail)
 
-      for option in config_options_rvlan:                           # insert all radius_vlan options
+      for option in config_options_rvlan_title:                    # insert a title of the radius_vlan options
+        index += 1
+        lines.insert(index, option + new_line)
+
+      lines.insert(index + 1, new_line)                            # insert radius_vlan enable option
+      lines.insert(index + 2, config_options_rvlan_enable + vlan_enable_value)
+      lines.insert(index + 3, new_line)
+
+      index += 3
+      for option in config_options_rvlan_body:                     # insert radius_vlan options
         index += 1
         lines.insert(index, option + new_line)
 

@@ -48,6 +48,9 @@ def parse_value(raw):
         # Boolean setting that is enabled.
         return True
 
+    elif raw == 'n':
+        return False
+
     elif raw.startswith('"') and raw.endswith('"'):
 		# String setting.
         return raw[1:-1]

@@ -13,7 +13,7 @@ config_options_rvlan_title=[
   '# RADIUS VLAN options',
   '#']
 
-config_options_rvlan_enable = 'CONFIG_RVLAN_DAEMON='
+config_options_rvlan_enable = 'CONFIG_RVLAN_ENABLE='
 
 config_options_rvlan_body=[
   'CONFIG_RVLAN_PMASK="ffffffff"',

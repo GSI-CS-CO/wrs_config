@@ -61,7 +61,7 @@
   "tap_access" : {
     "ptp_mode" : "non-wr",
     "port_mode" : "access",
-    "pvid" : null,
+    "pvid" : {"ref" : "vlans", "name" : "ptp_gm"},
     "ptp_vid" : null,
     "rvid" : [
       {"ref" : "vlans", "name" : "service_dl"},

@@ -8,7 +8,7 @@ The tool is used to generate configuration files (dot-config_*) for dedicated WR
 - Service
 - Local Master
 - Distribution
-- Access
+- Access (and its special cases)
 
 ## Structure
 
@@ -49,18 +49,16 @@ git clone https://github.com/GSI-CS-CO/wrs_config --recursive
 
 ## Usage
 
-Define your desired switches in 'switches.json' and invoke:
+In order to generate pre-defined configurations, invoke following make commands:
 
 ```
-make
-
-<<OR>>
-
-manage submodules
-./do_generate_config.py switches.json
+make clean
+make all
 ```
 
 It will produce WRS configurations in 'output/config' sub-directory.
+An another remote Git repository, wrs_tn2_configuration, which contains generated WRS configurations, is embedded as submodule.
+Once user is confident with newly generated dot-configs, they have to committed manually into the submodule repository.
 
 ## Which Packages are Required?
 

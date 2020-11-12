@@ -8,7 +8,7 @@
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "192.168.20.69"
+      "CONFIG_NTP_SERVER" : "192.168.16.181"
      }
   }, {
     "name" : "production_clockmaster",
@@ -16,14 +16,14 @@
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "192.168.20.69"     }
+      "CONFIG_NTP_SERVER" : "192.168.16.181"     }
   }, {
     "name" : "production_service",
     "layer" : "service",
     "vlan" : {"ref":"vlans", "name":"service_dl"},
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "192.168.20.69"
+      "CONFIG_NTP_SERVER" : "192.168.16.181"
      }
   }, {
     "name" : "production_localmaster",

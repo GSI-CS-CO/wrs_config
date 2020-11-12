@@ -54,6 +54,27 @@
       "cipher" : "enabled"
      }
   }, {
+    "name" : "production_access_b2b_a",
+    "layer" : "access_b2b_a",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
+    "name" : "production_access_b2b_b",
+    "layer" : "access_b2b_b",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
+    "name" : "production_access_b2b_c",
+    "layer" : "access_b2b_c",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
     "name" : "unilac_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"unilac"},

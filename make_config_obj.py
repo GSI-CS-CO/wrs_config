@@ -150,6 +150,13 @@ def build_rtu_config(items, wrs_port_model):
         if vid in rtu_config:
           rtu_config[vid]['fid'] = vlan_items[v]['fid']
 
+          # 'ports' option is exception: if it's given, then frames must be forwarded only to the given ports
+          if 'ports' in vlan_items[v]:
+            exceptional_ports = vlan_items[v]['ports']
+
+            if exceptional_ports =='19':   # eCPU is linked to port 19, so remove all other ports (VLAN entry with fid is sufficient)
+               rtu_config[vid].pop('ports', None)
+
   #print (json.dumps(rtu_config))
   return rtu_config
 
@@ -222,10 +229,11 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
   if len(rtu_config):
     config_obj['configVlans'] = []
     for v in rtu_config:
-      config = {'prio': None, 'drop': 'false'}
+      config = {'prio': None, 'drop': 'false', 'ports': None}
       config['vid'] = v
       config['fid'] = rtu_config[v]['fid']
-      config['ports'] = rtu_config[v]['ports']
+      if 'ports' in rtu_config[v]:           # 'ports' is empty if forwarding is allowed only to port 19 (eCPU)
+        config['ports'] = rtu_config[v]['ports']
       config_obj['configVlans'].append(config)
 
   return config_obj

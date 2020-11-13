@@ -3,6 +3,8 @@
   "version" : "0.1",
   "ptp_gm" : {
     "vid" : "1", "fid" : "1", "comment" : "Grandmaster WR timing"},
+  "ptp_tap" : {
+    "vid" : "1", "fid" : "31", "ports" : "19", "comment" : "VLAN for tap nodes, WR timing is allowed"},
   "ptp" : {
     "vid" : "31", "fid" : "31", "comment" : "WR timing"},
   "service_ul" : {
@@ -18,5 +20,9 @@
   "int" : {
     "vid" : "103", "fid" : "103", "comment" : "Integration WR group"},
   "unilac" : {
-    "vid" : "104", "fid" : "104", "comment" : "UNILAC WR group"}
+    "vid" : "104", "fid" : "104", "comment" : "UNILAC WR group"},
+  "default" : {
+    "vid" : "4093", "fid" : "4093", "ports" : "19", "comment" : "default VLAN"},
+  "unauthen" : {
+    "vid" : "4094", "fid" : "4094", "ports" : "19", "comment" : "unauthenticated VLAN"}
 }

@@ -61,9 +61,12 @@
   "tap_access" : {
     "ptp_mode" : "non-wr",
     "port_mode" : "access",
-    "pvid" : {"ref" : "vlans", "name" : "ptp_gm"},
+    "pvid" : {"ref" : "vlans", "name" : "ptp_tap"},
     "ptp_vid" : null,
     "rvid" : [
+      {"ref" : "vlans", "name" : "ptp_tap"},
+      {"ref" : "vlans", "name" : "default"},
+      {"ref" : "vlans", "name" : "unauthen"},
       {"ref" : "vlans", "name" : "service_dl"},
       {"ref" : "vlans", "name" : "service_ul"},
       {"ref" : "vlans", "name" : "prod"},
@@ -120,6 +123,8 @@
     "pvid" : {"ref" : "vlans", "name" : "service_ul"},
     "ptp_vid" : null,
     "rvid" : [
+      {"ref" : "vlans", "name" : "default"},
+      {"ref" : "vlans", "name" : "unauthen"},
       {"ref" : "vlans", "name" : "service_dl"},
       {"ref" : "#extern"} ],
     "comment" : "WR node" },

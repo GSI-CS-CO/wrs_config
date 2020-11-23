@@ -132,6 +132,10 @@
     "itemValue" : "",
     "itemConfig" : "CONFIG_NTP_SERVER"
   }, {
+    "itemName" : "SNMP system clock monitor",
+    "itemValue" : "false",
+    "itemConfig" : "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED"
+  }, {
     "itemName" : "Syslog server",
     "itemValue" : "192.168.16.10",
     "itemConfig" : "CONFIG_REMOTE_SYSLOG_SERVER"

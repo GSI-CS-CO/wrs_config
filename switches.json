@@ -111,6 +111,10 @@
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"user"}
   }, {
+    "name" : "user_access_unilac_gateway",
+    "layer" : "access_gateway_7",
+    "vlan" : {"ref":"vlans", "name":"user"}
+  }, {
     "name" : "timing_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"timing"}

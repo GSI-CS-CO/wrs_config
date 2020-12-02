@@ -128,7 +128,7 @@
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {
     "name" : "timing_access_and_monitoring",
-    "layer" : "ttf_access_and_monitoring",
+    "layer" : "access_all_and_monitor_18",
     "vlan" : {"ref":"vlans", "name":"timing"}
   }, {
     "name" : "integration_localmaster",

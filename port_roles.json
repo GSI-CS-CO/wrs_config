@@ -106,16 +106,16 @@
       {"ref" : "#extern"} ],
     "comment" : "Data Master" },
 
-  "ctrl_ping" : {
-    "ptp_mode" : "master",
+  "monitor" : {
+    "ptp_mode" : "non-wr",
     "port_mode" : "access",
-    "pvid" : {"ref":"#extern"},
+    "pvid" : {"ref" : "#extern"},
     "ptp_vid" : null,
     "rvid" : [
       {"ref" : "vlans", "name" : "service_dl"},
       {"ref" : "vlans", "name" : "service_ul"},
       {"ref" : "#extern"} ],
-    "comment" : "Ctrl and Ping" },
+    "comment" : "wri port for a non-WR, monitor host (eg., tsl019)" },
 
   "node" : {
     "ptp_mode" : "master",

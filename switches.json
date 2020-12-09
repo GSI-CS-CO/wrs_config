@@ -24,6 +24,9 @@
     "name" : "production_service",
     "layer" : "service",
     "vlan" : {"ref":"vlans", "name":"service_dl"},
+    "rvlan" : {
+      "enable" : "n"
+     },
     "optional" : {
       "cipher" : "enabled",
       "CONFIG_NTP_SERVER" : "192.168.16.181"
@@ -129,7 +132,10 @@
   }, {
     "name" : "timing_access_and_monitoring",
     "layer" : "access_all_and_monitor_18",
-    "vlan" : {"ref":"vlans", "name":"timing"}
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "rvlan" : {
+      "unauthPorts" : "18"
+     }
   }, {
     "name" : "integration_localmaster",
     "layer" : "local_master",

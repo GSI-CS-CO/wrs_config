@@ -199,6 +199,11 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
 
   config_obj['configPorts'] = config_items
 
+  # configRvlan
+  if 'rvlan' in switch: # non-default settings for RVLAN
+    for key in switch['rvlan']:
+      config_obj['configRvlan'][key] = switch['rvlan'][key]
+
   # configVlanPorts
   config_items = []
   for port in config_obj['configVlanPorts']:

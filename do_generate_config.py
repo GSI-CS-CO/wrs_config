@@ -12,7 +12,6 @@ import make_config_obj
 import make_port_model
 import patch.patch_t24p as patch_t24p
 import patch.patch_lldp as patch_lldp
-import patch.patch_radiusvlan as patch_radiusvlan
 
 # output folder to store configuration files
 config_prefix = 'dot-config_'
@@ -73,7 +72,7 @@ def apply_patch(switches, config_dir):
   with open(patch_t24p_path, 'r') as f:
     t24p_values = json.load(f)
 
-  # for each switch apply patches: LLDP, T24P, RADIUS_VLAN
+  # for each switch apply patches: LLDP, T24P
   for switch in switches['devices']:
 
     config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
@@ -82,8 +81,6 @@ def apply_patch(switches, config_dir):
 
     if t24p_values is not None:
       patch_t24p.apply_inplace(config_filepath, t24p_values)
-
-    patch_radiusvlan.apply_pretty(config_filepath)
 
 if __name__ == '__main__':
 

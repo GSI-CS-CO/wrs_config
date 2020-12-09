@@ -685,5 +685,14 @@
     "prio" : "-1",
     "drop" : "false",
     "ports" : "2-9"
-  } ]
+  } ],
+  "configRvlan" : {
+    "enable" : "y",
+    "defVlan" : 4093,
+    "unauthVlan" : 4094,
+    "obey" : "true",
+    "servers" : "192.168.16.181,192.168.16.182",
+    "secret" : "auhei8Ha",
+    "unauthPorts" : ""
+  }
 }

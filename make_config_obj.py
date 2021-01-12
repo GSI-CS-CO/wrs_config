@@ -23,6 +23,34 @@ switches_file = 'switches.json'
 # output WRS configuration with VLAN settings (prefixed with WRS name)
 output_file = 'dot-config_'
 
+def get_git_hash():
+  # Return short commit hash in Git
+
+  git_hash = None
+  args = 'git rev-parse --short HEAD'
+  try:
+    git_hash = subprocess.check_output(args, shell=True)
+    git_hash = git_hash.strip('\n')
+  except subprocess.CalledProcessError as e:
+    print ('Error: Failed to get short Git hash!')
+    print (e)
+
+  return git_hash
+
+def check_git_status():
+  # Return empty value if Git working tree is clean
+
+  git_status = None
+  args = 'git status --porcelain --untracked-files=no'
+  try:
+    git_status = subprocess.check_output(args, shell=True)
+    git_status = git_status.strip('\n')
+  except subprocess.CalledProcessError as e:
+    print ('Error: Failed to check Git status!')
+    print (e)
+
+  return git_status
+
 def get_items(json_files):
 
   # Get the VLAN definitions, port roles, WRS layers, default WRS configuration
@@ -169,7 +197,12 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
   # switch: object with switch name and role
 
   config_obj = copy.deepcopy(items['dot-config']) # deep-copy of mutables
-  config_obj['requestedByUser'] = gp_getuser() + '@' + sk_gethostname() + ';' + switch['name']
+  build_info = gp_getuser() + '@' + sk_gethostname()
+  if items['git_hash'] is not None:
+    build_info += ';' + 'git_hash=' + items['git_hash']
+  if switch['name'] is not None:
+    build_info += ';' + 'role=' + switch['name']
+  config_obj['requestedByUser'] = build_info
 
   # configurationItems
   # - WRS timing mode: Grand Master, Boundary Clock, Free-running Master
@@ -315,6 +348,11 @@ def make(switches, out_dir):
       # break if cipher is set
       if 'cipher' in items and items['cipher'] is not None:
         break
+
+  # get commit hash of HEAD
+  items['git_hash'] = get_git_hash()
+  if len(check_git_status()):
+    items['git_hash'] += '-dirty'
 
   # build configuration objects for given switches
   for switch in switches['devices']:

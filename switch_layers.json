@@ -251,7 +251,7 @@
         "3" : {"role" : {"ref":"port_roles", "name":"node"}},
         "4" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
         "5" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
-        "6" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
         "7" : {"role" : {"ref":"port_roles", "name":"node"}},
         "8" : {"role" : {"ref":"port_roles", "name":"node"}},
         "9" : {"role" : {"ref":"port_roles", "name":"node"}},

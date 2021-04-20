@@ -21,7 +21,7 @@
     "itemConfig" : "CONFIG_FAN_HYSTERESIS_PWM_VAL"
   }, {
     "itemName" : "Enable",
-    "itemValue" : "false",
+    "itemValue" : "true",
     "itemConfig" : "CONFIG_READ_SFP_DIAG_ENABLE"
   }, {
     "itemName" : "Enable",

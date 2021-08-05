@@ -738,8 +738,8 @@
   } ],
   "configRvlan" : {
     "enable" : "y",
-    "defVlan" : 4093,
-    "unauthVlan" : 4094,
+    "defVlan" : 2589,
+    "unauthVlan" : 2588,
     "obey" : "true",
     "servers" : "192.168.16.181,192.168.16.182",
     "secret" : "auhei8Ha",

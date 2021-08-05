@@ -1,30 +1,31 @@
 {
   "descritption" : "valid VLANs, editable by WRS experts",
-  "version" : "0.1",
-  "ptp_gm" : {
-    "vid" : "1", "fid" : "1", "comment" : "Grandmaster WR timing"},
-  "ptp_tap" : {
-    "vid" : "1", "fid" : "31", "ports" : "19", "comment" : "VLAN for tap nodes, WR timing is allowed"},
+  "version" : "0.2",
+  "info" : "re-numeration of VLANS with VIDs 2582-2601",
   "lldp_tx" : {
-    "vid" : "2", "fid" : "2", "comment" : "LLDP TX traffic"},
-  "ptp" : {
-    "vid" : "31", "fid" : "31", "comment" : "WR timing"},
-  "service_ul" : {
-    "vid" : "31", "fid" : "31", "comment" : "service up-stream"},
-  "service_dl" : {
-    "vid" : "30", "fid" : "31", "comment" : "service down-stream"},
-  "prod" : {
-    "vid" : "100", "fid" : "100", "comment" : "Production WR group"},
-  "user" : {
-    "vid" : "101", "fid" : "101", "comment" : "User WR group"},
-  "timing" : {
-    "vid" : "102", "fid" : "102", "comment" : "Timing WR group"},
-  "int" : {
-    "vid" : "103", "fid" : "103", "comment" : "Integration WR group"},
-  "unilac" : {
-    "vid" : "104", "fid" : "104", "comment" : "UNILAC WR group"},
+    "vid" : "2586", "fid" : "2586", "comment" : "LLDP TX traffic"},
+  "ptp_gm" : {
+    "vid" : "2587", "fid" : "2587", "comment" : "Grandmaster WR-PTP"},
+  "ptp_tap" : {
+    "vid" : "2587", "fid" : "2587", "ports" : "19", "comment" : "VLAN for tap nodes, WR-PTP is allowed"},
   "default" : {
-    "vid" : "4093", "fid" : "4093", "ports" : "19", "comment" : "default VLAN"},
+    "vid" : "2589", "fid" : "2589", "ports" : "19", "comment" : "default VLAN, 802.1x"},
   "unauthen" : {
-    "vid" : "4094", "fid" : "4094", "ports" : "19", "comment" : "unauthenticated VLAN"}
+    "vid" : "2588", "fid" : "2588", "ports" : "19", "comment" : "VLAN for unauthenticated devices, 802.1x"},
+  "ptp" : {
+    "vid" : "2601", "fid" : "2601", "comment" : "WR-PTP traffic"},
+  "service_ul" : {
+    "vid" : "2601", "fid" : "2601", "comment" : "up-stream traffic of service VLAN"},
+  "service_dl" : {
+    "vid" : "2600", "fid" : "2601", "comment" : "down-stream traffic of service VLAN"},
+  "prod" : {
+    "vid" : "2590", "fid" : "2590", "comment" : "Production WR group"},
+  "user" : {
+    "vid" : "2591", "fid" : "2591", "comment" : "User WR group"},
+  "timing" : {
+    "vid" : "2592", "fid" : "2592", "comment" : "Timing WR group"},
+  "int" : {
+    "vid" : "2593", "fid" : "2593", "comment" : "Integration WR group"},
+  "unilac" : {
+    "vid" : "2594", "fid" : "2594", "comment" : "UNILAC WR group"}
 }

@@ -1,0 +1,19 @@
+1. Installing Ansible on Raspbian Jessie (8)
+
+These instruction are directly derived from [1].
+
+Raspbian users may leverage the same source as the Ubuntu PPA.
+This will install the latest release with the package manager.
+
+Add the following line to /etc/apt/sources.list:
+
+deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main
+
+Then run these commands:
+
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
+$ sudo apt-get update
+$ sudo apt-get install ansible
+
+-------------------------------------
+[1] https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-on-debian

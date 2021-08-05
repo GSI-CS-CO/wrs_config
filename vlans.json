@@ -5,6 +5,8 @@
     "vid" : "1", "fid" : "1", "comment" : "Grandmaster WR timing"},
   "ptp_tap" : {
     "vid" : "1", "fid" : "31", "ports" : "19", "comment" : "VLAN for tap nodes, WR timing is allowed"},
+  "lldp_tx" : {
+    "vid" : "2", "fid" : "2", "comment" : "LLDP TX traffic"},
   "ptp" : {
     "vid" : "31", "fid" : "31", "comment" : "WR timing"},
   "service_ul" : {

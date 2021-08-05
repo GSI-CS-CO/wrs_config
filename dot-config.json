@@ -529,7 +529,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "2",
     "vlanPortMode" : "unqualified",
@@ -537,7 +539,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "3",
     "vlanPortMode" : "unqualified",
@@ -545,7 +549,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "4",
     "vlanPortMode" : "unqualified",
@@ -553,7 +559,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "5",
     "vlanPortMode" : "unqualified",
@@ -561,7 +569,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "6",
     "vlanPortMode" : "unqualified",
@@ -569,7 +579,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "7",
     "vlanPortMode" : "unqualified",
@@ -577,7 +589,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "8",
     "vlanPortMode" : "unqualified",
@@ -585,7 +599,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "9",
     "vlanPortMode" : "unqualified",
@@ -593,7 +609,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "10",
     "vlanPortMode" : "unqualified",
@@ -601,7 +619,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "11",
     "vlanPortMode" : "unqualified",
@@ -609,7 +629,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "12",
     "vlanPortMode" : "unqualified",
@@ -617,7 +639,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "13",
     "vlanPortMode" : "unqualified",
@@ -625,7 +649,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "14",
     "vlanPortMode" : "unqualified",
@@ -633,7 +659,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "15",
     "vlanPortMode" : "unqualified",
@@ -641,7 +669,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "16",
     "vlanPortMode" : "unqualified",
@@ -649,7 +679,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "17",
     "vlanPortMode" : "unqualified",
@@ -657,7 +689,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "18",
     "vlanPortMode" : "unqualified",
@@ -665,7 +699,9 @@
     "vlanPortPrio" : null,
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
-    "vlanPortVid" : null
+    "vlanPortVid" : null,
+    "vlanPortLldpTxVid" : "",
+    "vlanPortLldpTxPrio" : "0"
   } ],
   "configVlans" : [ {
     "vid" : null,
@@ -673,18 +709,6 @@
     "prio" : null,
     "drop" : "false",
     "ports" : null
-  }, {
-    "vid" : "101",
-    "fid" : "101",
-    "prio" : null,
-    "drop" : "false",
-    "ports" : "1-9"
-  }, {
-    "vid" : "30",
-    "fid" : "31",
-    "prio" : "-1",
-    "drop" : "false",
-    "ports" : "2-9"
   } ],
   "configRvlan" : {
     "enable" : "y",

@@ -249,6 +249,8 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
           port['vlanPortUntag'] = 'false'
           if roleConfig['port_mode'] == 'access':
             port['vlanPortUntag'] = 'true'
+          elif roleConfig['port_mode'] == 'trunk':
+            port['vlanPortLldpTxVid'] = items['vlans']['lldp_tx']['vid']
 
       if 'ptp_vid' in roleConfig:
         port['vlanPortPtpVidEnabled'] = 'y'

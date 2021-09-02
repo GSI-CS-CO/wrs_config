@@ -232,6 +232,14 @@
     "itemValue" : "0",
     "itemConfig" : "CONFIG_SNMP_SWCORESTATUS_RX_PRIO_FRAME_RATE"
   }, {
+    "itemName" : "System contact",
+    "itemValue" : "",
+    "itemConfig" : "CONFIG_SNMP_SYSCONTACT"
+  }, {
+    "itemName" : "System location",
+    "itemValue" : "",
+    "itemConfig" : "CONFIG_SNMP_SYSLOCATION"
+  }, {
     "itemName" : "Traps(v1) sink",
     "itemValue" : "",
     "itemConfig" : "CONFIG_SNMP_TRAPSINK_ADDRESS"

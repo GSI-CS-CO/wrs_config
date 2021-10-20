@@ -8,7 +8,8 @@
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "192.168.16.181"
+      "CONFIG_NTP_SERVER" : "192.168.16.181",
+      "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED" : "true"
      }
   }, {
     "name" : "production_clockmaster",
@@ -16,7 +17,8 @@
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "192.168.16.181"
+      "CONFIG_NTP_SERVER" : "192.168.16.181",
+      "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED" : "true"
      }
   }, {
     "name" : "production_service",

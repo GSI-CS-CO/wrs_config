@@ -149,6 +149,14 @@
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"int"}
   }, {
+    "name" : "integration_access_b2b_d",
+    "layer" : "access_b2b_d",
+    "vlan" : {"ref":"vlans", "name":"int"}
+  }, {
+    "name" : "integration_access_unilac_gateway",
+    "layer" : "access_control_2",
+    "vlan" : {"ref":"vlans", "name":"int"}
+  }, {
     "name" : "timing_access_all",
     "layer" : "access_all",
     "vlan" : {"ref":"vlans", "name":"timing"}

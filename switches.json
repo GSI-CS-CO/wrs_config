@@ -54,7 +54,7 @@
      }
   }, {
     "name" : "production_access_unilac_gateway",
-    "layer" : "access_gateway_18",
+    "layer" : "access_control_18",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
@@ -115,7 +115,7 @@
     "vlan" : {"ref":"vlans", "name":"user"}
   }, {
     "name" : "user_access_unilac_gateway",
-    "layer" : "access_gateway_7",
+    "layer" : "access_control_7",
     "vlan" : {"ref":"vlans", "name":"user"}
   }, {
     "name" : "timing_localmaster",

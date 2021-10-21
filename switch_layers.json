@@ -147,7 +147,7 @@
     },
     "comment" : "Access WRS" },
 
-  "access_gateway_18" : {
+  "access_control_18" : {
     "timing_mode" : "BC",
     "ports" : {
         "1" : {"role" : {"ref":"port_roles", "name":"trunk_slave"}},
@@ -169,9 +169,9 @@
         "17": {"role" : {"ref":"port_roles", "name":"node"}},
         "18": {"role" : {"ref":"port_roles", "name":"ctrl"}}
     },
-    "comment" : "special access WRS: its port 18 is reserved for a gateway node" },
+    "comment" : "special access WRS: its port 18 is reserved for a control node" },
 
-  "access_gateway_7" : {
+  "access_control_7" : {
     "timing_mode" : "BC",
     "ports" : {
         "1" : {"role" : {"ref":"port_roles", "name":"trunk_slave"}},
@@ -193,7 +193,7 @@
         "17": {"role" : {"ref":"port_roles", "name":"node"}},
         "18": {"role" : {"ref":"port_roles", "name":"node"}}
     },
-    "comment" : "special access WRS: its port 7 is reserved for a gateway node" },
+    "comment" : "special access WRS: its port 7 is reserved for a control node" },
 
   "access_all" : {
     "timing_mode" : "BC",

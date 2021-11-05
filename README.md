@@ -65,6 +65,8 @@ Once user is confident with newly generated dot-configs, they have to committed 
 ### System
 
 ```
+(sudo) apt install pip
+(sudo) apt install graphviz
 (sudo) apt install whois
 ```
 

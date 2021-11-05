@@ -30,7 +30,7 @@ def get_git_hash():
   args = 'git rev-parse --short HEAD'
   try:
     git_hash = subprocess.check_output(args, shell=True)
-    git_hash = git_hash.strip('\n')
+    git_hash = git_hash.decode("utf-8").strip('\n')
   except subprocess.CalledProcessError as e:
     print ('Error: Failed to get short Git hash!')
     print (e)
@@ -44,7 +44,7 @@ def check_git_status():
   args = 'git status --porcelain --untracked-files=no'
   try:
     git_status = subprocess.check_output(args, shell=True)
-    git_status = git_status.strip('\n')
+    git_status = git_status.decode("utf-8").strip('\n')
   except subprocess.CalledProcessError as e:
     print ('Error: Failed to check Git status!')
     print (e)
@@ -304,7 +304,10 @@ def generate_root_passwd_cipher():
   cipher = None
 
   # prompt user to input root password
-  plain_password = raw_input('### Enter WRS root password ###: ')
+  try:
+    plain_password = raw_input('### Enter WRS root password ###: ') # worked with 2.7
+  except NameError:
+    plain_password = input('### Enter WRS root password ###: ') # works with 3.8
 
   # crypt has no attribute METHOD_MD5 in Python 2.7
   #cipher = crypt.crypt(plain, crypt.METHOD_MD5)
@@ -312,7 +315,7 @@ def generate_root_passwd_cipher():
   args = 'mkpasswd -5 ' + plain_password
   try:
     cipher = subprocess.check_output(args, shell=True)
-    cipher = cipher.strip('\n')
+    cipher = cipher.decode("utf-8").strip('\n')
   except subprocess.CalledProcessError as e:
     print ('Error: Failed to create WRS root password cipher!')
     print (e)
@@ -344,7 +347,7 @@ def make(switches, out_dir):
           cipher = generate_root_passwd_cipher()
           if cipher is not None:
             items['cipher'] = cipher
-            print items['cipher']
+            print (items['cipher'])
             break
 
       # break if cipher is set

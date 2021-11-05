@@ -28,17 +28,17 @@ class Option(Line):
         self.key = key
         self.value = value
     
-	def __repr__(self):
-		if self.value is None or (isinstance(self.value, bool) and not self.value):
-			return '# CONFIG_%s is not set' % self.key
-		elif isinstance(self.value, bool):
-			assert self.value
-			return 'CONFIG_%s=y' % self.key
-		elif isinstance(self.value, int):
-			return 'CONFIG_%s=%d' % (self.key, self.value)
-		elif isinstance(self.value, str):
-			return 'CONFIG_%s="%s"' % (self.key, self.value)
-		raise NotImplementedError
+    def __repr__(self):
+        if self.value is None or (isinstance(self.value, bool) and not self.value):
+            return '# CONFIG_%s is not set' % self.key
+        elif isinstance(self.value, bool):
+            assert self.value
+            return 'CONFIG_%s=y' % self.key
+        elif isinstance(self.value, int):
+            return 'CONFIG_%s=%d' % (self.key, self.value)
+        elif isinstance(self.value, str):
+            return 'CONFIG_%s="%s"' % (self.key, self.value)
+        raise NotImplementedError
 
 def parse_value(raw):
     

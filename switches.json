@@ -81,6 +81,13 @@
       "cipher" : "enabled"
      }
   }, {
+    "name" : "production_access_b2b_e",
+    "layer" : "access_b2b_e",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
     "name" : "unilac_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"unilac"},

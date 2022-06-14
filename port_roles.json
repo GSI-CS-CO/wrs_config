@@ -86,6 +86,20 @@
       {"ref":"#extern"} ],
     "comment" : "Local Master WRS - service up-link" },
 
+  "service_trunk_common_ul": {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "prod"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "unilac"},
+      {"ref" : "vlans", "name" : "timing"} ],
+    "comment" : "Service WRS - cascading" },
+
   "802.1x" : {
     "ptp_mode" : "master",
     "port_mode" : "access",

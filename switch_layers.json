@@ -65,7 +65,7 @@
         "9" : {"role" : {"ref":"port_roles", "name":"service_trunk_dl"}},
         "10": {"role" : {"ref":"port_roles", "name":"service_trunk_dl"}},
         "11": {"role" : "default"},
-        "12": {"role" : {"ref":"port_roles", "name":"service_trunk_common_ul"},
+        "12": {"role" : {"ref":"port_roles", "name":"service_trunk_common_ul"}},
         "13": {"role" : {"ref":"port_roles", "name":"tap_trunk"}},
         "14": {"role" : {"ref":"port_roles", "name":"tap_trunk"}},
         "15": {"role" : {"ref":"port_roles", "name":"service_access"}},

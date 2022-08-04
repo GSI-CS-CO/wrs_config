@@ -232,13 +232,9 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
 
   config_obj['configPorts'] = config_items
 
-  # configRvlan
-  if 'rvlan' in switch: # non-default settings for RVLAN
-    for key in switch['rvlan']:
-      config_obj['configRvlan'][key] = switch['rvlan'][key]
-
   # configVlanPorts
   config_items = []
+  rvlanUnauthPorts = []  # ports excluded from authentication
   for port in config_obj['configVlanPorts']:
     if port['portNumber'] in wrs_port_model['ports']:
 
@@ -251,6 +247,7 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
             port['vlanPortUntag'] = 'true'
           elif roleConfig['port_mode'] == 'trunk':
             port['vlanPortLldpTxVid'] = items['vlans']['lldp_tx']['vid']
+            rvlanUnauthPorts.append(port['portNumber'])
 
       if 'ptp_vid' in roleConfig:
         port['vlanPortPtpVidEnabled'] = 'y'
@@ -260,10 +257,27 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
       if 'pvid' in roleConfig:
         if roleConfig['pvid'] is not None:
           port['vlanPortVid'] = roleConfig['pvid']
+          if roleConfig['pvid'] != items['vlans']['service_ul']['vid']:
+            rvlanUnauthPorts.append(port['portNumber'])
 
       config_items.append(port)
 
   config_obj['configVlanPorts'] = config_items
+
+  # configRvlan
+  if 'rvlan' in switch: # non-default settings for RVLAN
+    if 'unauthPorts' in switch['rvlan']:
+      rvlanUnauthPorts.append(switch['rvlan']['unauthPorts'])
+
+    uniqueUnauthPorts = set(rvlanUnauthPorts)  # remove duplicates
+    for key in switch['rvlan']:
+      if 'unauthPorts' == key:
+        config_obj['configRvlan'][key] = ",".join(uniqueUnauthPorts)
+      else:
+        config_obj['configRvlan'][key] = switch['rvlan'][key]
+  else:   # default settings for RVLAN
+    uniqueUnauthPorts = set(rvlanUnauthPorts)
+    config_obj['configRvlan']['unauthPorts'] = ",".join(uniqueUnauthPorts)
 
   # configVlans
   if len(rtu_config):

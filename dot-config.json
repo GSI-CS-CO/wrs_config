@@ -137,7 +137,7 @@
     "itemConfig" : "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED"
   }, {
     "itemName" : "Syslog server",
-    "itemValue" : "192.168.16.10",
+    "itemValue" : "140.181.134.178",
     "itemConfig" : "CONFIG_REMOTE_SYSLOG_SERVER"
   }, {
     "itemName" : "Try DHCP, otherwise use static IP",
@@ -741,7 +741,7 @@
     "defVlan" : 2589,
     "unauthVlan" : 2588,
     "obey" : "false",
-    "servers" : "192.168.16.181,192.168.16.182",
+    "servers" : "140.181.139.86,140.181.139.88",
     "secret" : "auhei8Ha",
     "unauthPorts" : ""
   }

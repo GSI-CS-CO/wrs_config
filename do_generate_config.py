@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Script tool to generate WRS configuration (dot-config)
 # The configuration is generated in 2 steps:
@@ -31,7 +31,7 @@ def generate_config(switches, object_dir, config_dir):
     config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
 
     # generate configuration (shell command)
-    os.system('python wrs-config-generator/generate_config.py --json=' + object_filepath + '.json --config=' + config_filepath)
+    os.system('python3 wrs-config-generator/generate_config.py --json=' + object_filepath + '.json --config=' + config_filepath)
 
 def generate_port_model(switches, config_dir, graph_dir=None):
 

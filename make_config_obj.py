@@ -1,6 +1,6 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import copy, json, os
+import copy, json, os, crypt
 from getpass import getuser as gp_getuser
 from socket import gethostname as sk_gethostname
 import subprocess
@@ -324,15 +324,15 @@ def generate_root_passwd_cipher():
     plain_password = input('### Enter WRS root password ###: ') # works with 3.8
 
   # crypt has no attribute METHOD_MD5 in Python 2.7
-  #cipher = crypt.crypt(plain, crypt.METHOD_MD5)
+  cipher = crypt.crypt(plain_password, crypt.METHOD_MD5)
 
-  args = 'mkpasswd -5 ' + plain_password
-  try:
-    cipher = subprocess.check_output(args, shell=True)
-    cipher = cipher.decode("utf-8").strip('\n')
-  except subprocess.CalledProcessError as e:
-    print ('Error: Failed to create WRS root password cipher!')
-    print (e)
+  #args = 'mkpasswd -5 ' + plain_password
+  #try:
+  #  cipher = subprocess.check_output(args, shell=True)
+  #  cipher = cipher.decode("utf-8").strip('\n')
+  #except subprocess.CalledProcessError as e:
+  #  print ('Error: Failed to create WRS root password cipher!')
+  #  print (e)
 
   return cipher
 

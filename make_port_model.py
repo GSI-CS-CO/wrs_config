@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''
 Make WRS port-model from WRS configuration
@@ -468,7 +468,7 @@ def make(config_filepath, graph_filepath):
 	# create an DOT graph and export to SVG format
 	create_dot_file(graph_filepath, wrs_name, table)
 	dot_export_cmd = ["dot", "-Tsvg", "-o", graph_filepath + ".svg", graph_filepath + ".dot"]
-	return subprocess.run(dot_export_cmd)
+	return subprocess.run(dot_export_cmd).returncode
 
 if __name__ == '__main__':
 

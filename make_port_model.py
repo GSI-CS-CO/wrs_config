@@ -3,7 +3,8 @@
 '''
 Make WRS port-model from WRS configuration
 '''
-import json, re, bisect, itertools, pydot
+import json, re, bisect, itertools
+import subprocess
 
 config_file = 'dot-config'
 line_regex = None
@@ -415,6 +416,19 @@ def build_html_table(port_config_obj, wrs_name):
 
 	return line
 
+def create_dot_file(filepath, wrs_name, html_table):
+    # Create a DOT file from a given 'html_table' line by line
+
+    dotlines = "graph G {\n"
+    dotlines += "rankdir=TB;\n"
+    dotlines += wrs_name + "[shape=plaintext, label=\n"
+    dotlines += html_table
+    dotlines += ",];\n"
+    dotlines +="}"
+    dot_filepath = filepath + '.dot'
+    with open(dot_filepath, 'w') as f:
+        return f.write(dotlines)
+
 def make(config_filepath, graph_filepath):
 
 	lines = []
@@ -452,12 +466,9 @@ def make(config_filepath, graph_filepath):
 	table = build_html_table(port_config_obj, wrs_name)
 
 	# create an DOT graph and export to SVG format
-	graph = pydot.Dot(graph_type='graph', rankdir='TB')
-	wrs_model = pydot.Node(name=wrs_name, shape='plaintext', label=table)
-	graph.add_node(wrs_model)
-
-	graph.write(graph_filepath + '.dot')
-	return graph.write_svg(graph_filepath + '.svg')
+	create_dot_file(graph_filepath, wrs_name, table)
+	dot_export_cmd = ["dot", "-Tsvg", "-o", graph_filepath + ".svg", graph_filepath + ".dot"]
+	return subprocess.run(dot_export_cmd)
 
 if __name__ == '__main__':
 

@@ -39,7 +39,7 @@ Optionally, one can make WRS port-model from the generated configuration. The po
 
 ## Installation
 
-A host with Python (2.7) and pydot package is required!
+A host with Python (2.7) and graphviz package is required!
 
 1. Download the repo.
 
@@ -62,7 +62,7 @@ Once user is confident with newly generated dot-configs, they have to committed 
 
 ## Which Packages are Required?
 
-### System
+### System (Debian-based)
 
 ```
 (sudo) apt install pip
@@ -74,5 +74,4 @@ Once user is confident with newly generated dot-configs, they have to committed 
 
 ```
 (sudo) pip install requests
-(sudo) pip install pydot
 ```

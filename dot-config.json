@@ -547,6 +547,14 @@
     "wavelength" : "1310+1490",
     "partNumber" : "BO15C3149620D",
     "vendorSerial" : null
+  }, {
+    "sfpId" : "11",
+    "vendorName" : "OEM",
+    "dtx" : "0",
+    "drx" : "0",
+    "wavelength" : "0",
+    "partNumber" : "SFP1G-T",
+    "vendorSerial" : null
   } ],
   "configVlanPorts" : [ {
     "portNumber" : "1",

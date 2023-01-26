@@ -266,15 +266,18 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
 
   # configRvlan
   if 'rvlan' in switch: # non-default settings for RVLAN
+    # get values from 'switches.json'
+    for key in switch['rvlan']:
+      config_obj['configRvlan'][key] = switch['rvlan'][key]
+
+    # unauthenPorts: join unauthenticated ports given in 'rvlan' and those got from the port roles
     if 'unauthPorts' in switch['rvlan']:
       rvlanUnauthPorts.append(switch['rvlan']['unauthPorts'])
 
+    # update unauthenPorts with all unauthenticated ports
     uniqueUnauthPorts = set(rvlanUnauthPorts)  # remove duplicates
-    for key in switch['rvlan']:
-      if 'unauthPorts' == key:
-        config_obj['configRvlan'][key] = ",".join(uniqueUnauthPorts)
-      else:
-        config_obj['configRvlan'][key] = switch['rvlan'][key]
+    config_obj['configRvlan']['unauthPorts'] = ",".join(uniqueUnauthPorts)
+
   else:   # default settings for RVLAN
     uniqueUnauthPorts = set(rvlanUnauthPorts)
     config_obj['configRvlan']['unauthPorts'] = ",".join(uniqueUnauthPorts)

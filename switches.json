@@ -167,5 +167,26 @@
     "name" : "timing_access_all",
     "layer" : "access_all",
     "vlan" : {"ref":"vlans", "name":"timing"}
+  }, {
+    "name" : "production_fbas_master",
+    "layer" : "fbas_master",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
+    "name" : "production_fbas_distribution",
+    "layer" : "fbas_distribution",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
+    "name" : "production_fbas_access",
+    "layer" : "fbas_access",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   } ]
 }

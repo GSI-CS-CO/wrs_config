@@ -40,6 +40,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "timing"},
       {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "unilac"} ],
     "comment" : "service/diagnostic device" },
 
@@ -55,6 +56,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "timing"},
       {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "unilac"} ],
     "comment" : "tap trunk" },
 
@@ -73,6 +75,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "timing"},
       {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "unilac"} ],
     "comment" : "tap access" },
 
@@ -97,6 +100,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "int"},
       {"ref" : "vlans", "name" : "unilac"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "timing"} ],
     "comment" : "Service WRS - cascading" },
 
@@ -118,7 +122,7 @@
     "rvid" : [
       {"ref" : "vlans", "name" : "service_dl"},
       {"ref" : "#extern"} ],
-    "comment" : "Data Master" },
+    "comment" : "Data Master, Bunch-to-Bucket" },
 
   "monitor" : {
     "ptp_mode" : "non-wr",
@@ -161,5 +165,82 @@
     "rvid" : [
       {"ref" : "vlans", "name" : "service_ul"},
       {"ref" : "#extern"} ],
-    "comment" : "PTP slave, up-link for trunk" }
+    "comment" : "PTP slave, up-link for trunk" },
+
+  "ctrl_trunk_master" : {
+    "ptp_mode" : "master",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : [
+      {"ref" : "#extern"} ],
+    "comment" : "cascading control (DM, B2B) traffic, down-link" },
+
+  "ctrl_trunk_slave" : {
+    "ptp_mode" : "slave",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : null,
+   "comment" : "cascading control (DM, B2B) traffic, up-link" },
+
+  "fbas_trunk_master" : {
+    "ptp_mode" : "master",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "fbas"},
+      {"ref" : "#extern"} ],
+    "comment" : "FBAS only, PTP master, down-link for trunk" },
+
+  "fbas_trunk_slave" : {
+    "ptp_mode" : "slave",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "fbas"} ],
+    "comment" : "FBAS only, PTP slave, up-link for trunk" },
+
+  "fbas_service_trunk_ul": {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "fbas"} ],
+    "comment" : "Local Master WRS - service up-link" },
+
+  "fbas_tx" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref" : "vlans", "name" : "fbas"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "prod"},
+      {"ref" : "vlans", "name" : "unilac"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "timing"} ],
+    "comment" : "FBAS transmitter node" },
+
+  "fbas_rx" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref" : "vlans", "name" : "service_ul"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "fbas"},
+      {"ref" : "vlans", "name" : "prod"},
+      {"ref" : "vlans", "name" : "unilac"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "timing"} ],
+    "comment" : "FBAS receiver node" }
 }

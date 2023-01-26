@@ -27,5 +27,7 @@
   "int" : {
     "vid" : "2593", "fid" : "2593", "comment" : "Integration WR group"},
   "unilac" : {
-    "vid" : "2594", "fid" : "2594", "comment" : "UNILAC WR group"}
+    "vid" : "2594", "fid" : "2594", "comment" : "UNILAC WR group"},
+  "fbas" : {
+    "vid" : "2595", "fid" : "2595", "comment" : "FBAS WR group"}
 }

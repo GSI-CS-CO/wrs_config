@@ -91,9 +91,9 @@
         "11": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
         "12": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
         "13": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
-        "14": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "14": {"role" : {"ref":"port_roles", "name":"ctrl"}},
         "15": {"role" : {"ref":"port_roles", "name":"ctrl"}},
-        "16": {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "16": {"role" : {"ref":"port_roles", "name":"ctrl_trunk_master"}},
         "17": {"role" : {"ref":"port_roles", "name":"service_trunk_ul"}},
         "18": {"role" : {"ref":"port_roles", "name":"service_access"}}
     },
@@ -385,5 +385,78 @@
         "17": {"role" : {"ref":"port_roles", "name":"node"}},
         "18": {"role" : {"ref":"port_roles", "name":"node"}}
     },
-    "comment" : "special access WRS for B2B: ports 2, 3, 4, 5 are reserved for sender nodes" }
+    "comment" : "special access WRS for B2B: ports 2, 3, 4, 5 are reserved for sender nodes" },
+
+  "fbas_master": {
+    "timing_mode" : "BC",
+    "ports" : {
+        "1" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "2" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "3" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "4" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "5" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "7" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "8" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "9" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "10": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "11": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "12": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "13": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "14": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "15": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "16": {"role" : {"ref":"port_roles", "name":"ctrl_trunk_slave"}},
+        "17": {"role" : {"ref":"port_roles", "name":"fbas_service_trunk_ul"}},
+        "18": {"role" : {"ref":"port_roles", "name":"service_access"}}
+    },
+    "comment" : "FBAS Master WRS" },
+
+  "fbas_distribution" : {
+    "timing_mode" : "BC",
+    "ports" : {
+        "1" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_slave"}},
+        "2" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "3" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "4" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "5" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "7" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "8" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "9" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "10": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "11": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "12": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "13": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "14": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "15": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "16": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "17": {"role" : {"ref":"port_roles", "name":"fbas_trunk_master"}},
+        "18": {"role" : {"ref":"port_roles", "name":"tap_access"}}
+    },
+    "comment" : "FBAS Distribution WRS" },
+
+  "fbas_access" : {
+    "timing_mode" : "BC",
+    "ports" : {
+        "1" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_slave"}},
+        "2" : {"role" : {"ref":"port_roles", "name":"fbas_rx"}},
+        "3" : {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "4" : {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "5" : {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "7" : {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "8" : {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "9" : {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "10": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "11": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "12": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "13": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "14": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "15": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "16": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "17": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
+        "18": {"role" : {"ref":"port_roles", "name":"fbas_tx"}}
+    },
+    "comment" : "FBAS Access WRS" }
+
 }

@@ -188,5 +188,110 @@
     "optional" : {
       "cipher" : "enabled"
      }
-  } ]
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_clockmaster",
+    "layer" : "clock_master",
+    "vlan" : {"ref":"vlans", "name":"ptp_gm"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_NTP_SERVER" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1",
+      "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED" : "true"
+     }
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_service",
+    "layer" : "service",
+    "vlan" : {"ref":"vlans", "name":"service_dl"},
+    "rvlan" : {
+      "enable" : "n"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_NTP_SERVER" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_localmaster",
+    "layer" : "local_master",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_distribution",
+    "layer" : "distribution",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_access",
+    "layer" : "access",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_fbas_master",
+    "layer" : "fbas_master",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_fbas_distribution",
+    "layer" : "fbas_distribution",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_fbas_access",
+    "layer" : "fbas_access",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+ } ]
 }

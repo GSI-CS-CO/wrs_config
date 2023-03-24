@@ -457,6 +457,30 @@
         "17": {"role" : {"ref":"port_roles", "name":"fbas_tx"}},
         "18": {"role" : {"ref":"port_roles", "name":"fbas_tx"}}
     },
-    "comment" : "FBAS Access WRS" }
+    "comment" : "FBAS Access WRS" },
+
+  "fbas_access_xx" : {
+    "timing_mode" : "BC",
+    "ports" : {
+        "1" : {"role" : {"ref":"port_roles", "name":"fbas_trunk_slave"}},
+        "2" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "3" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "4" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "5" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "7" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "8" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "9" : {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "10": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "11": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "12": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "13": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "14": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "15": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "16": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "17": {"role" : {"ref":"port_roles", "name":"fbas_xx"}},
+        "18": {"role" : {"ref":"port_roles", "name":"fbas_xx"}}
+    },
+    "comment" : "FBAS Access WRS, enable traffic between TX & RX nodes" }
 
 }

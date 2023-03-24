@@ -242,5 +242,20 @@
       {"ref" : "vlans", "name" : "int"},
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "timing"} ],
-    "comment" : "FBAS receiver node" }
+    "comment" : "FBAS receiver node" },
+
+  "fbas_xx" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref" : "vlans", "name" : "fbas"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "prod"},
+      {"ref" : "vlans", "name" : "unilac"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "timing"},
+      {"ref" : "vlans", "name" : "fbas"} ],
+    "comment" : "FBAS TX & RX nodes, enable traffic between TX & RX nodes" }
 }

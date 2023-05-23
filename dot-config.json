@@ -528,7 +528,7 @@
     "vendorName" : "OEM",
     "dtx" : "0",
     "drx" : "0",
-    "wavelength" : "0",
+    "wavelength" : "1310+1410",
     "partNumber" : "SFP-T",
     "vendorSerial" : null
   }, {
@@ -552,7 +552,7 @@
     "vendorName" : "OEM",
     "dtx" : "0",
     "drx" : "0",
-    "wavelength" : "0",
+    "wavelength" : "1310+1490",
     "partNumber" : "SFP1G-T",
     "vendorSerial" : null
   } ],

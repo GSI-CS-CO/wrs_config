@@ -86,7 +86,8 @@
     "ptp_vid" : null,
     "rvid" : [
       {"ref" : "vlans", "name" : "service_ul"},
-      {"ref":"#extern"} ],
+      {"ref":"#extern"},
+      {"ref" : "vlans", "name" : "fbas"} ],
     "comment" : "Local Master WRS - service up-link" },
 
   "service_trunk_common_ul": {

@@ -293,7 +293,36 @@
       "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
       "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
      }
- }, {
+  }, {
+    "description" : "home-office network: analogous to production",
+    "name" : "home_fbas_access_xx",
+    "layer" : "fbas_access_xx",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "rvlan" : {
+      "servers" : "192.168.2.1"
+    },
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_RVLAN_RADIUS_SERVERS" : "192.168.2.1",
+      "CONFIG_REMOTE_SYSLOG_SERVER" : "192.168.2.1"
+     }
+  }, {
+    "name" : "prod_fbas_access_xx",
+    "layer" : "fbas_access_xx",
+    "vlan" : {"ref":"vlans", "name":"prod"}
+  }, {
+    "name" : "unilac_fbas_access_xx",
+    "layer" : "fbas_access_xx",
+    "vlan" : {"ref":"vlans", "name":"unilac"}
+  }, {
+    "name" : "integration_fbas_access_xx",
+    "layer" : "fbas_access_xx",
+    "vlan" : {"ref":"vlans", "name":"int"}
+  }, {
+    "name" : "user_fbas_access_xx",
+    "layer" : "fbas_access_xx",
+    "vlan" : {"ref":"vlans", "name":"user"}
+  }, {
     "name" : "timing_fbas_access_xx",
     "layer" : "fbas_access_xx",
     "vlan" : {"ref":"vlans", "name":"timing"}

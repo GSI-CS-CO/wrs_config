@@ -40,6 +40,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "timing"},
       {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "unilac"} ],
     "comment" : "service/diagnostic device" },
 
@@ -55,6 +56,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "timing"},
       {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "unilac"} ],
     "comment" : "tap trunk" },
 
@@ -73,6 +75,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "timing"},
       {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "unilac"} ],
     "comment" : "tap access" },
 
@@ -83,6 +86,7 @@
     "ptp_vid" : null,
     "rvid" : [
       {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref":"#extern"} ],
     "comment" : "Local Master WRS - service up-link" },
 
@@ -97,6 +101,7 @@
       {"ref" : "vlans", "name" : "user"},
       {"ref" : "vlans", "name" : "int"},
       {"ref" : "vlans", "name" : "unilac"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "vlans", "name" : "timing"} ],
     "comment" : "Service WRS - cascading" },
 
@@ -128,6 +133,7 @@
     "rvid" : [
       {"ref" : "vlans", "name" : "service_dl"},
       {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "#extern"} ],
     "comment" : "wri port for a non-WR, monitor host (eg., tsl019)" },
 
@@ -150,6 +156,7 @@
     "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
     "rvid" : [
       {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "#extern"} ],
     "comment" : "PTP master, down-link for trunk" },
 
@@ -160,6 +167,7 @@
     "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
     "rvid" : [
       {"ref" : "vlans", "name" : "service_ul"},
+      {"ref" : "vlans", "name" : "fbas"},
       {"ref" : "#extern"} ],
     "comment" : "PTP slave, up-link for trunk" },
 

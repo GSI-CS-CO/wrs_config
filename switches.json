@@ -167,5 +167,9 @@
     "name" : "timing_access_all",
     "layer" : "access_all",
     "vlan" : {"ref":"vlans", "name":"timing"}
+  }, {
+    "name" : "timing_access_fbas",
+    "layer" : "access_fbas",
+    "vlan" : {"ref":"vlans", "name":"timing"}
   } ]
 }

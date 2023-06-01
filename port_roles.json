@@ -161,5 +161,17 @@
     "rvid" : [
       {"ref" : "vlans", "name" : "service_ul"},
       {"ref" : "#extern"} ],
-    "comment" : "PTP slave, up-link for trunk" }
+    "comment" : "PTP slave, up-link for trunk" },
+
+  "fbas" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref" : "vlans", "name" : "fbas"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "#extern"},
+      {"ref" : "vlans", "name" : "fbas"},
+      {"ref" : "vlans", "name" : "service_dl"} ],
+    "comment" : "allow traffic between FBAS nodes" }
+
 }

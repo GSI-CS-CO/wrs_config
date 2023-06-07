@@ -167,5 +167,46 @@
     "name" : "timing_access_all",
     "layer" : "access_all",
     "vlan" : {"ref":"vlans", "name":"timing"}
+  }, {
+    "name" : "production_access_fbas",
+    "layer" : "access_fbas",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+    },
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
+    "name" : "unilac_access_fbas",
+    "layer" : "access_fbas",
+    "vlan" : {"ref":"vlans", "name":"unilac"},
+    "optional" : {
+      "cipher" : "enabled"
+    },
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
+    "name" : "integration_access_fbas",
+    "layer" : "access_fbas",
+    "vlan" : {"ref":"vlans", "name":"int"},
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
+    "name" : "user_access_fbas",
+    "layer" : "access_fbas",
+    "vlan" : {"ref":"vlans", "name":"user"},
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
+    "name" : "timing_access_fbas",
+    "layer" : "access_fbas",
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   } ]
 }

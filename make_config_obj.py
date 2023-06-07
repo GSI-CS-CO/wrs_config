@@ -136,6 +136,7 @@ def configure_ports(items, vlan, wrs_port_model):
         role['rvid'] = evaluate_rvid(items, role['rvid'], vid)
 
         wrs_port_model['ports'][idx]['role'] = role
+        wrs_port_model['ports'][idx]['role']['name'] = name
         ##print (idx, name, port[idx]['role'])
 
 def build_rtu_config(items, wrs_port_model):
@@ -245,6 +246,9 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
           port['vlanPortUntag'] = 'false'
           if roleConfig['port_mode'] == 'access':
             port['vlanPortUntag'] = 'true'
+            if 'name' in roleConfig:
+              if roleConfig['name'] in ['service_access', 'tap_access']: # no need to authenticate the service/tap access ports
+                rvlanUnauthPorts.append(port['portNumber'])
           elif roleConfig['port_mode'] == 'trunk':
             port['vlanPortLldpTxVid'] = items['vlans']['lldp_tx']['vid']
             rvlanUnauthPorts.append(port['portNumber'])
@@ -257,8 +261,6 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
       if 'pvid' in roleConfig:
         if roleConfig['pvid'] is not None:
           port['vlanPortVid'] = roleConfig['pvid']
-          if roleConfig['pvid'] != items['vlans']['service_ul']['vid']:
-            rvlanUnauthPorts.append(port['portNumber'])
 
       config_items.append(port)
 

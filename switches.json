@@ -37,7 +37,10 @@
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "production_distribution",
     "layer" : "distribution",
@@ -58,42 +61,60 @@
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "production_access_b2b_a",
     "layer" : "access_b2b_a",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "production_access_b2b_b",
     "layer" : "access_b2b_b",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "production_access_b2b_c",
     "layer" : "access_b2b_c",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "production_access_b2b_e",
     "layer" : "access_b2b_e",
     "vlan" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "unilac_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"unilac"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "unilac_distribution",
     "layer" : "distribution",
@@ -111,7 +132,10 @@
   }, {
     "name" : "user_localmaster",
     "layer" : "local_master",
-    "vlan" : {"ref":"vlans", "name":"user"}
+    "vlan" : {"ref":"vlans", "name":"user"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "user_distribution",
     "layer" : "distribution",
@@ -123,11 +147,17 @@
   }, {
     "name" : "user_access_unilac_gateway",
     "layer" : "access_control_7",
-    "vlan" : {"ref":"vlans", "name":"user"}
+    "vlan" : {"ref":"vlans", "name":"user"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "timing_localmaster",
     "layer" : "local_master",
-    "vlan" : {"ref":"vlans", "name":"timing"}
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "timing_distribution",
     "layer" : "distribution",
@@ -141,12 +171,16 @@
     "layer" : "access_all_and_monitor_18",
     "vlan" : {"ref":"vlans", "name":"timing"},
     "rvlan" : {
-      "unauthPorts" : "18"
+      "unauthPorts" : "18",
+      "obey" : "true"
      }
   }, {
     "name" : "integration_localmaster",
     "layer" : "local_master",
-    "vlan" : {"ref":"vlans", "name":"int"}
+    "vlan" : {"ref":"vlans", "name":"int"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "integration_distribution",
     "layer" : "distribution",
@@ -158,14 +192,23 @@
   }, {
     "name" : "integration_access_b2b_d",
     "layer" : "access_b2b_d",
-    "vlan" : {"ref":"vlans", "name":"int"}
+    "vlan" : {"ref":"vlans", "name":"int"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "integration_access_unilac_gateway",
     "layer" : "access_control_2",
-    "vlan" : {"ref":"vlans", "name":"int"}
+    "vlan" : {"ref":"vlans", "name":"int"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "timing_access_all",
     "layer" : "access_all",
-    "vlan" : {"ref":"vlans", "name":"timing"}
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "rvlan" : {
+      "obey" : "true"
+    }
   } ]
 }

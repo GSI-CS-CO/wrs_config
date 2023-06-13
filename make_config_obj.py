@@ -247,7 +247,7 @@ def build_config_obj(items, wrs_port_model, rtu_config, switch):
           if roleConfig['port_mode'] == 'access':
             port['vlanPortUntag'] = 'true'
             if 'name' in roleConfig:
-              if roleConfig['name'] in ['service_access', 'tap_access']: # no need to authenticate the service/tap access ports
+              if roleConfig['name'] in ['service_access', 'tap_access', 'monitor']: # no need to authenticate the service/tap/monitor access ports
                 rvlanUnauthPorts.append(port['portNumber'])
           elif roleConfig['port_mode'] == 'trunk':
             port['vlanPortLldpTxVid'] = items['vlans']['lldp_tx']['vid']

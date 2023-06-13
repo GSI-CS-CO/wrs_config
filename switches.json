@@ -171,7 +171,6 @@
     "layer" : "access_all_and_monitor_18",
     "vlan" : {"ref":"vlans", "name":"timing"},
     "rvlan" : {
-      "unauthPorts" : "18",
       "obey" : "true"
      }
   }, {

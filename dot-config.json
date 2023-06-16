@@ -313,144 +313,144 @@
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "225959",
-    "dtx" : "224295",
+    "drx" : "275901",
+    "dtx" : "238903",
     "t24p" : "13600"
   }, {
     "portNumber" : "2",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "226090",
-    "dtx" : "224500",
+    "drx" : "278835",
+    "dtx" : "239923",
     "t24p" : "10800"
   }, {
     "portNumber" : "3",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "226250",
-    "dtx" : "224642",
+    "drx" : "277396",
+    "dtx" : "238566",
     "t24p" : "13650"
   }, {
     "portNumber" : "4",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "226197",
-    "dtx" : "224763",
+    "drx" : "277469",
+    "dtx" : "239491",
     "t24p" : "12150"
   }, {
     "portNumber" : "5",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "227321",
-    "dtx" : "224879",
+    "drx" : "277694",
+    "dtx" : "238040",
     "t24p" : "13550"
   }, {
     "portNumber" : "6",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "227509",
-    "dtx" : "225021",
+    "drx" : "277146",
+    "dtx" : "237334",
     "t24p" : "14500"
   }, {
     "portNumber" : "7",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "227743",
-    "dtx" : "225215",
+    "drx" : "278371",
+    "dtx" : "237543",
     "t24p" : "13950"
   }, {
     "portNumber" : "8",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "227833",
-    "dtx" : "225355",
+    "drx" : "278687",
+    "dtx" : "237687",
     "t24p" : "14450"
   }, {
     "portNumber" : "9",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "227993",
-    "dtx" : "225487",
+    "drx" : "278256",
+    "dtx" : "238676",
     "t24p" : "14750"
   }, {
     "portNumber" : "10",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "228104",
-    "dtx" : "225682",
+    "drx" : "278678",
+    "dtx" : "238848",
     "t24p" : "15100"
   }, {
     "portNumber" : "11",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "228600",
-    "dtx" : "225968",
+    "drx" : "279326",
+    "dtx" : "238294",
     "t24p" : "14500"
   }, {
     "portNumber" : "12",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "228733",
-    "dtx" : "226137",
+    "drx" : "278867",
+    "dtx" : "239243",
     "t24p" : "9850"
   }, {
     "portNumber" : "13",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "228899",
-    "dtx" : "226259",
+    "drx" : "231130",
+    "dtx" : "225920",
     "t24p" : "14150"
   }, {
     "portNumber" : "14",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "229102",
-    "dtx" : "226426",
+    "drx" : "233579",
+    "dtx" : "226071",
     "t24p" : "11950"
   }, {
     "portNumber" : "15",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "229506",
-    "dtx" : "226740",
+    "drx" : "233041",
+    "dtx" : "226329",
     "t24p" : "12900"
   }, {
     "portNumber" : "16",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "229594",
-    "dtx" : "226882",
+    "drx" : "232311",
+    "dtx" : "226467",
     "t24p" : "13800"
   }, {
     "portNumber" : "17",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "229740",
-    "dtx" : "227016",
+    "drx" : "230376",
+    "dtx" : "226596",
     "t24p" : "14200"
   }, {
     "portNumber" : "18",
     "proto" : "raw",
     "fiber" : "0",
     "ptpRole" : "none",
-    "drx" : "229932",
-    "dtx" : "227248",
+    "drx" : "230323",
+    "dtx" : "226835",
     "t24p" : "14350"
   } ],
   "configFibers" : [ {

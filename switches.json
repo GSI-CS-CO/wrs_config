@@ -8,7 +8,7 @@
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "10.249.21.223",
+      "CONFIG_NTP_SERVER" : "ntp1.acc.gsi.de",
       "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED" : "true"
      }
   }, {
@@ -17,7 +17,7 @@
     "vlan" : {"ref":"vlans", "name":"ptp_gm"},
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "10.249.21.223",
+      "CONFIG_NTP_SERVER" : "ntp1.acc.gsi.de",
       "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED" : "true"
      }
   }, {
@@ -29,7 +29,7 @@
      },
     "optional" : {
       "cipher" : "enabled",
-      "CONFIG_NTP_SERVER" : "10.249.21.223"
+      "CONFIG_NTP_SERVER" : "ntp1.acc.gsi.de"
      }
   }, {
     "name" : "production_localmaster",

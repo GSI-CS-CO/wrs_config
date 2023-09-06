@@ -137,7 +137,7 @@
     "itemConfig" : "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED"
   }, {
     "itemName" : "Syslog server",
-    "itemValue" : "140.181.134.178",
+    "itemValue" : "logging.acc.gsi.de",
     "itemConfig" : "CONFIG_REMOTE_SYSLOG_SERVER"
   }, {
     "itemName" : "Try DHCP, otherwise use static IP",

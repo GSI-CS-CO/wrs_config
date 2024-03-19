@@ -150,6 +150,26 @@
       {"ref" : "#extern"} ],
     "comment" : "WR node" },
 
+  "ctrl_sync": {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref":"#extern"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "#sync"},
+      {"ref" : "#extern"} ],
+    "comment" : "reserved for sender node that is synchronized with Datamaster of #sync VLAN" },
+
+  "sync": {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "#extern"} ],
+    "comment" : "reserved for synchronizing sender nodes, unidirectional" },
+
   "trunk_master" : {
     "ptp_mode" : "master",
     "port_mode" : "trunk",

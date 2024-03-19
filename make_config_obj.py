@@ -70,7 +70,7 @@ def get_items(json_files):
 
   return items
 
-def evaluate_rvid(items, vlans, extern_vid):
+def evaluate_rvid(items, vlans, extern_vid, sync_vid):
 
   # Return a list of VIDs for routing (RVIDs).
   rvids = []
@@ -82,45 +82,69 @@ def evaluate_rvid(items, vlans, extern_vid):
           if vlan['ref'] in items:
             ref = vlan['ref']
             name = vlan['name']
-            rvids.append(copy.deepcopy(items[ref][name]['vid']))
+            if items[ref][name]['vid'] not in rvids:   # add VID only once
+              rvids.append(copy.deepcopy(items[ref][name]['vid']))
           elif '#extern' in vlan['ref']:
             rvids.append(extern_vid)
+          elif '#sync' in vlan['ref']:
+            rvids.append(sync_vid)
       else:
         rvids.append(vlan)
 
   return rvids
 
-def evaluate_vid(items, vlan, extern_vid):
+def evaluate_vid(items, vlan_entry, extern_vid):
 
   # Return VLAN ID (VID) if 'vlan' has valid value, otherwise None.
-  if vlan is None:
-    return vlan
+  if vlan_entry is None:
+    return vlan_entry
 
   vid = None
-  if isinstance(vlan, dict):
-    if 'ref' in vlan:
-      if vlan['ref'] in items:
-        ref = vlan['ref']
-        name = vlan['name']
+  if isinstance(vlan_entry, dict):
+    if 'ref' in vlan_entry:
+      if vlan_entry['ref'] in items:
+        ref = vlan_entry['ref']
+        name = vlan_entry['name']
         vid = items[ref][name]['vid']
-      elif '#extern' in vlan['ref']:
+      elif '#extern' in vlan_entry['ref']:
         vid = extern_vid
-  else:
-    vid = vlan
+  elif isinstance(vlan_entry, int):
+    vid = vlan_entry
 
   return vid
 
-def configure_ports(items, vlan, wrs_port_model):
+def evaluate_sync_vid(items, sync_entry):
+
+  # Return VLAN ID (VID) if 'sync' has valid value, otherwise None.
+  if sync_entry is None:
+    return sync_entry
+
+  vid = None
+  if isinstance(sync_entry, dict):
+    if 'ref' in sync_entry:
+      if sync_entry['ref'] in items:
+        ref = sync_entry['ref']
+        name = sync_entry['name']
+        vid = items[ref][name]['vid']
+  elif isinstance(sync_entry, int):
+    vid = sync_entry
+
+  return vid
+
+def configure_ports(items, vlan_entry, sync_entry, wrs_port_model):
 
   # Set the VLAN parameters to all ports of 'wrs_port_model' based on
   # the pre-defined WRS layer (in 'items') and 'vlan'
 
   # get VLAN ID (VID) to which the given switch belongs
-  vid = evaluate_vid(items, vlan, None)
+  vid = evaluate_vid(items, vlan_entry, None)
 
   if vid is None:
     print ('Error: Null VID')
     return
+
+  # get synchronization VLAN ID
+  sync_vid = evaluate_sync_vid(items, sync_entry)
 
   ports = wrs_port_model['ports']
   for idx in ports.keys():
@@ -133,7 +157,7 @@ def configure_ports(items, vlan, wrs_port_model):
 
         role['pvid'] = evaluate_vid(items, role['pvid'], vid)
         role['ptp_vid'] = evaluate_vid(items, role['ptp_vid'], vid)
-        role['rvid'] = evaluate_rvid(items, role['rvid'], vid)
+        role['rvid'] = evaluate_rvid(items, role['rvid'], vid, sync_vid)
 
         wrs_port_model['ports'][idx]['role'] = role
         wrs_port_model['ports'][idx]['role']['name'] = name
@@ -384,7 +408,10 @@ def make(switches, out_dir):
     wrs_port_model = copy.deepcopy(items['switch_layers'][switch['layer']])
 
     # set VLANs configuration to the WRS port-model
-    configure_ports(items, switch['vlan'], wrs_port_model)
+    if 'sync' in switch:
+      configure_ports(items, switch['vlan'], switch['sync'], wrs_port_model)
+    else:
+      configure_ports(items, switch['vlan'], None, wrs_port_model)
 
     # extract RTU configuration (per-VLAN config) from the WRS port-model
     rtu_config = build_rtu_config(items, wrs_port_model)

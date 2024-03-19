@@ -99,6 +99,30 @@
     },
     "comment" : "Local Master WRS" },
 
+  "local_master_sync": {
+    "timing_mode" : "BC",
+    "ports" : {
+        "1" : {"role" : {"ref":"port_roles", "name":"ptp_grand_slave"}},
+        "2" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "3" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "4" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "5" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "7" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "8" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "9" : {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "10": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "11": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "12": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "13": {"role" : {"ref":"port_roles", "name":"trunk_master"}},
+        "14": {"role" : {"ref":"port_roles", "name":"sync"}},
+        "15": {"role" : {"ref":"port_roles", "name":"ctrl_sync"}},
+        "16": {"role" : {"ref":"port_roles", "name":"ctrl_sync"}},
+        "17": {"role" : {"ref":"port_roles", "name":"service_trunk_ul"}},
+        "18": {"role" : {"ref":"port_roles", "name":"service_access"}}
+    },
+    "comment" : "Local Master WRS, for synchronizing sender nodes" },
+
   "distribution" : {
     "timing_mode" : "BC",
     "ports" : {

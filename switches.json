@@ -175,8 +175,17 @@
      }
   }, {
     "name" : "integration_localmaster",
-    "layer" : "local_master",
-    "vlan" : {"ref":"vlans", "name":"int"},
+    "layer" : "local_master_sync",
+    "vlan" : {"ref" : "vlans", "name" : "int"},
+    "sync" : {"ref" : "vlans", "name" : "uni_int"},
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
+    "name" : "uni_int_localmaster",
+    "layer" : "local_master_sync",
+    "vlan" : {"ref" : "vlans", "name" : "uni_int"},
+    "sync" : {"ref" : "vlans", "name" : "int"},
     "rvlan" : {
       "obey" : "true"
     }

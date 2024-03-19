@@ -30,6 +30,6 @@
     "vid" : "2593", "fid" : "2593", "comment" : "Integration WR group"},
   "unilac" : {
     "vid" : "2594", "fid" : "2594", "comment" : "UNILAC WR group"},
-  "uni_int" : {
+  "uni-int" : {
     "vid" : "2599", "fid" : "2599", "comment" : "Unilac+Integration WR group"}
 }

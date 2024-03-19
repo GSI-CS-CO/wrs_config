@@ -177,7 +177,7 @@
     "name" : "integration_localmaster",
     "layer" : "local_master_sync",
     "vlan" : {"ref" : "vlans", "name" : "int"},
-    "sync" : {"ref" : "vlans", "name" : "uni_int"},
+    "sync" : {"ref" : "vlans", "name" : "uni-int"},
     "rvlan" : {
       "obey" : "true"
     }
@@ -204,21 +204,21 @@
       "obey" : "true"
     }
   }, {
-    "name" : "uni_int_localmaster",
+    "name" : "uni-int_localmaster",
     "layer" : "local_master_sync",
-    "vlan" : {"ref" : "vlans", "name" : "uni_int"},
+    "vlan" : {"ref" : "vlans", "name" : "uni-int"},
     "sync" : {"ref" : "vlans", "name" : "int"},
     "rvlan" : {
       "obey" : "true"
     }
   }, {
-    "name" : "uni_int_distribution",
+    "name" : "uni-int_distribution",
     "layer" : "distribution",
-    "vlan" : {"ref":"vlans", "name":"uni_int"}
+    "vlan" : {"ref":"vlans", "name":"uni-int"}
   }, {
-    "name" : "uni_int_access",
+    "name" : "uni-int_access",
     "layer" : "access",
-    "vlan" : {"ref":"vlans", "name":"uni_int"}
+    "vlan" : {"ref":"vlans", "name":"uni-int"}
   }, {
     "name" : "timing_access_all",
     "layer" : "access_all",

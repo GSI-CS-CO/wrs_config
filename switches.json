@@ -182,14 +182,6 @@
       "obey" : "true"
     }
   }, {
-    "name" : "uni_int_localmaster",
-    "layer" : "local_master_sync",
-    "vlan" : {"ref" : "vlans", "name" : "uni_int"},
-    "sync" : {"ref" : "vlans", "name" : "int"},
-    "rvlan" : {
-      "obey" : "true"
-    }
-  }, {
     "name" : "integration_distribution",
     "layer" : "distribution",
     "vlan" : {"ref":"vlans", "name":"int"}
@@ -211,6 +203,22 @@
     "rvlan" : {
       "obey" : "true"
     }
+  }, {
+    "name" : "uni_int_localmaster",
+    "layer" : "local_master_sync",
+    "vlan" : {"ref" : "vlans", "name" : "uni_int"},
+    "sync" : {"ref" : "vlans", "name" : "int"},
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
+    "name" : "uni_int_distribution",
+    "layer" : "distribution",
+    "vlan" : {"ref":"vlans", "name":"uni_int"}
+  }, {
+    "name" : "uni_int_access",
+    "layer" : "access",
+    "vlan" : {"ref":"vlans", "name":"uni_int"}
   }, {
     "name" : "timing_access_all",
     "layer" : "access_all",

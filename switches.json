@@ -130,6 +130,13 @@
       "cipher" : "enabled"
      }
   }, {
+    "name" : "unilac_access_pz_sync",
+    "layer" : "access_control_9",
+    "vlan" : {"ref":"vlans", "name":"unilac"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
+  }, {
     "name" : "user_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"user"},

@@ -135,7 +135,10 @@
     "vlan" : {"ref":"vlans", "name":"unilac"},
     "optional" : {
       "cipher" : "enabled"
-     }
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }, {
     "name" : "user_localmaster",
     "layer" : "local_master",

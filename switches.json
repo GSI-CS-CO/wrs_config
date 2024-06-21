@@ -33,8 +33,9 @@
      }
   }, {
     "name" : "production_localmaster",
-    "layer" : "local_master",
+    "layer" : "local_master_sync",
     "vlan" : {"ref":"vlans", "name":"prod"},
+    "sync" : {"ref":"vlans", "name":"unilac"},
     "optional" : {
       "cipher" : "enabled"
      },
@@ -107,8 +108,9 @@
     }
   }, {
     "name" : "unilac_localmaster",
-    "layer" : "local_master",
+    "layer" : "local_master_sync",
     "vlan" : {"ref":"vlans", "name":"unilac"},
+    "sync" : {"ref":"vlans", "name":"prod"},
     "optional" : {
       "cipher" : "enabled"
      },

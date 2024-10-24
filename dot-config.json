@@ -1,6 +1,6 @@
 {
   "switchName" : "nwt????m66",
-  "CONFIG_DOTCONF_FW_VERSION" : "6.1",
+  "CONFIG_DOTCONF_FW_VERSION" : "7.0",
   "CONFIG_DOTCONF_HW_VERSION" : "",
   "requestedByUser" : "GSI/TOS",
   "configurationItems" : [ {

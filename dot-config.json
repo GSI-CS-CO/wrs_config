@@ -564,7 +564,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "2",
@@ -574,7 +574,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "3",
@@ -584,7 +584,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "4",
@@ -594,7 +594,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "5",
@@ -604,7 +604,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "6",
@@ -614,7 +614,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "7",
@@ -624,7 +624,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "8",
@@ -634,7 +634,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "9",
@@ -644,7 +644,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "10",
@@ -654,7 +654,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "11",
@@ -664,7 +664,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "12",
@@ -674,7 +674,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "13",
@@ -684,7 +684,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "14",
@@ -694,7 +694,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "15",
@@ -704,7 +704,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "16",
@@ -714,7 +714,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "17",
@@ -724,7 +724,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   }, {
     "portNumber" : "18",
@@ -734,7 +734,7 @@
     "vlanPortPtpVidEnabled" : "y",
     "vlanPortPtpVid" : "",
     "vlanPortVid" : null,
-    "vlanPortLldpTxVid" : "4094",
+    "vlanPortLldpTxVid" : "",
     "vlanPortLldpTxPrio" : "0"
   } ],
   "configVlans" : [ {

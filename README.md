@@ -75,3 +75,9 @@ Once user is confident with newly generated dot-configs, they have to committed 
 ```
 (sudo) pip install requests
 ```
+
+## For developers
+
+### How to update the forked 'wrs-config-generator' repo
+
+Refer to **README.md** of forked [wrs-config-generator](https://github.com/GSI-CS-CO-Forks/wrs-config-generator).

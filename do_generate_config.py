@@ -10,6 +10,7 @@
 import argparse, sys, os, json
 import make_config_obj
 import make_port_model
+import set_calibration_values   # WRS v7.0: generate dot-configs both for HW v3.3 and v3.4
 
 # output folder to store configuration files
 config_prefix = 'dot-config_'
@@ -18,6 +19,8 @@ object_dir = 'output/object'
 graph_dir = 'output/graph'
 config_generator_dir = 'wrs-config-generator'
 config_generator_url = 'https://gitlab.cern.ch/white-rabbit/wrs-config-generator'
+
+wrs_calib_filepath_prefix='calibration_values_'
 
 def generate_config_object(switches, object_dir):
   make_config_obj.make(switches, object_dir)
@@ -47,6 +50,25 @@ def generate_port_model(switches, config_dir, graph_dir=None):
     graph_filepath = os.path.join(graph_dir, config_prefix + switch['name'])
 
     make_port_model.make(config_filepath, graph_filepath)
+
+def update_calibration_values(wrs_sw_ver="7.0"):
+
+  config_sw_ver="CONFIG_DOTCONF_FW_VERSION="
+
+  for switch in switches['devices']:
+    # file path of configuration dot-config file
+    config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
+
+    # check WRS SW version match
+    with open(config_filepath, "r") as f:
+      for line in f:
+        if (config_sw_ver in line) and (wrs_sw_ver) in line:
+
+          wrs_calib_filepath = wrs_calib_filepath_prefix + wrs_sw_ver
+          for hw_ver in ["3.3", "3.4"]:
+            # set the calibration values
+            set_calibration_values.set(config_filepath, wrs_calib_filepath, hw_ver)
+          continue
 
 def create_folder(directory):
   try:
@@ -88,6 +110,9 @@ if __name__ == '__main__':
 
   # generate WRS configurations
   generate_config(switches, object_dir, config_dir)
+
+  # set the calibration values (for WRS v7.0 only)
+  update_calibration_values()
 
   # generate WRS port model
   generate_port_model(switches, config_dir, graph_dir)

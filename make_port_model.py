@@ -421,7 +421,7 @@ def create_dot_file(filepath, wrs_name, html_table):
 
     dotlines = "graph G {\n"
     dotlines += "rankdir=TB;\n"
-    dotlines += wrs_name + "[shape=plaintext, label=\n"
+    dotlines += wrs_name.replace("-", "_") + "[shape=plaintext, label=\n" # cannot use dash, hence use underscore
     dotlines += html_table
     dotlines += ",];\n"
     dotlines +="}"

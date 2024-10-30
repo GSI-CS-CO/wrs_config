@@ -5,6 +5,9 @@ from getpass import getuser as gp_getuser
 from socket import gethostname as sk_gethostname
 import subprocess
 
+# supported HW versions
+supported_hw_versions=["3.3", "3.4"]
+
 # VLAN definitions, WRS port roles, WRS layers
 vlans_file = 'vlans.json'
 port_roles_file = 'port_roles.json'
@@ -407,33 +410,33 @@ def make(switches, out_dir):
     # get a configurable WRS port-model
     wrs_port_model = copy.deepcopy(items['switch_layers'][switch['layer']])
 
-    # set VLANs configuration to the WRS port-model
-    if 'sync' in switch:
-      configure_ports(items, switch['vlan'], switch['sync'], wrs_port_model)
-    else:
-      configure_ports(items, switch['vlan'], None, wrs_port_model)
+    for hw_ver in supported_hw_versions:
 
-    # extract RTU configuration (per-VLAN config) from the WRS port-model
-    rtu_config = build_rtu_config(items, wrs_port_model)
+      # set VLANs configuration to the WRS port-model
+      if 'sync' in switch:
+        configure_ports(items, switch['vlan'], switch['sync'], wrs_port_model)
+      else:
+        configure_ports(items, switch['vlan'], None, wrs_port_model)
 
-    # build WRS config object from WRS port-model (with VLANs configuration) and
-    # RTU configuration
-    wrs_config_obj = build_config_obj(items, wrs_port_model, rtu_config, switch)
+      # extract RTU configuration (per-VLAN config) from the WRS port-model
+      rtu_config = build_rtu_config(items, wrs_port_model)
 
-    # update optional configuration (non-VLAN, non-port specific)
-    if 'optional' in switch and switch['optional'] is not None:
-      update_optional(items, wrs_config_obj, switch['optional'])
+      # build WRS config object from WRS port-model (with VLANs configuration) and
+      # RTU configuration
+      wrs_config_obj = build_config_obj(items, wrs_port_model, rtu_config, switch)
 
-    # write WRS configuration object to file
-    file_name = output_file + switch['name'] + '.json'
-    file_path = os.path.join(out_dir, file_name)
-    with open(file_path, 'w') as out_file:
-      out_file.write(json.dumps(wrs_config_obj, indent=2, sort_keys=True))
+      # update optional configuration (non-VLAN, non-port specific)
+      if 'optional' in switch and switch['optional'] is not None:
+        update_optional(items, wrs_config_obj, switch['optional'])
 
-    ##file_name = output_file + switch['name'] + '_vlan.json'
-    ##file_path = os.path.join(out_dir, file_name)
-    ##with open(file_path, 'w') as out_file:
-      ##out_file.write(json.dumps(wrs_port_model, indent=2, sort_keys=True))
+      # set the hw version
+      wrs_config_obj['CONFIG_DOTCONF_HW_VERSION'] = hw_ver
+
+      # write WRS configuration object to file
+      file_name = output_file + switch['name'] + '_' + hw_ver + '.json'
+      file_path = os.path.join(out_dir, file_name)
+      with open(file_path, 'w') as out_file:
+        out_file.write(json.dumps(wrs_config_obj, indent=2, sort_keys=True))
 
   return 0
 

@@ -26,12 +26,14 @@ def generate_config(switches, object_dir, config_dir):
 
   for switch in switches['devices']:
 
-    # file paths of configuration object and dot-config file
-    object_filepath = os.path.join(object_dir, config_prefix + switch['name'])
-    config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
+    for hw_ver in make_config_obj.supported_hw_versions:
 
-    # generate configuration (shell command)
-    os.system('python3 wrs-config-generator/generate_config.py --json=' + object_filepath + '.json --config=' + config_filepath)
+      # file paths of configuration object and dot-config file
+      object_filepath = os.path.join(object_dir, config_prefix + switch['name'] + '_' + hw_ver)
+      config_filepath = os.path.join(config_dir, config_prefix + switch['name'] + '_v' + hw_ver)
+
+      # generate configuration (shell command)
+      os.system('python3 wrs-config-generator/generate_config.py --json=' + object_filepath + '.json --config=' + config_filepath)
 
 def generate_port_model(switches, config_dir, graph_dir=None):
 

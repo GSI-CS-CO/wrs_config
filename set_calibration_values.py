@@ -41,9 +41,6 @@ def set(dotconf_file, calib_file, wrs_sw_ver, target_hw_ver="3.4"):
         print("Invalid version: ", target_hw_ver)
         usage()
 
-    print(f"Config file: {dotconf_file}")
-    print(f"Calibration file: {calib_file}")
-
     # Load input configuration
     with open(dotconf_file, 'r') as f:
         configs = f.read()
@@ -52,6 +49,9 @@ def set(dotconf_file, calib_file, wrs_sw_ver, target_hw_ver="3.4"):
     match = re.search(pattern, configs)
     if match is None:
         return
+
+    print(f"Config file: {dotconf_file}")
+    print(f"Calibration file: {calib_file}")
 
     # Parse calibration values
     if calib_values['wrs_sw_ver'] != wrs_sw_ver:

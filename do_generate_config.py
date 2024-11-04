@@ -43,16 +43,18 @@ def generate_port_model(switches, config_dir, graph_dir=None):
 
   for switch in switches['devices']:
 
-    # configuration file path
-    config_filepath = os.path.join(config_dir, config_prefix + switch['name'])
+    for hw_ver in make_config_obj.supported_hw_versions:
 
-    # graph file path
-    if graph_dir == None:
-      graph_dir=config_dir
+      # configuration file path
+      config_filepath = os.path.join(config_dir, config_prefix + switch['name'] + '_v' + hw_ver)
 
-    graph_filepath = os.path.join(graph_dir, config_prefix + switch['name'])
+      # graph file path
+      if graph_dir == None:
+        graph_dir=config_dir
 
-    make_port_model.make(config_filepath, graph_filepath)
+      graph_filepath = os.path.join(graph_dir, config_prefix + switch['name'] + '_v' + hw_ver)
+
+      make_port_model.make(config_filepath, graph_filepath)
 
 def update_calibration_values(wrs_sw_ver="7.0"):
 

@@ -232,6 +232,13 @@
     "layer" : "access",
     "vlan" : {"ref":"vlans", "name":"uni-int"}
   }, {
+    "name" : "uni-int_access_sync",
+    "layer" : "access_control_2",
+    "vlan" : {"ref":"vlans", "name":"uni-int"},
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
     "name" : "timing_access_all",
     "layer" : "access_all",
     "vlan" : {"ref":"vlans", "name":"timing"},

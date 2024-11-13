@@ -145,21 +145,33 @@
     "name" : "user_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"user"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
   }, {
     "name" : "user_distribution",
     "layer" : "distribution",
-    "vlan" : {"ref":"vlans", "name":"user"}
+    "vlan" : {"ref":"vlans", "name":"user"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "user_access",
     "layer" : "access",
-    "vlan" : {"ref":"vlans", "name":"user"}
+    "vlan" : {"ref":"vlans", "name":"user"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "user_access_unilac_gateway",
     "layer" : "access_control_7",
     "vlan" : {"ref":"vlans", "name":"user"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
@@ -167,21 +179,33 @@
     "name" : "timing_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"timing"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
   }, {
     "name" : "timing_distribution",
     "layer" : "distribution",
-    "vlan" : {"ref":"vlans", "name":"timing"}
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "timing_access",
     "layer" : "access",
-    "vlan" : {"ref":"vlans", "name":"timing"}
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "timing_access_and_monitoring",
     "layer" : "access_all_and_monitor_18",
     "vlan" : {"ref":"vlans", "name":"timing"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
      }
@@ -190,21 +214,33 @@
     "layer" : "local_master_sync",
     "vlan" : {"ref" : "vlans", "name" : "int"},
     "sync" : {"ref" : "vlans", "name" : "uni-int"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
   }, {
     "name" : "integration_distribution",
     "layer" : "distribution",
-    "vlan" : {"ref":"vlans", "name":"int"}
+    "vlan" : {"ref":"vlans", "name":"int"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "integration_access",
     "layer" : "access",
-    "vlan" : {"ref":"vlans", "name":"int"}
+    "vlan" : {"ref":"vlans", "name":"int"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "integration_access_b2b_d",
     "layer" : "access_b2b_d",
     "vlan" : {"ref":"vlans", "name":"int"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
@@ -212,6 +248,9 @@
     "name" : "integration_access_unilac_gateway",
     "layer" : "access_control_2",
     "vlan" : {"ref":"vlans", "name":"int"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
@@ -220,21 +259,33 @@
     "layer" : "local_master_sync",
     "vlan" : {"ref" : "vlans", "name" : "uni-int"},
     "sync" : {"ref" : "vlans", "name" : "int"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
   }, {
     "name" : "uni-int_distribution",
     "layer" : "distribution",
-    "vlan" : {"ref":"vlans", "name":"uni-int"}
+    "vlan" : {"ref":"vlans", "name":"uni-int"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "uni-int_access",
     "layer" : "access",
-    "vlan" : {"ref":"vlans", "name":"uni-int"}
+    "vlan" : {"ref":"vlans", "name":"uni-int"},
+    "optional" : {
+      "cipher" : "enabled"
+     }
   }, {
     "name" : "uni-int_access_sync",
     "layer" : "access_control_2",
     "vlan" : {"ref":"vlans", "name":"uni-int"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
@@ -242,6 +293,9 @@
     "name" : "timing_access_all",
     "layer" : "access_all",
     "vlan" : {"ref":"vlans", "name":"timing"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
@@ -269,6 +323,9 @@
     "name" : "integration_access_fbas",
     "layer" : "access_fbas",
     "vlan" : {"ref":"vlans", "name":"int"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
@@ -276,6 +333,9 @@
     "name" : "user_access_fbas",
     "layer" : "access_fbas",
     "vlan" : {"ref":"vlans", "name":"user"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }
@@ -283,6 +343,9 @@
     "name" : "timing_access_fbas",
     "layer" : "access_fbas",
     "vlan" : {"ref":"vlans", "name":"timing"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
     "rvlan" : {
       "obey" : "true"
     }

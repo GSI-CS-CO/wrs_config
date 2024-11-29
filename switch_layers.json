@@ -457,5 +457,29 @@
         "17": {"role" : {"ref":"port_roles", "name":"fbas"}},
         "18": {"role" : {"ref":"port_roles", "name":"fbas"}}
     },
-    "comment" : "allow network traffic between FBAS nodes" }
+    "comment" : "allow network traffic between FBAS nodes" },
+
+  "access_xenabay" : {
+    "timing_mode" : "BC",
+    "ports" : {
+        "1" : {"role" : {"ref":"port_roles", "name":"trunk_slave"}},
+        "2" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "3" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "4" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "5" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "7" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "8" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "9" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "10": {"role" : {"ref":"port_roles", "name":"node"}},
+        "11": {"role" : {"ref":"port_roles", "name":"node"}},
+        "12": {"role" : {"ref":"port_roles", "name":"node"}},
+        "13": {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "14": {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "15": {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "16": {"role" : {"ref":"port_roles", "name":"node"}},
+        "17": {"role" : {"ref":"port_roles", "name":"node"}},
+        "18": {"role" : {"ref":"port_roles", "name":"node"}}
+    },
+    "comment" : "for GSI use-case test: ports 3-5, 16-18 are reserved for B2B nodes" }
 }

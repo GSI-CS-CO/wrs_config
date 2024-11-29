@@ -349,6 +349,13 @@
     "rvlan" : {
       "obey" : "true"
     }
+  }, {
+    "name" : "timing_access_xenabay",
+    "layer" : "access_xenabay",
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "rvlan" : {
+      "enable" : "n"
+    }
   }
   ]
 }

@@ -356,6 +356,20 @@
     "rvlan" : {
       "enable" : "n"
     }
+  }, {
+    "name" : "timing_access_all_xenabay",
+    "layer" : "access_all",
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "rvlan" : {
+      "enable" : "n"
+    }
+  }, {
+    "name" : "timing_localmaster_xenabay",
+    "layer" : "local_master",
+    "vlan" : {"ref":"vlans", "name":"timing"},
+    "rvlan" : {
+      "enable" : "n"
+    }
   }
   ]
 }

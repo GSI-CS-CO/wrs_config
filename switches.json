@@ -350,8 +350,8 @@
       "obey" : "true"
     }
   }, {
-    "name" : "timing_access_xenabay",
-    "layer" : "access_xenabay",
+    "name" : "timing_access_mixed_xenabay",
+    "layer" : "access_mixed_xenabay",
     "vlan" : {"ref":"vlans", "name":"timing"},
     "rvlan" : {
       "enable" : "n"

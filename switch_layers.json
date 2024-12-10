@@ -459,7 +459,7 @@
     },
     "comment" : "allow network traffic between FBAS nodes" },
 
-  "access_xenabay" : {
+  "access_mixed_xenabay" : {
     "timing_mode" : "BC",
     "ports" : {
         "1" : {"role" : {"ref":"port_roles", "name":"trunk_slave"}},
@@ -481,5 +481,5 @@
         "17": {"role" : {"ref":"port_roles", "name":"node"}},
         "18": {"role" : {"ref":"port_roles", "name":"node"}}
     },
-    "comment" : "for GSI use-case test: ports 3-5, 16-18 are reserved for B2B nodes" }
+    "comment" : "for GSI use-case mixed test: ports 3-5, 16-18 are reserved for B2B nodes" }
 }

@@ -517,14 +517,22 @@
     "vendorSerial" : null
   }, {
     "sfpId" : "8",
-    "vendorName" : "OEM",
+    "vendorName" : "BlueOptics",
     "dtx" : "0",
     "drx" : "0",
-    "wavelength" : "1310+1410",
-    "partNumber" : "SFP-T",
+    "wavelength" : "1490+1310",
+    "partNumber" : "BO15C4931620D-WR",
     "vendorSerial" : null
   }, {
     "sfpId" : "9",
+    "vendorName" : "BlueOptics",
+    "dtx" : "0",
+    "drx" : "0",
+    "wavelength" : "1310+1490",
+    "partNumber" : "BO15C3149620D-WR",
+    "vendorSerial" : null
+  }, {
+    "sfpId" : "10",
     "vendorName" : "OEM",
     "dtx" : "0",
     "drx" : "0",
@@ -532,7 +540,7 @@
     "partNumber" : "BO15C4931620",
     "vendorSerial" : null
   }, {
-    "sfpId" : "10",
+    "sfpId" : "11",
     "vendorName" : "OEM",
     "dtx" : "0",
     "drx" : "0",
@@ -540,7 +548,15 @@
     "partNumber" : "BO15C3149620D",
     "vendorSerial" : null
   }, {
-    "sfpId" : "11",
+    "sfpId" : "12",
+    "vendorName" : "OEM",
+    "dtx" : "0",
+    "drx" : "0",
+    "wavelength" : "1310+1490",
+    "partNumber" : "SFP-T",
+    "vendorSerial" : null
+  }, {
+    "sfpId" : "13",
     "vendorName" : "OEM",
     "dtx" : "0",
     "drx" : "0",

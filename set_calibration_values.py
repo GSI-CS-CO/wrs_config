@@ -7,7 +7,7 @@ import re
 params = ["EGRESS_LATENCY", "INGRESS_LATENCY", "T24P_TRANS_POINT"]
 port_cnt = 18
 inst_cnt = 1
-config_sw_ver="CONFIG_DOTCONF_FW_VERSION="
+config_sw_ver="CONFIG_DOTCONF_FW_VERSION"
 
 # item with the calibration values
 calib_values = {
@@ -45,7 +45,7 @@ def set(dotconf_file, calib_file, wrs_sw_ver, target_hw_ver="3.4"):
     with open(dotconf_file, 'r') as f:
         configs = f.read()
 
-    pattern = config_sw_ver + '"' + wrs_sw_ver + '"'
+    pattern = config_sw_ver + '="' + wrs_sw_ver + '"'
     match = re.search(pattern, configs)
     if match is None:
         return

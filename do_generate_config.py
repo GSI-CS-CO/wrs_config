@@ -78,6 +78,16 @@ def create_folder(directory):
     print ('Error: Could not create directory ' +  directory)
     sys.exit(1)
 
+def get_fw_version(filepath):
+
+  # Parse and get the actual FW version from dot-config (json)
+  with open(filepath, 'r') as f:
+    json_configs = json.load(f)
+
+  # Check if an object for FW version is found
+  if set_calibration_values.config_sw_ver in json_configs:
+    return json_configs[set_calibration_values.config_sw_ver]
+
 if __name__ == '__main__':
 
   # Check if CERN tool is available
@@ -111,8 +121,11 @@ if __name__ == '__main__':
   # generate WRS configurations
   generate_config(switches, object_dir, config_dir)
 
-  # set the calibration values (for WRS v7.0 only)
-  update_calibration_values()
+  # get the FW version from 'dot-config.json' (needed to set the calibration values)
+  wrs_fw_ver = get_fw_version(make_config_obj.config_obj_file)
+
+  # set the calibration values
+  update_calibration_values(wrs_fw_ver)
 
   # generate WRS port model
   generate_port_model(switches, config_dir, graph_dir)

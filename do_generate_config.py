@@ -21,7 +21,7 @@ config_generator_dir = 'wrs-config-generator'
 config_generator_url = 'https://gitlab.cern.ch/white-rabbit/wrs-config-generator'
 
 # calibration values are stored in external files
-wrs_calib_filepath_prefix='calibration_values_'
+wrs_calib_filepath='calibration_values.json'
 
 def generate_config_object(switches, object_dir):
   make_config_obj.make(switches, object_dir)
@@ -63,9 +63,6 @@ def update_calibration_values(wrs_sw_ver="7.0"):
 
       # file path of configuration dot-config file
       config_filepath = os.path.join(config_dir, config_prefix + switch['name'] + '_v' + hw_ver)
-
-      # path to file with calibration values
-      wrs_calib_filepath = wrs_calib_filepath_prefix + wrs_sw_ver
 
       # set the calibration values (no need to check)
       set_calibration_values.set(config_filepath, wrs_calib_filepath, wrs_sw_ver, hw_ver)

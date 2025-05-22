@@ -176,6 +176,15 @@
       "obey" : "true"
     }
   }, {
+    "name" : "timing_clockmaster",
+    "layer" : "clock_master",
+    "vlan" : {"ref":"vlans", "name":"ptp_gm"},
+    "optional" : {
+      "cipher" : "enabled",
+      "CONFIG_NTP_SERVER" : "ntp1.acc.gsi.de",
+      "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED" : "true"
+     }
+  }, {
     "name" : "timing_localmaster",
     "layer" : "local_master",
     "vlan" : {"ref":"vlans", "name":"timing"},

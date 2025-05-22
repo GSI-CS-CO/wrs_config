@@ -16,7 +16,7 @@ config_sw_ver="CONFIG_DOTCONF_FW_VERSION"
 
 # Supported versions
 valid_sw_versions=["6.1", "7.0", "8.0"]
-valid_hw_versions=["3.3", "3.4"]
+valid_hw_versions=["3.3", "3.4", "3.5"]
 
 # Functions
 def usage():

@@ -27,10 +27,10 @@ switches_file = 'switches.json'
 output_file = 'dot-config_'
 
 def get_git_hash():
-  # Return short commit hash in Git
+  # Return the human-readable name for the current commit in Git repo
 
   git_hash = None
-  args = 'git rev-parse --short HEAD'
+  args = 'git describe --always --dirty'
   try:
     git_hash = subprocess.check_output(args, shell=True)
     git_hash = git_hash.decode("utf-8").strip('\n')
@@ -400,10 +400,8 @@ def make(switches, out_dir):
       if 'cipher' in items and items['cipher'] is not None:
         break
 
-  # get commit hash of HEAD
+  # get a human-readable name for the current commit in Git repo
   items['git_hash'] = get_git_hash()
-  if len(check_git_status()):
-    items['git_hash'] += '-dirty'
 
   # build configuration objects for given switches
   for switch in switches['devices']:

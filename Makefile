@@ -8,7 +8,8 @@ prod:
 	yes "password" | python3 do_generate_config.py prod_switches.json
 
 test:
-	yes "password" | python3 do_generate_config.py switches.json
+	python3 do_generate_config.py switches_test.json
+	python do_convert_v70_to_v80.py
 
 v8.x:
 	$(MAKE) all

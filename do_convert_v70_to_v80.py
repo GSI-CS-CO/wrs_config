@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 import set_calibration_values
+import set_wrsauxclk_params
 import logging
 import os
 import re
@@ -40,6 +41,11 @@ def do_conversion(args):
 
             if not success:                          # restore the old fw parameter
                 modify_param(full_filepath, new_fw_ver_param, act_fw_ver_param)
+                return
+
+            # apply wrsauxclk parameters (only for valid hw versions)
+            if hw_version in set_wrsauxclk_params.valid_hw_versions:
+                set_wrsauxclk_params.set(full_filepath, args.wrsauxclk_filepath, new_fw_ver, hw_version)
 
 def modify_param(file_path, old_str, new_str) -> bool:
 
@@ -64,6 +70,7 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument("-d", "--cfg_directory", default='output/config', help="Directory with configuration files")
     parser.add_argument("-c", "--calib_filepath", default='calibration_values.json', help="JSON file with calibration values")
+    parser.add_argument("-a", "--wrsauxclk_filepath", default='wrsauxclk_params.json', help="JSON file with wrsauxclk parameters values")
     parser.add_argument("-f", "--fw_ver_param", default='CONFIG_DOTCONF_FW_VERSION', help="FW version entry in dot-config")
     parser.add_argument("-v", "--verbosity", action="count", default=0, help="Verbosity level")
     args, unknown_args = parser.parse_known_args()

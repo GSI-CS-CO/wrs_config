@@ -1,0 +1,26 @@
+{
+    "desc" : "Parameters used to configure a clock signal generated on the clk2 connector",
+    "url" : "https://gitlab.com/ohwr/project/white-rabbit/-/wikis/Calibration#wr-switch-firmware-v80",
+    "data" : [
+        {
+            "wrs_sw_ver" : "8.0",
+            "wrs_hw_ver" : {
+                    "3.4" : {
+                        "CONFIG_WRSAUXCLK_CSHIFT" : 44,
+                        "CONFIG_WRSAUXCLK_SIGDEL" : 0,
+                        "CONFIG_WRSAUXCLK_PPSHIFT" : 0
+                    },
+                    "3.5" : {
+                        "CONFIG_WRSAUXCLK_CSHIFT" : 98,
+                        "CONFIG_WRSAUXCLK_SIGDEL" : 23,
+                        "CONFIG_WRSAUXCLK_PPSHIFT" : 0
+                    },
+                    "3.6" : {
+                        "CONFIG_WRSAUXCLK_CSHIFT" : 44,
+                        "CONFIG_WRSAUXCLK_SIGDEL" : 18,
+                        "CONFIG_WRSAUXCLK_PPSHIFT" : 12
+                    }
+                }
+        }
+    ]
+}

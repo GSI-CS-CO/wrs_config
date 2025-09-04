@@ -47,6 +47,26 @@
     "optional" : {
       "cipher" : "enabled"
      }
+  }, {
+    "name" : "mixed_master",
+    "layer" : "mixed_master",
+    "vlan" : {"ref":"vlans", "name":"default"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
+    "name" : "mixed_distribution",
+    "layer" : "mixed_distribution",
+    "vlan" : {"ref":"vlans", "name":"default"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
   }
   ]
 }

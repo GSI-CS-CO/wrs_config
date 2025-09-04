@@ -190,6 +190,48 @@
       {"ref" : "#extern"} ],
     "comment" : "PTP slave, up-link for trunk" },
 
+  "mixed_trunk_dl" : {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "uni-int"} ],
+    "comment" : "non-WR port, forward all non-production and service_dl frames" },
+
+  "mixed_trunk_ul" : {
+    "ptp_mode" : "none",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_ul"} ],
+    "comment" : "non-WR port, forward only service_ul frames" },
+
+  "mixed_trunk_master" : {
+    "ptp_mode" : "master",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "vlans", "name" : "user"},
+      {"ref" : "vlans", "name" : "int"},
+      {"ref" : "vlans", "name" : "uni-int"} ],
+    "comment" : "WR PTP master port, forward all non-production and service_dl frames" },
+
+  "mixed_trunk_slave" : {
+    "ptp_mode" : "slave",
+    "port_mode" : "trunk",
+    "pvid" : null,
+    "ptp_vid" : {"ref" : "vlans", "name" : "ptp"},
+    "rvid" : [
+      {"ref" : "vlans", "name" : "service_ul"} ],
+    "comment" : "WR PTP slave port, forward only service_ul frames" },
+
   "fbas" : {
     "ptp_mode" : "master",
     "port_mode" : "access",

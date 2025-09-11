@@ -27,6 +27,7 @@ def do_conversion(args):
     # - update the FW parameter
     # - get the HW version from each file name
     # - update the calibration values
+    # - insert new configuration items (dot-config for v8.0)
     for f in dotconfig_files:
 
         full_filepath=os.path.join(abs_path, f)
@@ -47,6 +48,9 @@ def do_conversion(args):
             if hw_version in set_wrsauxclk_params.valid_hw_versions:
                 set_wrsauxclk_params.set(full_filepath, args.wrsauxclk_filepath, new_fw_ver, hw_version)
 
+            # insert new configuration items
+            insert_config_items(full_filepath)
+
 def modify_param(file_path, old_str, new_str) -> bool:
 
     isChanged = False
@@ -63,6 +67,28 @@ def modify_param(file_path, old_str, new_str) -> bool:
             print(line, end='')
 
     return isChanged
+
+def insert_config_items(file_path):
+
+    # Read the actual configuration (from dot-config)
+    with open(file_path, 'r') as f:
+        configs = f.readlines()
+
+    # insert configuration items at specific positions
+    config_items={"CONFIG_NTP_SERVER": "CONFIG_TOD_SOURCE_NTP=y\n",
+                  "CONFIG_SNMP_SWCORESTATUS_DISABLE": "CONFIG_SNMP_SWCORESTATUS_TX_FORWARD_DELTA=10\n"}
+
+    # look for a specific configuration item in configurations and
+    # insert new configuration item behind it
+    for key, item in config_items.items():
+        for idx, config in enumerate(configs):
+            if key in config:
+                configs.insert(idx + 1, item)
+                break
+
+    # Write updated configuration (to dot-config)
+    with open(file_path, 'w') as f:
+        f.write(''.join(configs))
 
 if __name__ == '__main__':
 

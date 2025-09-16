@@ -3,7 +3,6 @@ SWITCHES ?= switches.json
 all:
 	python3 do_generate_config.py $(SWITCHES)
 	python do_create_copy.py
-	python do_convert_v70_to_v80.py
 
 clean:
 	rm -rf output || true

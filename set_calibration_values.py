@@ -16,7 +16,7 @@ config_sw_ver="CONFIG_DOTCONF_FW_VERSION"
 
 # Supported versions
 valid_sw_versions=["6.1", "7.0", "8.0"]
-valid_hw_versions=["3.3", "3.4", "3.5"]
+valid_hw_versions=["3.3", "3.4", "3.5", "3.6"]
 
 # Functions
 def usage():
@@ -120,6 +120,22 @@ def set(dotconf_file, calib_file, wrs_sw_ver="7.0", wrs_hw_ver="3.4"):
         f.write(configs)
 
     return True
+
+def get_hw_versions(calib_file, wrs_sw_ver="7.0"):
+
+    with open(calib_file, 'r') as f:
+        data = json.load(f);
+
+    hw_versions = []
+    for item in data.get('data'):
+        if item.get('wrs_sw_ver') == wrs_sw_ver:         # match on target sw version
+            for element in item.get('wrs_hw_ver'):
+                if isinstance(element, dict):            # check the type of each element and
+                    for key, value in element.items():   # get the key (supported hw version)
+                        hw_versions.append(key)
+
+    logger.info(f"sw={wrs_sw_ver}, hw={hw_versions}")
+    return hw_versions
 
 if __name__ == '__main__':
 

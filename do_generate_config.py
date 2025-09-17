@@ -10,7 +10,7 @@
 import argparse, sys, os, json
 import make_config_obj
 import make_port_model
-import set_calibration_values   # WRS v7.0: generate dot-configs for all HW versions (3.3 & 3.4)
+import set_calibration_values
 
 # output folder to store configuration files
 config_prefix = 'dot-config_'
@@ -23,14 +23,11 @@ config_generator_url = 'https://gitlab.cern.ch/white-rabbit/wrs-config-generator
 # calibration values are stored in external files
 wrs_calib_filepath='calibration_values.json'
 
-def generate_config_object(switches, object_dir):
-  make_config_obj.make(switches, object_dir)
-
-def generate_config(switches, object_dir, config_dir):
+def generate_config(switches, hw_versions, object_dir, config_dir):
 
   for switch in switches['devices']:
 
-    for hw_ver in make_config_obj.supported_hw_versions:
+    for hw_ver in hw_versions:
 
       # file paths of configuration object and dot-config file
       object_filepath = os.path.join(object_dir, config_prefix + switch['name'] + '_' + hw_ver)
@@ -39,11 +36,11 @@ def generate_config(switches, object_dir, config_dir):
       # generate configuration (shell command)
       os.system('python3 wrs-config-generator/generate_config.py --json=' + object_filepath + '.json --config=' + config_filepath)
 
-def generate_port_model(switches, config_dir, graph_dir=None):
+def generate_port_model(switches, hw_versions, config_dir, graph_dir=None):
 
   for switch in switches['devices']:
 
-    for hw_ver in make_config_obj.supported_hw_versions:
+    for hw_ver in hw_versions:
 
       # configuration file path
       config_filepath = os.path.join(config_dir, config_prefix + switch['name'] + '_v' + hw_ver)
@@ -56,10 +53,10 @@ def generate_port_model(switches, config_dir, graph_dir=None):
 
       make_port_model.make(config_filepath, graph_filepath)
 
-def update_calibration_values(wrs_sw_ver="7.0"):
+def update_calibration_values(wrs_sw_ver="7.0", hw_versions=["3.3", "3.4"]):
 
   for switch in switches['devices']:
-    for hw_ver in make_config_obj.supported_hw_versions:
+    for hw_ver in hw_versions:
 
       # file path of configuration dot-config file
       config_filepath = os.path.join(config_dir, config_prefix + switch['name'] + '_v' + hw_ver)
@@ -112,17 +109,23 @@ if __name__ == '__main__':
   create_folder(object_dir)
   create_folder(graph_dir)
 
+  # get the SW version from 'dot-config.json'
+  wrs_sw_ver = get_fw_version(make_config_obj.config_obj_file)
+
+  # get the supported HW versions
+  hw_versions=set_calibration_values.get_hw_versions(wrs_calib_filepath, wrs_sw_ver)
+
+  if not wrs_sw_ver or not hw_versions:
+    print(f"Unkwon version: SW={wrs_sw_ver}, HW={hw_versions}")
+
   # generate WRS configuration objects
-  generate_config_object(switches, object_dir)
+  make_config_obj.make(switches, hw_versions, object_dir)
 
   # generate WRS configurations
-  generate_config(switches, object_dir, config_dir)
-
-  # get the FW version from 'dot-config.json' (needed to set the calibration values)
-  wrs_fw_ver = get_fw_version(make_config_obj.config_obj_file)
+  generate_config(switches, hw_versions, object_dir, config_dir)
 
   # set the calibration values
-  update_calibration_values(wrs_fw_ver)
+  update_calibration_values(wrs_sw_ver, hw_versions)
 
   # generate WRS port model
-  generate_port_model(switches, config_dir, graph_dir)
+  generate_port_model(switches, hw_versions, config_dir, graph_dir)

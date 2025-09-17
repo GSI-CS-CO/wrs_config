@@ -368,7 +368,7 @@ def generate_root_passwd_cipher():
 
   return cipher
 
-def make(switches, out_dir):
+def make(switches, hw_versions, out_dir):
 
   # Build WRS configuration object (JSON) for a given switch instance in 'switches'
   global item_files
@@ -408,7 +408,7 @@ def make(switches, out_dir):
     # get a configurable WRS port-model
     wrs_port_model = copy.deepcopy(items['switch_layers'][switch['layer']])
 
-    for hw_ver in supported_hw_versions:
+    for hw_ver in hw_versions:
 
       # set VLANs configuration to the WRS port-model
       if 'sync' in switch:

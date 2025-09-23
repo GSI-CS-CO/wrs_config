@@ -383,9 +383,9 @@
         "15": {"role" : {"ref":"port_roles", "name":"node"}},
         "16": {"role" : {"ref":"port_roles", "name":"node"}},
         "17": {"role" : {"ref":"port_roles", "name":"node"}},
-        "18": {"role" : {"ref":"port_roles", "name":"ctrl"}}
+        "18": {"role" : {"ref":"port_roles", "name":"node"}}
     },
-    "comment" : "special access WRS for B2B: ports 13, 14, 18 are reserved for sender nodes" },
+    "comment" : "special access WRS for B2B: ports 13, 14 are reserved for sender nodes" },
 
   "access_b2b_d" : {
     "timing_mode" : "BC",

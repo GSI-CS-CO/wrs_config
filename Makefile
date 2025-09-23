@@ -10,6 +10,11 @@ clean:
 prod:
 	yes "password" | python3 do_generate_config.py prod_switches.json
 
+verify_v8:
+	@$(MAKE) clean
+	@$(MAKE) all
+	@./tools/compare_dot-configs.sh
+
 Makefile: prereq-rule
 
 prereq-rule::

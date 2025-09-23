@@ -8,7 +8,7 @@ DOTCONF_FILE_PREFIX="dot-config"
 DOTCONF_FILE_NAMES=("production" "unilac")
 
 SORTED_FILE_PREFIX="sorted"
-RESULT_FILE_PREFIX="cmp"
+DIFF_FILE_PREFIX="diff"
 
 # Determine the project root folder
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"    # get the directory of the running script
@@ -23,6 +23,7 @@ expected_strings=("DOTCONF_HW_VERSION" \
                     "Build-time configuration" \
                     "CONFIG_DOTCONF_INFO" \
                     "CONFIG_DOTCONF_LOCAL_OVERWRITE" \
+                    "LLDPD_TX_INTERVAL" \
                     "IFACE_DOWN_AFTER_BOOT" \
                     "CONFIG_SNMP_SYSTEM_CLOCK_MONITOR_ENABLED" \
                     "CONFIG_SPLL_HPLL" \
@@ -84,14 +85,14 @@ compare_sorted_files() {
             #echo "$file_path vs. $another_file_path"
 
             if [ -f $another_file_path ]; then
-                #echo "=> $1/${RESULT_FILE_PREFIX}_${file_name}"
-                diff $opts $file_path $another_file_path > $1/${RESULT_FILE_PREFIX}_${file_name}
+                #echo "=> $1/${DIFF_FILE_PREFIX}_${file_name}"
+                diff $opts $file_path $another_file_path > $1/${DIFF_FILE_PREFIX}_${file_name}
             fi
         fi
     done
 
     # show all files with comparison results
-    ls -l $1/${RESULT_FILE_PREFIX}*
+    ls -l $1/${DIFF_FILE_PREFIX}*
 }
 
 # Look for any configuration option other than expected options
@@ -99,7 +100,7 @@ parse_comparison_result() {
     # $1 - directory, where comparison results are stored
 
     # get files (file paths) with comparison results
-    file_paths=($1/${RESULT_FILE_PREFIX}*)
+    file_paths=($1/${DIFF_FILE_PREFIX}*)
 
     # parse comparison result to look for any extra line
     for file_path in ${file_paths[@]}; do

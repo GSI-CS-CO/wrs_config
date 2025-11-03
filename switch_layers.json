@@ -435,6 +435,30 @@
     },
     "comment" : "special access WRS for B2B: ports 2, 3, 4, 5 are reserved for sender nodes" },
 
+  "access_b2b_f" : {
+    "timing_mode" : "BC",
+    "ports" : {
+        "1" : {"role" : {"ref":"port_roles", "name":"trunk_slave"}},
+        "2" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "3" : {"role" : {"ref":"port_roles", "name":"ctrl"}},
+        "4" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "5" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "6" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "7" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "8" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "9" : {"role" : {"ref":"port_roles", "name":"node"}},
+        "10": {"role" : {"ref":"port_roles", "name":"node"}},
+        "11": {"role" : {"ref":"port_roles", "name":"node"}},
+        "12": {"role" : {"ref":"port_roles", "name":"node"}},
+        "13": {"role" : {"ref":"port_roles", "name":"node"}},
+        "14": {"role" : {"ref":"port_roles", "name":"node"}},
+        "15": {"role" : {"ref":"port_roles", "name":"node"}},
+        "16": {"role" : {"ref":"port_roles", "name":"node"}},
+        "17": {"role" : {"ref":"port_roles", "name":"node"}},
+        "18": {"role" : {"ref":"port_roles", "name":"node"}}
+    },
+    "comment" : "special access WRS for B2B: ports 2, 3 are reserved for sender nodes" },
+
   "access_fbas" : {
     "timing_mode" : "BC",
     "ports" : {

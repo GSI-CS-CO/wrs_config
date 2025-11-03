@@ -107,6 +107,16 @@
       "obey" : "true"
     }
   }, {
+    "name" : "production_access_b2b_f",
+    "layer" : "access_b2b_f",
+    "vlan" : {"ref":"vlans", "name":"prod"},
+    "optional" : {
+      "cipher" : "enabled"
+     },
+    "rvlan" : {
+      "obey" : "true"
+    }
+  }, {
     "name" : "unilac_localmaster",
     "layer" : "local_master_sync",
     "vlan" : {"ref":"vlans", "name":"unilac"},

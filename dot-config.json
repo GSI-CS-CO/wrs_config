@@ -141,7 +141,7 @@
     "itemConfig" : "CONFIG_REMOTE_SYSLOG_SERVER"
   }, {
     "itemName" : "Try DHCP, otherwise use static IP",
-    "itemValue" : "false",
+    "itemValue" : "true",
     "itemConfig" : "CONFIG_ETH0_DHCP_ONCE"
   }, {
     "itemName" : "Use UDP for Syslog",
@@ -169,7 +169,7 @@
     "itemConfig" : "CONFIG_WRS_LOG_MONIT"
   }, {
     "itemName" : "Use DHCP",
-    "itemValue" : "true",
+    "itemValue" : "false",
     "itemConfig" : "CONFIG_ETH0_DHCP"
   }, {
     "itemName" : "Use static IP",

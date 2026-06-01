@@ -3,7 +3,7 @@
   "version" : "0.2",
   "info" : "re-numeration of VLANS with VIDs 2582-2601",
   "fbas" : {
-    "vid" : "2585", "fid" : "2585", "comment" : "FBAS traffic"},
+    "vid" : "2585", "fid" : "2601", "comment" : "FBAS traffic"},
   "lldp_tx" : {
     "vid" : "2586", "fid" : "2586", "comment" : "LLDP TX traffic"},
   "ptp_gm" : {

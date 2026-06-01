@@ -232,15 +232,28 @@
       {"ref" : "vlans", "name" : "service_ul"} ],
     "comment" : "WR PTP slave port, forward only service_ul frames" },
 
-  "fbas" : {
+  "node_fbas" : {
+    "ptp_mode" : "master",
+    "port_mode" : "access",
+    "pvid" : {"ref" : "vlans", "name" : "service_ul"},
+    "ptp_vid" : null,
+    "rvid" : [
+      {"ref" : "vlans", "name" : "default"},
+      {"ref" : "vlans", "name" : "unauthen"},
+      {"ref" : "vlans", "name" : "service_dl"},
+      {"ref" : "#extern"},
+      {"ref" : "vlans", "name" : "fbas"} ],
+    "comment" : "reserved for standard TR nodes with FBAS C2 emitter function: forward the control, service_dl and FBAS traffic to this port" },
+
+  "fbas_collector" : {
     "ptp_mode" : "master",
     "port_mode" : "access",
     "pvid" : {"ref" : "vlans", "name" : "fbas"},
     "ptp_vid" : null,
     "rvid" : [
       {"ref" : "#extern"},
-      {"ref" : "vlans", "name" : "fbas"},
+      {"ref" : "vlans", "name" : "service_ul"},
       {"ref" : "vlans", "name" : "service_dl"} ],
-    "comment" : "allow traffic between FBAS nodes" }
+    "comment" : "reserved for FBAS C2 collectors: forward the control and service_* traffic to this port" }
 
 }

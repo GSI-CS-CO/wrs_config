@@ -11,6 +11,7 @@ import argparse, sys, os, json
 import make_config_obj
 import make_port_model
 import set_calibration_values
+import patch.dhcp_once_retry_n as patch_dhcp
 
 # output folder to store configuration files
 config_prefix = 'dot-config_'
@@ -82,6 +83,13 @@ def get_fw_version(filepath):
   if set_calibration_values.config_sw_ver in json_configs:
     return json_configs[set_calibration_values.config_sw_ver]
 
+def apply_patches(config_dir):
+
+  # for each dot-config apply patches: dhcp_once_retry_n
+  for e in os.scandir(config_dir):
+    if e.is_file():
+      patch_dhcp.apply_inplace(e.path)
+
 if __name__ == '__main__':
 
   # Check if CERN tool is available
@@ -123,6 +131,9 @@ if __name__ == '__main__':
 
   # generate WRS configurations
   generate_config(switches, hw_versions, object_dir, config_dir)
+
+  # apply patches
+  apply_patches(config_dir)
 
   # set the calibration values
   update_calibration_values(wrs_sw_ver, hw_versions)
